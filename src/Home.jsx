@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-// ─── Brand Tokens ────────────────────────────────────────────────────────────
 const MOCHA      = "#6B4F3A";
 const AMBER      = "#C8860A";
 const CAMEL      = "#C19A6B";
@@ -18,9 +17,7 @@ const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'Inter', sans-serif;
     background: ${IVORY};
@@ -28,7 +25,6 @@ const styles = `
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── Nav ── */
   .nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -40,7 +36,6 @@ const styles = `
     padding: 0 40px;
     height: 60px;
   }
-
   .nav-logo {
     display: flex;
     align-items: center;
@@ -48,27 +43,6 @@ const styles = `
     text-decoration: none;
     color: ${IVORY};
   }
-
-  .nav-logomark {
-    width: 34px;
-    height: 34px;
-    background: ${IVORY};
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .nav-logomark span {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: ${MOCHA};
-    line-height: 1;
-    margin-top: 2px;
-  }
-
   .nav-wordmark {
     font-family: 'Playfair Display', serif;
     font-size: 15px;
@@ -76,23 +50,19 @@ const styles = `
     color: ${IVORY};
     letter-spacing: 0.01em;
   }
-
   .nav-links {
     display: flex;
     align-items: center;
     gap: 32px;
     list-style: none;
   }
-
   .nav-links a {
     font-size: 14px;
     color: rgba(245,240,232,0.75);
     text-decoration: none;
     transition: color 0.2s;
   }
-
   .nav-links a:hover { color: ${IVORY}; }
-
   .nav-cta {
     background: ${LIME_CTA};
     color: ${DARK_GREEN} !important;
@@ -102,10 +72,8 @@ const styles = `
     font-size: 13px !important;
     transition: opacity 0.2s !important;
   }
-
   .nav-cta:hover { opacity: 0.85; }
 
-  /* ── Hero ── */
   .hero {
     min-height: 100vh;
     background: ${DARK_GREEN};
@@ -115,7 +83,6 @@ const styles = `
     position: relative;
     overflow: hidden;
   }
-
   .hero::before {
     content: '';
     position: absolute;
@@ -123,7 +90,6 @@ const styles = `
     background: radial-gradient(ellipse at 80% 50%, rgba(107,122,60,0.15) 0%, transparent 60%);
     pointer-events: none;
   }
-
   .hero-inner {
     max-width: 1200px;
     width: 100%;
@@ -133,7 +99,6 @@ const styles = `
     gap: 80px;
     align-items: center;
   }
-
   .hero-eyebrow {
     font-size: 11px;
     font-weight: 600;
@@ -142,7 +107,6 @@ const styles = `
     color: ${CAMEL};
     margin-bottom: 20px;
   }
-
   .hero-h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(42px, 5vw, 64px);
@@ -151,12 +115,10 @@ const styles = `
     color: ${IVORY};
     margin-bottom: 24px;
   }
-
   .hero-h1 em {
     font-style: normal;
     color: ${LIME_CTA};
   }
-
   .hero-sub {
     font-size: 17px;
     line-height: 1.65;
@@ -164,13 +126,11 @@ const styles = `
     margin-bottom: 40px;
     max-width: 420px;
   }
-
   .hero-actions {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
   }
-
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -184,9 +144,7 @@ const styles = `
     text-decoration: none;
     transition: opacity 0.2s, transform 0.2s;
   }
-
   .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-
   .btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -201,11 +159,7 @@ const styles = `
     text-decoration: none;
     transition: border-color 0.2s, color 0.2s;
   }
-
-  .btn-secondary:hover {
-    border-color: ${IVORY};
-    color: ${IVORY};
-  }
+  .btn-secondary:hover { border-color: ${IVORY}; color: ${IVORY}; }
 
   .hero-card {
     background: ${IVORY};
@@ -213,7 +167,6 @@ const styles = `
     padding: 40px;
     box-shadow: 0 24px 60px rgba(0,0,0,0.25);
   }
-
   .hero-card-label {
     font-size: 10px;
     font-weight: 600;
@@ -222,7 +175,6 @@ const styles = `
     color: ${TEAL};
     margin-bottom: 20px;
   }
-
   .hero-card-item {
     display: flex;
     align-items: flex-start;
@@ -230,9 +182,7 @@ const styles = `
     padding: 16px 0;
     border-bottom: 1px solid rgba(107,79,58,0.1);
   }
-
   .hero-card-item:last-child { border-bottom: none; }
-
   .hero-card-dot {
     width: 8px;
     height: 8px;
@@ -241,7 +191,6 @@ const styles = `
     margin-top: 7px;
     flex-shrink: 0;
   }
-
   .hero-card-text strong {
     display: block;
     font-size: 14px;
@@ -249,23 +198,14 @@ const styles = `
     color: ${TEXT_DARK};
     margin-bottom: 3px;
   }
-
   .hero-card-text span {
     font-size: 13px;
     color: ${TEXT_MID};
     line-height: 1.5;
   }
 
-  /* ── Section base ── */
-  .section {
-    padding: 100px 80px;
-  }
-
-  .section-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
+  .section { padding: 100px 80px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
   .eyebrow {
     font-size: 10px;
     font-weight: 600;
@@ -274,16 +214,9 @@ const styles = `
     color: ${TEAL};
     margin-bottom: 16px;
   }
+  .eyebrow-light { color: ${CAMEL}; }
 
-  .eyebrow-light {
-    color: ${CAMEL};
-  }
-
-  /* ── Who we help ── */
-  .who {
-    background: ${IVORY};
-  }
-
+  .who { background: ${IVORY}; }
   .who-header {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -291,7 +224,6 @@ const styles = `
     align-items: end;
     margin-bottom: 60px;
   }
-
   .who-h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(30px, 3.5vw, 46px);
@@ -299,20 +231,17 @@ const styles = `
     color: ${DARK_GREEN};
     line-height: 1.15;
   }
-
   .who-desc {
     font-size: 16px;
     line-height: 1.65;
     color: ${TEXT_MID};
     max-width: 400px;
   }
-
   .industries {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
-
   .industry-card {
     background: white;
     border-radius: 14px;
@@ -320,12 +249,10 @@ const styles = `
     border: 1px solid rgba(107,79,58,0.08);
     transition: box-shadow 0.2s, transform 0.2s;
   }
-
   .industry-card:hover {
     box-shadow: 0 8px 28px rgba(107,79,58,0.12);
     transform: translateY(-2px);
   }
-
   .industry-icon {
     width: 40px;
     height: 40px;
@@ -337,7 +264,6 @@ const styles = `
     margin-bottom: 16px;
     font-size: 18px;
   }
-
   .industry-label {
     font-size: 10px;
     font-weight: 600;
@@ -346,7 +272,6 @@ const styles = `
     color: ${TEAL};
     margin-bottom: 8px;
   }
-
   .industry-h3 {
     font-family: 'Playfair Display', serif;
     font-size: 17px;
@@ -355,23 +280,10 @@ const styles = `
     line-height: 1.3;
     margin-bottom: 10px;
   }
+  .industry-p { font-size: 13px; line-height: 1.6; color: ${TEXT_MID}; }
 
-  .industry-p {
-    font-size: 13px;
-    line-height: 1.6;
-    color: ${TEXT_MID};
-  }
-
-  /* ── What we do ── */
-  .services {
-    background: ${DARK_GREEN};
-  }
-
-  .services-header {
-    text-align: center;
-    margin-bottom: 64px;
-  }
-
+  .services { background: ${DARK_GREEN}; }
+  .services-header { text-align: center; margin-bottom: 64px; }
   .services-h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(30px, 3.5vw, 46px);
@@ -380,12 +292,7 @@ const styles = `
     line-height: 1.15;
     margin-bottom: 14px;
   }
-
-  .services-h2 em {
-    font-style: normal;
-    color: ${LIME_CTA};
-  }
-
+  .services-h2 em { font-style: normal; color: ${LIME_CTA}; }
   .services-desc {
     font-size: 16px;
     line-height: 1.65;
@@ -393,13 +300,11 @@ const styles = `
     max-width: 520px;
     margin: 0 auto;
   }
-
   .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
-
   .service-card {
     background: ${MID_GREEN};
     border-radius: 16px;
@@ -408,7 +313,6 @@ const styles = `
     position: relative;
     overflow: hidden;
   }
-
   .service-num {
     font-family: 'Playfair Display', serif;
     font-size: 72px;
@@ -420,16 +324,6 @@ const styles = `
     line-height: 1;
     pointer-events: none;
   }
-
-  .service-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: ${CAMEL};
-    margin-bottom: 12px;
-  }
-
   .service-h3 {
     font-family: 'Playfair Display', serif;
     font-size: 24px;
@@ -438,21 +332,18 @@ const styles = `
     margin-bottom: 14px;
     line-height: 1.2;
   }
-
   .service-p {
     font-size: 14px;
     line-height: 1.65;
     color: rgba(245,240,232,0.7);
     margin-bottom: 24px;
   }
-
   .service-list {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
-
   .service-list li {
     font-size: 13px;
     color: rgba(245,240,232,0.6);
@@ -460,7 +351,6 @@ const styles = `
     align-items: flex-start;
     gap: 8px;
   }
-
   .service-list li::before {
     content: '';
     width: 5px;
@@ -471,11 +361,7 @@ const styles = `
     flex-shrink: 0;
   }
 
-  /* ── How it works ── */
-  .how {
-    background: ${LIGHT_TAN};
-  }
-
+  .how { background: ${LIGHT_TAN}; }
   .how-header {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -483,7 +369,6 @@ const styles = `
     align-items: end;
     margin-bottom: 60px;
   }
-
   .how-h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(30px, 3.5vw, 46px);
@@ -491,25 +376,13 @@ const styles = `
     color: ${DARK_GREEN};
     line-height: 1.15;
   }
-
-  .how-desc {
-    font-size: 16px;
-    line-height: 1.65;
-    color: ${TEXT_MID};
-  }
-
+  .how-desc { font-size: 16px; line-height: 1.65; color: ${TEXT_MID}; }
   .steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
-
-  .step {
-    background: white;
-    border-radius: 14px;
-    padding: 32px 24px;
-  }
-
+  .step { background: white; border-radius: 14px; padding: 32px 24px; }
   .step-num {
     font-family: 'Playfair Display', serif;
     font-size: 36px;
@@ -519,25 +392,10 @@ const styles = `
     line-height: 1;
     margin-bottom: 20px;
   }
+  .step-h3 { font-size: 16px; font-weight: 600; color: ${DARK_GREEN}; margin-bottom: 10px; }
+  .step-p { font-size: 13px; line-height: 1.6; color: ${TEXT_MID}; }
 
-  .step-h3 {
-    font-size: 16px;
-    font-weight: 600;
-    color: ${DARK_GREEN};
-    margin-bottom: 10px;
-  }
-
-  .step-p {
-    font-size: 13px;
-    line-height: 1.6;
-    color: ${TEXT_MID};
-  }
-
-  /* ── The Audit CTA ── */
-  .audit {
-    background: ${MOCHA};
-  }
-
+  .audit { background: ${MOCHA}; }
   .audit-inner {
     max-width: 1200px;
     margin: 0 auto;
@@ -546,7 +404,6 @@ const styles = `
     gap: 80px;
     align-items: center;
   }
-
   .audit-h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(28px, 3vw, 42px);
@@ -555,60 +412,27 @@ const styles = `
     line-height: 1.2;
     margin-bottom: 16px;
   }
-
   .audit-p {
     font-size: 16px;
     line-height: 1.65;
     color: rgba(245,240,232,0.75);
     margin-bottom: 32px;
   }
-
   .audit-card {
     background: rgba(245,240,232,0.1);
     border-radius: 16px;
     padding: 36px;
     border: 1px solid rgba(245,240,232,0.15);
   }
-
-  .audit-card-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: ${IVORY};
-    margin-bottom: 20px;
-  }
-
-  .audit-detail {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-
+  .audit-card-title { font-size: 14px; font-weight: 600; color: ${IVORY}; margin-bottom: 20px; }
+  .audit-detail { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
   .audit-detail-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: ${LIME_CTA};
-    margin-top: 8px;
-    flex-shrink: 0;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: ${LIME_CTA}; margin-top: 8px; flex-shrink: 0;
   }
+  .audit-detail p { font-size: 14px; line-height: 1.55; color: rgba(245,240,232,0.8); }
 
-  .audit-detail p {
-    font-size: 14px;
-    line-height: 1.55;
-    color: rgba(245,240,232,0.8);
-  }
-
-  .audit-detail strong {
-    color: ${IVORY};
-  }
-
-  /* ── CTA ── */
-  .cta-section {
-    background: ${DARK_GREEN};
-    padding: 100px 80px;
-  }
-
+  .cta-section { background: ${DARK_GREEN}; padding: 100px 80px; }
   .cta-inner {
     max-width: 1200px;
     margin: 0 auto;
@@ -617,7 +441,6 @@ const styles = `
     gap: 80px;
     align-items: center;
   }
-
   .cta-h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(32px, 4vw, 52px);
@@ -626,25 +449,9 @@ const styles = `
     line-height: 1.15;
     margin-bottom: 20px;
   }
-
-  .cta-h2 em {
-    font-style: normal;
-    color: ${LIME_CTA};
-  }
-
-  .cta-p {
-    font-size: 16px;
-    line-height: 1.65;
-    color: rgba(245,240,232,0.7);
-    margin-bottom: 36px;
-  }
-
-  .cta-card {
-    background: ${IVORY};
-    border-radius: 20px;
-    padding: 40px;
-  }
-
+  .cta-h2 em { font-style: normal; color: ${LIME_CTA}; }
+  .cta-p { font-size: 16px; line-height: 1.65; color: rgba(245,240,232,0.7); margin-bottom: 36px; }
+  .cta-card { background: ${IVORY}; border-radius: 20px; padding: 40px; }
   .cta-card-title {
     font-family: 'Playfair Display', serif;
     font-size: 20px;
@@ -652,172 +459,61 @@ const styles = `
     color: ${DARK_GREEN};
     margin-bottom: 24px;
   }
-
-  .cta-point {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-
+  .cta-point { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
   .cta-point-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: ${OLIVE};
-    margin-top: 8px;
-    flex-shrink: 0;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: ${OLIVE}; margin-top: 8px; flex-shrink: 0;
   }
-
-  .cta-point p {
-    font-size: 14px;
-    line-height: 1.55;
-    color: ${TEXT_MID};
-  }
-
-  .cta-point strong {
-    color: ${TEXT_DARK};
-  }
-
-  .cta-divider {
-    border: none;
-    border-top: 1px solid rgba(107,79,58,0.12);
-    margin: 24px 0;
-  }
-
-  .cta-contact {
-    font-size: 13px;
-    color: ${TEXT_MID};
-  }
-
-  .cta-contact a {
-    color: ${MOCHA};
-    text-decoration: none;
-    font-weight: 600;
-  }
-
+  .cta-point p { font-size: 14px; line-height: 1.55; color: ${TEXT_MID}; }
+  .cta-point strong { color: ${TEXT_DARK}; }
+  .cta-divider { border: none; border-top: 1px solid rgba(107,79,58,0.12); margin: 24px 0; }
+  .cta-contact { font-size: 13px; color: ${TEXT_MID}; }
+  .cta-contact a { color: ${MOCHA}; text-decoration: none; font-weight: 600; }
   .cta-contact a:hover { text-decoration: underline; }
 
-  /* ── Footer ── */
   .footer {
     background: ${DARK_GREEN};
     border-top: 1px solid rgba(245,240,232,0.08);
     padding: 60px 80px 32px;
   }
-
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
   .footer-top {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1.5fr;
     gap: 60px;
     margin-bottom: 56px;
   }
-
-  .footer-brand p {
-    font-size: 13px;
-    line-height: 1.65;
-    color: rgba(245,240,232,0.55);
-    margin-top: 14px;
-    max-width: 240px;
-  }
-
-  .footer-brand small {
-    display: block;
-    font-size: 12px;
-    color: rgba(245,240,232,0.35);
-    margin-top: 10px;
-  }
-
-  .footer-col-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(245,240,232,0.35);
-    margin-bottom: 16px;
-  }
-
-  .footer-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .footer-links a {
-    font-size: 14px;
-    color: rgba(245,240,232,0.65);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
+  .footer-brand p { font-size: 13px; line-height: 1.65; color: rgba(245,240,232,0.55); margin-top: 14px; max-width: 240px; }
+  .footer-brand small { display: block; font-size: 12px; color: rgba(245,240,232,0.35); margin-top: 10px; }
+  .footer-col-label { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.35); margin-bottom: 16px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 14px; color: rgba(245,240,232,0.65); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: ${IVORY}; }
-
-  .footer-cta-text {
-    font-size: 13px;
-    color: rgba(245,240,232,0.55);
-    line-height: 1.6;
-    margin-bottom: 16px;
-  }
-
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 24px;
-    border-top: 1px solid rgba(245,240,232,0.08);
-  }
-
-  .footer-copy {
-    font-size: 12px;
-    color: rgba(245,240,232,0.3);
-  }
-
-  .footer-legal {
-    display: flex;
-    gap: 20px;
-  }
-
-  .footer-legal a {
-    font-size: 12px;
-    color: rgba(245,240,232,0.3);
-    text-decoration: none;
-  }
-
+  .footer-cta-text { font-size: 13px; color: rgba(245,240,232,0.55); line-height: 1.6; margin-bottom: 16px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(245,240,232,0.08); }
+  .footer-copy { font-size: 12px; color: rgba(245,240,232,0.3); }
+  .footer-legal { display: flex; gap: 20px; }
+  .footer-legal a { font-size: 12px; color: rgba(245,240,232,0.3); text-decoration: none; }
   .footer-legal a:hover { color: rgba(245,240,232,0.6); }
 
-  /* ── Responsive ── */
   @media (max-width: 900px) {
     .nav { padding: 0 20px; }
     .nav-links { display: none; }
-
     .hero { padding: 80px 24px 60px; }
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero-card { display: none; }
-
     .section { padding: 64px 24px; }
-
     .who-header { grid-template-columns: 1fr; gap: 20px; }
     .industries { grid-template-columns: 1fr 1fr; }
-
     .services-grid { grid-template-columns: 1fr; }
-
     .how-header { grid-template-columns: 1fr; gap: 20px; }
     .steps { grid-template-columns: 1fr 1fr; }
-
     .audit-inner { grid-template-columns: 1fr; gap: 40px; }
-
     .cta-section { padding: 64px 24px; }
     .cta-inner { grid-template-columns: 1fr; gap: 40px; }
-
     .footer { padding: 48px 24px 24px; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
   }
-
   @media (max-width: 540px) {
     .industries { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; }
@@ -825,31 +521,16 @@ const styles = `
   }
 `;
 
-// ─── Logo Mark ───────────────────────────────────────────────────────────────
 function LogoMark({ size = 34, bg = IVORY, fg = MOCHA }) {
   return (
-    <div style={{
-      width: size, height: size,
-      background: bg, borderRadius: 6,
-      display: "flex", alignItems: "center", justifyContent: "center",
-      flexShrink: 0
-    }}>
-      <span style={{
-        fontFamily: "'Playfair Display', serif",
-        fontSize: size * 0.58,
-        fontWeight: 700,
-        color: fg,
-        lineHeight: 1,
-        marginTop: 2
-      }}>g</span>
+    <div style={{ width: size, height: size, background: bg, borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+      <span style={{ fontFamily: "'Playfair Display', serif", fontSize: size * 0.58, fontWeight: 700, color: fg, lineHeight: 1, marginTop: 2 }}>g</span>
     </div>
   );
 }
 
-// ─── Main Component ───────────────────────────────────────────────────────────
 export default function GroundworkHome() {
   const [scrolled, setScrolled] = useState(false);
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
@@ -860,7 +541,6 @@ export default function GroundworkHome() {
     <>
       <style>{styles}</style>
 
-      {/* ── Nav ── */}
       <nav className="nav" style={{ boxShadow: scrolled ? "0 1px 20px rgba(0,0,0,0.25)" : "none" }}>
         <a href="#top" className="nav-logo">
           <LogoMark />
@@ -874,7 +554,6 @@ export default function GroundworkHome() {
         </ul>
       </nav>
 
-      {/* ── Hero ── */}
       <section id="top" className="hero">
         <div className="hero-inner">
           <div>
@@ -886,16 +565,11 @@ export default function GroundworkHome() {
               on systems.
             </h1>
             <p className="hero-sub">
-              We help founder-led businesses in trades, hospitality, property management,
-              and wellness build the operational foundation to grow — with or without the owner in the room.
+              Founder-led businesses in trades, hospitality, property management, and wellness hire us when growth has outpaced how they operate. We come in, build the foundation, and hand it back. Fixed scope. No retainer.
             </p>
             <div className="hero-actions">
-              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary">
-                Book a Discovery Call →
-              </a>
-              <a href="#services" className="btn-secondary">
-                See How It Works
-              </a>
+              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary">Book a Discovery Call &rarr;</a>
+              <a href="#services" className="btn-secondary">See How It Works</a>
             </div>
           </div>
           <div className="hero-card">
@@ -903,15 +577,15 @@ export default function GroundworkHome() {
             <div className="hero-card-item">
               <div className="hero-card-dot" />
               <div className="hero-card-text">
-                <strong>Fixed-scope projects</strong>
-                <span>No retainers, no surprises. You know what you're getting and what it costs.</span>
+                <strong>A defined scope, a clear price</strong>
+                <span>You know exactly what you are getting before we start. No surprises mid-engagement.</span>
               </div>
             </div>
             <div className="hero-card-item">
               <div className="hero-card-dot" />
               <div className="hero-card-text">
-                <strong>Deliverables your team can use</strong>
-                <span>SOPs, process maps, and automations — built to be used, not filed away.</span>
+                <strong>Deliverables your team can actually use</strong>
+                <span>SOPs, process maps, and automations built for real people doing real work.</span>
               </div>
             </div>
             <div className="hero-card-item">
@@ -925,27 +599,23 @@ export default function GroundworkHome() {
               <div className="hero-card-dot" />
               <div className="hero-card-text">
                 <strong>You own everything</strong>
-                <span>All deliverables are yours. No lock-in.</span>
+                <span>No lock-in. No ongoing fees. We build it, hand it over, and it is yours.</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Who We Help ── */}
       <section id="who-we-help" className="section who">
         <div className="section-inner">
           <div className="who-header">
             <div>
               <p className="eyebrow">Who We Help</p>
-              <h2 className="who-h2">
-                Built for businesses that have outgrown how they started.
-              </h2>
+              <h2 className="who-h2">When the business works because you are always in it, that is not a business. That is a job.</h2>
             </div>
             <div>
               <p className="who-desc">
-                The team is capable. The revenue is there. But documentation is scarce,
-                things depend on the wrong people, and growth keeps exposing the cracks.
+                The team is capable. The revenue is there. But nothing is written down, everything runs through you, and adding another person just adds another problem.
               </p>
             </div>
           </div>
@@ -955,13 +625,13 @@ export default function GroundworkHome() {
                 icon: "🔧",
                 label: "Trades",
                 h3: "Jobs get done, but only because the right person showed up.",
-                p: "Electrical, plumbing, HVAC, construction — we build the playbooks your crew can actually follow."
+                p: "Electrical, plumbing, HVAC, construction. We build the playbooks your crew can actually follow."
               },
               {
                 icon: "🍽",
                 label: "Hospitality",
                 h3: "Service quality swings with whoever is on shift.",
-                p: "Restaurants, hotels, catering — we document the standards so every shift runs the same way."
+                p: "Restaurants, hotels, catering. We document the standards so every shift runs the same way."
               },
               {
                 icon: "🏢",
@@ -973,7 +643,7 @@ export default function GroundworkHome() {
                 icon: "🌿",
                 label: "Wellness",
                 h3: "The practice runs on the practitioner. Clients follow the person, not the business.",
-                p: "Clinics, studios, spas — we help you build a business that outlasts any single provider."
+                p: "Clinics, studios, spas. We help you build a business that outlasts any single provider."
               }
             ].map((ind) => (
               <div key={ind.label} className="industry-card">
@@ -987,46 +657,38 @@ export default function GroundworkHome() {
         </div>
       </section>
 
-      {/* ── Services ── */}
       <section id="services" className="section services">
         <div className="section-inner">
           <div className="services-header">
             <p className="eyebrow eyebrow-light">What We Do</p>
-            <h2 className="services-h2">
-              Three services. <em>One outcome.</em>
-            </h2>
+            <h2 className="services-h2">Three services. <em>One outcome.</em></h2>
             <p className="services-desc">
-              We build the operational foundation your business needs to run without you —
-              through structured audits, clear documentation, and smart automation.
+              We diagnose what is broken, document how things should actually work, and build the automations that save your team real time. Then we leave. That is the whole model.
             </p>
           </div>
           <div className="services-grid">
             {[
               {
                 num: "01",
-                label: "Service One",
                 h3: "Process Audits",
-                p: "We map how your business actually runs — not how you think it runs. Through interviews, observation, and documentation review, we find the gaps, bottlenecks, and single points of failure before they become crises.",
+                p: "Most founders are surprised by what we find. Not because things are broken, but because nobody has ever written it down and looked at it all at once. We interview your team, observe how work actually moves, and surface the gaps before they become expensive.",
                 bullets: ["Current-state process mapping", "Gap and risk analysis", "Prioritized recommendations", "Delivered in plain language"]
               },
               {
                 num: "02",
-                label: "Service Two",
                 h3: "SOP Development",
-                p: "Standard operating procedures that your team will actually use. Written for the people doing the work, not for a compliance binder. Clear, specific, and built to be updated as your business evolves.",
+                p: "Most SOPs fail because they are written by someone who does not do the job, for someone who will not read them. We write with your team, not at them. Clear, specific, and built to be updated as things change.",
                 bullets: ["Role-specific documentation", "Step-by-step with decision points", "Onboarding-ready formats", "Includes a maintenance plan"]
               },
               {
                 num: "03",
-                label: "Service Three",
                 h3: "Workflow Automation",
-                p: "Simple automations that save real time without requiring a tech degree. We identify the repetitive tasks eating your team's hours and build lightweight solutions using tools you already have.",
+                p: "We are not here to sell you software. We find the things your team does manually every day that could run on their own, and build the automations using tools you already have or can easily adopt.",
                 bullets: ["No-code and low-code tools", "Scheduling and notifications", "Handoff and approval flows", "Integrated with what you use"]
               }
             ].map((svc) => (
               <div key={svc.num} className="service-card">
                 <div className="service-num">{svc.num}</div>
-                <p className="service-label">{svc.label}</p>
                 <h3 className="service-h3">{svc.h3}</h3>
                 <p className="service-p">{svc.p}</p>
                 <ul className="service-list">
@@ -1038,43 +700,23 @@ export default function GroundworkHome() {
         </div>
       </section>
 
-      {/* ── How It Works ── */}
       <section id="how-it-works" className="section how">
         <div className="section-inner">
           <div className="how-header">
             <div>
               <p className="eyebrow">How It Works</p>
-              <h2 className="how-h2">
-                Fixed scope. Clear deliverables. No surprises.
-              </h2>
+              <h2 className="how-h2">Fixed scope. Clear deliverables. No surprises.</h2>
             </div>
             <p className="how-desc">
-              Every engagement is scoped before it starts. You know what you're getting,
-              what it costs, and when it's done. No retainers, no open-ended consulting.
+              Every engagement has a defined start, a defined end, and a clear list of what gets built. You know what it costs before we begin. When the work is done, we hand it over and you run it.
             </p>
           </div>
           <div className="steps">
             {[
-              {
-                num: "01",
-                h3: "Discovery Call",
-                p: "30 minutes, free. We ask about your business. You ask about our process. We tell you honestly if we're the right fit."
-              },
-              {
-                num: "02",
-                h3: "Scoping Session",
-                p: "A paid 90-minute session where we define the engagement: what we'll do, what we'll deliver, and what it costs."
-              },
-              {
-                num: "03",
-                h3: "The Work",
-                p: "We come in, do the work, and deliver the output. Most engagements run 4–12 weeks depending on scope."
-              },
-              {
-                num: "04",
-                h3: "Handoff",
-                p: "A working session where we walk your team through everything we built. You own it. We're available for questions."
-              }
+              { num: "01", h3: "Discovery Call", p: "30 minutes, free. We ask about your business. You ask about our process. We tell you honestly if we are the right fit." },
+              { num: "02", h3: "Scoping Session", p: "A paid 90-minute session where we define the engagement: what we will do, what we will deliver, and what it costs." },
+              { num: "03", h3: "The Work", p: "We come in, do the work, and deliver the output. Most engagements run 4 to 12 weeks depending on scope." },
+              { num: "04", h3: "Handoff", p: "A working session where we walk your team through everything we built. You own it. We are available for questions." }
             ].map((step) => (
               <div key={step.num} className="step">
                 <div className="step-num">{step.num}</div>
@@ -1086,32 +728,19 @@ export default function GroundworkHome() {
         </div>
       </section>
 
-      {/* ── The Audit ── */}
       <section id="audit" className="section audit">
         <div className="audit-inner">
           <div>
             <p className="eyebrow eyebrow-light">Start Here</p>
-            <h2 className="audit-h2">
-              Most engagements start with the Groundwork Audit.
-            </h2>
+            <h2 className="audit-h2">Most engagements start with the Groundwork Audit.</h2>
             <p className="audit-p">
-              A structured 10-area operational assessment that maps exactly what's working,
-              what isn't, and what to fix first. The audit is where we earn the right to
-              make recommendations — by understanding your business deeply before we
-              suggest changing anything.
+              Before we recommend anything, we need to understand how your business actually runs. The Groundwork Audit is a structured 10-area assessment that tells you exactly what is working, what is not, and what to fix first. Most clients are surprised by what comes up.
             </p>
-            <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary">
-              Book a Discovery Call →
-            </a>
+            <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary">Book a Discovery Call &rarr;</a>
           </div>
           <div className="audit-card">
             <p className="audit-card-title">What the Audit covers</p>
-            {[
-              ["Systems & Tools", "Data & Documentation", "Roles & Ownership"],
-              ["Leadership Visibility", "Communication & Alignment", "Financial Visibility"],
-              ["Client Experience", "Capacity & Workload", "Growth Readiness"],
-              ["Owner Dependency & Exit Risk", "", ""]
-            ].flat().filter(Boolean).map(area => (
+            {["Systems & Tools", "Data & Documentation", "Roles & Ownership", "Leadership Visibility", "Communication & Alignment", "Financial Visibility", "Client Experience", "Capacity & Workload", "Growth Readiness", "Owner Dependency & Exit Risk"].map(area => (
               <div key={area} className="audit-detail">
                 <div className="audit-detail-dot" />
                 <p>{area}</p>
@@ -1121,34 +750,26 @@ export default function GroundworkHome() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
       <section id="contact" className="cta-section">
         <div className="cta-inner">
           <div>
             <p className="eyebrow eyebrow-light">Get Started</p>
-            <h2 className="cta-h2">
-              Ready to build<br />the <em>foundation?</em>
-            </h2>
+            <h2 className="cta-h2">Ready to build<br />the <em>foundation?</em></h2>
             <p className="cta-p">
-              Most engagements start with a free 30-minute discovery call. We'll ask about
-              your business, tell you what we see, and let you decide if it's worth going further.
+              Most engagements start with a free 30-minute discovery call. We will ask about your business, tell you what we see, and let you decide if it is worth going further.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary">
-                Book a Discovery Call →
-              </a>
-              <a href="#services" className="btn-secondary">
-                View Services
-              </a>
+              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary">Book a Discovery Call &rarr;</a>
+              <a href="#services" className="btn-secondary">View Services</a>
             </div>
           </div>
           <div className="cta-card">
-            <h3 className="cta-card-title">A straight conversation, not a sales pitch.</h3>
+            <h3 className="cta-card-title">Here is what a discovery call actually is.</h3>
             {[
-              ["30 minutes.", "We ask about your business. You ask about our process."],
-              ["No obligation.", "We'll tell you honestly if we're the right fit."],
-              ["Fixed-scope projects.", "No retainers, no surprises. You know what you're getting."],
-              ["You own everything.", "All deliverables are yours. No lock-in."]
+              ["30 minutes.", "We ask about your business. You ask about ours."],
+              ["No pitch.", "We will tell you honestly if we are the right fit. And if we are not, we will tell you that too."],
+              ["If there is a fit,", "we will outline what an engagement looks like and what it costs."],
+              ["Fixed scope only.", "We do not do retainers or open-ended engagements."]
             ].map(([bold, rest]) => (
               <div key={bold} className="cta-point">
                 <div className="cta-point-dot" />
@@ -1157,29 +778,24 @@ export default function GroundworkHome() {
             ))}
             <hr className="cta-divider" />
             <p className="cta-contact" style={{ marginBottom: 6, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: "#999" }}>Based in Canada</p>
-            <p className="cta-contact">
-              Serving clients across Canada and the US. Remote-first. On-site when it matters.
-            </p>
+            <p className="cta-contact">Serving clients across Canada and the US. Remote-first. On-site when it matters.</p>
             <p className="cta-contact" style={{ marginTop: 8 }}>
-              <a href="mailto:jennifer@groundworkconsult.ca">jennifer@groundworkconsult.ca →</a>
+              <a href="mailto:jennifer@groundworkconsult.ca">jennifer@groundworkconsult.ca &rarr;</a>
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── Footer ── */}
       <footer className="footer">
         <div className="footer-inner">
           <div className="footer-top">
             <div className="footer-brand">
               <a href="#top" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
                 <LogoMark />
-                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 600, color: IVORY }}>
-                  Groundwork Consult
-                </span>
+                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 600, color: IVORY }}>Groundwork Consult</span>
               </a>
               <p>Operational systems for founder-led businesses that have outgrown how they started.</p>
-              <small>Based in Canada · groundworkconsult.ca</small>
+              <small>Based in Canada &middot; groundworkconsult.ca</small>
             </div>
             <div>
               <p className="footer-col-label">Services</p>
@@ -1197,14 +813,12 @@ export default function GroundworkHome() {
             </div>
             <div>
               <p className="footer-col-label">Ready to Start?</p>
-              <p className="footer-cta-text">Book a free 30-minute discovery call to see if we're the right fit.</p>
-              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary" style={{ fontSize: 13, padding: "10px 20px" }}>
-                Book a Discovery Call
-              </a>
+              <p className="footer-cta-text">Book a free 30-minute discovery call to see if we are the right fit.</p>
+              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary" style={{ fontSize: 13, padding: "10px 20px" }}>Book a Discovery Call</a>
             </div>
           </div>
           <div className="footer-bottom">
-            <p className="footer-copy">© 2026 Groundwork Consult. All rights reserved.</p>
+            <p className="footer-copy">&copy; 2026 Groundwork Consult. All rights reserved.</p>
             <div className="footer-legal">
               <a href="#">Privacy</a>
               <a href="#">Terms</a>
