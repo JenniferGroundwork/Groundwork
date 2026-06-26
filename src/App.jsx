@@ -7,62 +7,62 @@ import OpsPlaybook from "./groundwork-ops-playbook";
 import SOPLibrary from "./groundwork-sop-library";
 import AIStarterKit from "./groundwork-ai-starter-kit";
 
-const MOCHA     = "#6B4F3A";
-const CAMEL     = "#C19A6B";
-const IVORY     = "#F5F0E8";
-const DARK_MOCHA = "#3D2B1F";
-const LIGHT_TAN  = "#EDE8E0";
-const AMBER      = "#7A6A3C";
+const MOCHA      = "#6B4F3A";
+const CAMEL      = "#C19A6B";
+const IVORY      = "#F5F0E8";
+const DARK_GREEN = "#1A2E22";
+const LIGHT_TAN  = "#EDE8DF";
+const LIME_CTA   = "#D4E89A";
+const TEXT_DARK  = "#1C1C1C";
+const TEXT_MID   = "#4A4A4A";
 
 const PRODUCTS = [
-  { id: "assessment",  label: "Operational Self-Assessment",                    component: SelfAssessment },
-  { id: "ops-playbook",label: "Operations Playbook Builder",                    component: OpsPlaybook },
-  { id: "role-clarity",label: "Role Clarity Toolkit",                           component: RoleClarity },
-  { id: "sop-library", label: "Standard Operating Procedure (SOP) Library",    component: SOPLibrary },
-  { id: "sop-bundle",  label: "SOP Template Bundle",                            component: SOPBundle },
-  { id: "ai-kit",      label: "AI Workflow Starter Kit",                        component: AIStarterKit },
+  { id: "assessment",   label: "Operational Self-Assessment",                 component: SelfAssessment },
+  { id: "ops-playbook", label: "Operations Playbook Builder",                 component: OpsPlaybook },
+  { id: "role-clarity", label: "Role Clarity Toolkit",                        component: RoleClarity },
+  { id: "sop-library",  label: "Standard Operating Procedure (SOP) Library", component: SOPLibrary },
+  { id: "sop-bundle",   label: "SOP Template Bundle",                         component: SOPBundle },
+  { id: "ai-kit",       label: "AI Workflow Starter Kit",                     component: AIStarterKit },
 ];
 
-// ── Simple hash-based routing (no React Router needed) ──────────────────────
 function getView() {
-  const hash = window.location.hash;
-  if (hash === "#/tools") return "tools";
-  return "home";
+  return window.location.hash === "#/tools" ? "tools" : "home";
+}
+
+function LogoMark() {
+  return (
+    <div style={{ width: 34, height: 34, background: IVORY, borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+      <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 20, fontWeight: 700, color: MOCHA, lineHeight: 1, marginTop: 2 }}>g</span>
+    </div>
+  );
 }
 
 export default function App() {
-  const [view, setView]   = useState(getView);
+  const [view, setView]     = useState(getView);
   const [active, setActive] = useState(null);
 
-  // Navigate to tools hub (private — just share the URL with yourself)
-  const goTools = () => {
-    window.location.hash = "#/tools";
-    setView("tools");
-    setActive(null);
-  };
-
-  // Navigate back home
   const goHome = () => {
     window.location.hash = "";
     setView("home");
     setActive(null);
   };
 
-  // ── Individual tool view ──────────────────────────────────────────────────
+  // ── Individual tool view ────────────────────────────────────────────────
   if (view === "tools" && active) {
     const Product = PRODUCTS.find(p => p.id === active)?.component;
     if (!Product) { setActive(null); return null; }
     return (
       <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "sans-serif" }}>
-        <div style={{
-          background: DARK_MOCHA, padding: "12px 24px",
-          display: "flex", alignItems: "center", gap: 16
-        }}>
+        <div style={{ background: DARK_GREEN, padding: "0 40px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <LogoMark />
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 600, color: IVORY }}>Groundwork Consult</span>
+          </div>
           <button onClick={() => setActive(null)} style={{
             background: "none", border: "none", color: CAMEL,
-            cursor: "pointer", fontSize: 13, padding: 0,
+            cursor: "pointer", fontSize: 13, padding: 0, fontFamily: "sans-serif"
           }}>
-            ← Back to All Tools
+            &larr; Back to Tools
           </button>
         </div>
         <Product />
@@ -70,35 +70,74 @@ export default function App() {
     );
   }
 
-  // ── Tools launcher ────────────────────────────────────────────────────────
+  // ── Tools launcher ──────────────────────────────────────────────────────
   if (view === "tools") {
     return (
-      <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "sans-serif", padding: "60px 20px" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
-          <button onClick={goHome} style={{
-            background: "none", border: "none", color: MOCHA,
-            cursor: "pointer", fontSize: 13, marginBottom: 32,
-            display: "block", marginLeft: "auto",
-          }}>
-            ← Back to site
-          </button>
-          <div style={{ fontSize: 11, letterSpacing: "0.2em", color: CAMEL, textTransform: "uppercase", marginBottom: 8 }}>
-            Groundwork Consult
+      <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "sans-serif" }}>
+
+        {/* Nav */}
+        <div style={{ background: DARK_GREEN, padding: "0 40px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <LogoMark />
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 600, color: IVORY }}>Groundwork Consult</span>
           </div>
-          <h1 style={{ fontSize: 36, color: DARK_MOCHA, margin: "0 0 12px", fontFamily: "Georgia, serif" }}>
-            Our Tools
+          <button onClick={goHome} style={{
+            background: "none", border: "none", color: "rgba(245,240,232,0.65)",
+            cursor: "pointer", fontSize: 13, padding: 0, fontFamily: "sans-serif",
+            transition: "color 0.2s"
+          }}>
+            &larr; Back to site
+          </button>
+        </div>
+
+        {/* Content */}
+        <div style={{ maxWidth: 720, margin: "0 auto", padding: "80px 24px" }}>
+          <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "#5B7B7A", marginBottom: 12 }}>
+            Groundwork Consult
+          </p>
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 40, fontWeight: 700, color: DARK_GREEN, margin: "0 0 8px" }}>
+            Tools &amp; Resources
           </h1>
-          <div style={{ width: 48, height: 3, background: AMBER, margin: "0 auto 40px" }} />
-          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-            {PRODUCTS.map(p => (
-              <button key={p.id} onClick={() => setActive(p.id)} style={{
-                background: "white", border: `1px solid ${LIGHT_TAN}`, borderRadius: 10,
-                padding: "20px 24px", textAlign: "left", cursor: "pointer",
-                display: "flex", justifyContent: "space-between", alignItems: "center",
-                fontSize: 15, fontWeight: 600, color: DARK_MOCHA,
-              }}>
-                {p.label}
-                <span style={{ color: CAMEL }}>→</span>
+          <p style={{ fontSize: 16, color: TEXT_MID, lineHeight: 1.6, marginBottom: 48, maxWidth: 480 }}>
+            Working documents for active client engagements.
+          </p>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {PRODUCTS.map((p, i) => (
+              <button
+                key={p.id}
+                onClick={() => setActive(p.id)}
+                style={{
+                  background: "white",
+                  border: `1px solid rgba(107,79,58,0.1)`,
+                  borderRadius: 12,
+                  padding: "20px 28px",
+                  textAlign: "left",
+                  cursor: "pointer",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  transition: "box-shadow 0.2s, transform 0.15s",
+                }}
+                onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 4px 20px rgba(107,79,58,0.1)"; e.currentTarget.style.transform = "translateY(-1px)"; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                  <span style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: MOCHA,
+                    opacity: 0.4,
+                    minWidth: 24
+                  }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span style={{ fontSize: 15, fontWeight: 600, color: TEXT_DARK }}>
+                    {p.label}
+                  </span>
+                </div>
+                <span style={{ color: CAMEL, fontSize: 16 }}>&rarr;</span>
               </button>
             ))}
           </div>
@@ -107,6 +146,6 @@ export default function App() {
     );
   }
 
-  // ── Homepage (default) ────────────────────────────────────────────────────
+  // ── Homepage ────────────────────────────────────────────────────────────
   return <Home />;
 }
