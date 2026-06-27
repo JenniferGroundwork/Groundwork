@@ -284,6 +284,7 @@ const styles = `
 
   .services { background: ${DARK_GREEN}; }
   .services-header { text-align: center; margin-bottom: 64px; }
+.service-list { text-align: left; }
   .services-h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(30px, 3.5vw, 46px);
@@ -343,6 +344,7 @@ const styles = `
     display: flex;
     flex-direction: column;
     gap: 8px;
+    text-align: left;
   }
   .service-list li {
     font-size: 13px;

@@ -26,7 +26,7 @@ const PRODUCTS = [
 ];
 
 function getView() {
-  return window.location.hash === "#/tools" ? "tools" : "home";
+  window.location.hash = "#/tools";
 }
 
 function LogoMark() {
