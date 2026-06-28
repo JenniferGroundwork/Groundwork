@@ -97,7 +97,7 @@ export default function App() {
         </div>
 
         {/* Content */}
-        <div style={{ maxWidth: 720, margin: "0 auto", padding: "80px 24px" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", padding: "80px 24px", textAlign: "center" }}>
           <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "#5B7B7A", marginBottom: 12 }}>
             Groundwork Consult
           </p>
