@@ -104,7 +104,7 @@ export default function App() {
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 40, fontWeight: 700, color: DARK_GREEN, margin: "0 0 8px" }}>
             Tools &amp; Resources
           </h1>
-          <p style={{ fontSize: 16, color: TEXT_MID, lineHeight: 1.6, marginBottom: 48, maxWidth: 480 }}>
+          <p style={{ fontSize: 16, color: TEXT_MID, lineHeight: 1.6, maxWidth: 480, margin: "0 auto 48px", textAlign: "center" }}>
             Working documents for active client engagements.
           </p>
 
