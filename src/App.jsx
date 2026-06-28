@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Home from "./Home";
 import SelfAssessment from "./groundwork-self-assessment";
 import SOPBundle from "./groundwork-sop-bundle";
@@ -26,7 +26,7 @@ const PRODUCTS = [
 ];
 
 function getView() {
-  window.location.hash = "#/tools";
+  return window.location.hash === "#/tools" ? "tools" : "home";
 }
 
 function LogoMark() {
@@ -40,6 +40,12 @@ function LogoMark() {
 export default function App() {
   const [view, setView]     = useState(getView);
   const [active, setActive] = useState(null);
+
+  useEffect(() => {
+    const onHashChange = () => setView(getView());
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
   const goHome = () => {
     window.location.hash = "";
@@ -91,14 +97,14 @@ export default function App() {
         </div>
 
         {/* Content */}
-        <div style={{ maxWidth: 720, margin: "0 auto", padding: "80px 24px", textAlign: "center" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", padding: "80px 24px" }}>
           <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "#5B7B7A", marginBottom: 12 }}>
             Groundwork Consult
           </p>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 40, fontWeight: 700, color: DARK_GREEN, margin: "0 0 8px" }}>
             Tools &amp; Resources
           </h1>
-          <p style={{ fontSize: 16, color: TEXT_MID, lineHeight: 1.6, maxWidth: 480, margin: "0 auto 48px" }}>
+          <p style={{ fontSize: 16, color: TEXT_MID, lineHeight: 1.6, marginBottom: 48, maxWidth: 480 }}>
             Working documents for active client engagements.
           </p>
 
