@@ -577,7 +577,7 @@ export default function GroundworkHome() {
             </div>
             <div>
               <p className="who-desc">
-                The team is capable, and the revenue is there. But... nothing is written down, everything runs through you, and hiring more people isn't fixing the problem.
+                The team is capable, and the revenue is there. But - nothing is written down, everything runs through you, and hiring more people isn't fixing the problem.
               </p>
             </div>
           </div>
