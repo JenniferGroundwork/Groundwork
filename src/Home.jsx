@@ -477,7 +477,7 @@ export default function GroundworkHome() {
       icon: icons.property,
       label: "Property Management",
       h3: "Tenant issues and renewals flow through one inbox and one brain.",
-      p: "We build the workflows and SOPs that let your team handle it without escalating everything."
+      p: "We build the workflows and SOPs that let your team handle issues without escalating everything."
     },
     {
       icon: icons.wellness,
@@ -488,13 +488,13 @@ export default function GroundworkHome() {
     {
       icon: icons.nfp,
       label: "Not-for-Profit",
-      h3: "The mission is clear. The operations are held together with volunteer hours and institutional memory.",
-      p: "We build the systems that survive staff transitions and keep the mission moving forward."
+      h3: "The mission is clear, but the operations are held together with volunteer hours and institutional memory.",
+      p: "We build the systems that survive staff turnovers and keep the mission moving forward."
     },
     {
       icon: icons.professional,
       label: "Professional Services",
-      h3: "The expertise is there. The business behind it hasn't caught up yet.",
+      h3: "The expertise is there, but the business behind it hasn't caught up yet.",
       p: "Law firms, accounting practices, clinics. We document the work so it can run without the principal in every conversation."
     },
   ];
