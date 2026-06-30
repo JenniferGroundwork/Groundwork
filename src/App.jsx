@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Home from "./Home";
 import SelfAssessment from "./groundwork-self-assessment";
+import BookingPage from "./BookingPage";
 import SOPBundle from "./groundwork-sop-bundle";
 import RoleClarity from "./groundwork-role-clarity-toolkit";
 import OpsPlaybook from "./groundwork-ops-playbook";
@@ -29,6 +30,7 @@ const PRODUCTS = [
 
 function getView() {
   if (window.location.hash === "#/self-assessment") return "self-assessment";
+  if (window.location.hash === "#/book") return "book";
   if (window.location.hash === "#/tools") return "tools";
   return "home";
 }
@@ -56,6 +58,27 @@ export default function App() {
     setView("home");
     setActive(null);
   };
+
+  // ── Booking page view ───────────────────────────────────────────────────
+  if (view === "book") {
+    return (
+      <div style={{ minHeight: "100vh", background: "#F5F0E8", fontFamily: "sans-serif" }}>
+        <div style={{ background: "#1A2E22", padding: "0 40px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <LogoMark />
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 600, color: "#F5F0E8" }}>Groundwork Consult</span>
+          </div>
+          <button onClick={goHome} style={{
+            background: "none", border: "none", color: "rgba(245,240,232,0.65)",
+            cursor: "pointer", fontSize: 13, padding: 0, fontFamily: "sans-serif"
+          }}>
+            &larr; Back to site
+          </button>
+        </div>
+        <BookingPage />
+      </div>
+    );
+  }
 
   // ── Public Self-Assessment view (standalone, no tools nav) ─────────────
   if (view === "self-assessment") {

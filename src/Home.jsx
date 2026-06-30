@@ -512,7 +512,7 @@ export default function GroundworkHome() {
           <li><a href="#services">Services</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="mailto:jennifer@groundworkconsult.ca" className="nav-cta">Book a Call</a></li>
+          <li><a href="#/book" className="nav-cta">Book a Call</a></li>
         </ul>
       </nav>
 
@@ -531,7 +531,7 @@ export default function GroundworkHome() {
             </p>
             <div className="hero-actions">
               <a href="#/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
-              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-secondary">Book a Discovery Call</a>
+              <a href="#/book" className="btn-secondary">Book a Discovery Call</a>
             </div>
           </div>
           <div className="hero-card">
@@ -676,7 +676,7 @@ export default function GroundworkHome() {
             <p className="audit-price-note">
               Starting at [AUDIT PRICE]. Already worked with us? Returning clients can book a Groundwork Refresh at [REFRESH PRICE], a lighter-touch check on specific areas without starting from zero.
             </p>
-            <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary">Book a Discovery Call &rarr;</a>
+            <a href="#/book" className="btn-primary">Book a Discovery Call &rarr;</a>
           </div>
           <div className="audit-card">
             <p className="audit-card-title">What the Audit covers</p>
@@ -700,7 +700,7 @@ export default function GroundworkHome() {
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
               <a href="#/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
-              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-secondary">Book a Discovery Call</a>
+              <a href="#/book" className="btn-secondary">Book a Discovery Call</a>
             </div>
           </div>
           <div className="cta-card">
