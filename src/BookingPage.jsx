@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const IVORY      = "#F5F0E8";
-const DARK_GREEN = "#365342";
+const DARK_GREEN = "#2D4537";
 const MOCHA      = "#6B4F3A";
 const CAMEL      = "#C19A6B";
 const TEXT_MID   = "#4A4A4A";

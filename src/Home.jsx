@@ -6,7 +6,7 @@ const CAMEL      = "#C19A6B";
 const OLIVE      = "#6B7A3C";
 const TEAL       = "#5B7B7A";
 const IVORY      = "#F5F0E8";
-const DARK_GREEN = "#1A2E22";
+const DARK_GREEN = "#2D4537";
 const MID_GREEN  = "#243B2E";
 const LIGHT_TAN  = "#EDE8DF";
 const TEXT_DARK  = "#1C1C1C";
@@ -674,7 +674,7 @@ export default function GroundworkHome() {
               Your free self-assessment gives you a starting picture. The Groundwork Audit is where we go deep: facilitated conversations with you and your team, a full findings report, and a prioritized roadmap built specifically for your business. It includes a check-in 30 to 60 days later, so we can see what's actually sticking, not just hand you a document and disappear.
             </p>
             <p className="audit-price-note">
-              Starting at [AUDIT PRICE]. Already worked with us? Returning clients can book a Groundwork Refresh at [REFRESH PRICE], a lighter-touch check on specific areas without starting from zero.
+               Investment cost of $8800 CAD, depending on scope and complexity. Already worked with us? Returning clients can book a Groundwork Refresh at a reduced rate, a lighter-touch check on specific areas without starting from zero. Payment plans available.
             </p>
             <a href="#/book" className="btn-primary">Book a Discovery Call &rarr;</a>
           </div>
@@ -707,8 +707,8 @@ export default function GroundworkHome() {
             <h3 className="cta-card-title">Here is what a discovery call actually is.</h3>
             {[
               ["30 minutes.", "We'll talk through your self-assessment results and your business."],
-              ["No pitch.", "We will tell you honestly if we are the right fit. And if we are not, we will tell you that too."],
-              ["If there is a fit,", "the Groundwork Audit is a paid, standalone engagement starting at [AUDIT PRICE]."],
+              ["No pitch.", "We will tell you honestly if we are the right fit. If we're not, we will tell you that too."],
+              ["If there is a fit,", "the Groundwork Audit is a paid, standalone engagement of $8800 CAD. Additional engagements are scoped separately, with a clear start and end."],
               ["Fixed scope only.", "We do not do retainers or open-ended engagements."]
             ].map(([bold, rest]) => (
               <div key={bold} className="cta-point">
