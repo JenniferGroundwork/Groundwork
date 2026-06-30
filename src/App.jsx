@@ -11,7 +11,7 @@ import AIStarterKit from "./groundwork-ai-starter-kit";
 const MOCHA      = "#6B4F3A";
 const CAMEL      = "#C19A6B";
 const IVORY      = "#F5F0E8";
-const DARK_GREEN = "#1A2E22";
+const DARK_GREEN = "#2D4537";
 const LIGHT_TAN  = "#EDE8DF";
 const LIME_CTA   = "#D4E89A";
 const TEXT_DARK  = "#1C1C1C";
@@ -63,7 +63,7 @@ export default function App() {
   if (view === "book") {
     return (
       <div style={{ minHeight: "100vh", background: "#F5F0E8", fontFamily: "sans-serif" }}>
-        <div style={{ background: "#1A2E22", padding: "0 40px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ background: "#2D4537", padding: "0 40px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <LogoMark />
             <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 600, color: "#F5F0E8" }}>Groundwork Consult</span>
