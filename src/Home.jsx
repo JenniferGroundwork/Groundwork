@@ -311,6 +311,7 @@ const styles = `
     color: ${IVORY}; line-height: 1.2; margin-bottom: 16px;
   }
   .audit-p { font-size: 16px; line-height: 1.65; color: rgba(245,240,232,0.75); margin-bottom: 32px; }
+  .audit-price-note { font-size: 14px; line-height: 1.6; color: rgba(245,240,232,0.65); margin-bottom: 32px; }
   .audit-card {
     background: rgba(245,240,232,0.1); border-radius: 16px; padding: 36px;
     border: 1px solid rgba(245,240,232,0.15);
@@ -481,19 +482,19 @@ export default function GroundworkHome() {
     {
       icon: icons.wellness,
       label: "Wellness",
-      h3: "The practice runs on the practitioner. Clients follow the person, not the business.",
+      h3: "The practice runs on through individual practitioners. Clients follow (and leave with) the person, not the business.",
       p: "Clinics, studios, spas. We help you build a business that outlasts any single provider."
     },
     {
       icon: icons.nfp,
       label: "Not-for-Profit",
-      h3: "The mission is clear. The operations are held together with volunteer hours and institutional memory.",
+      h3: "The mission is clear, but the operations are held together with volunteer hours and institutional memory.",
       p: "We build the systems that survive staff transitions and keep the mission moving forward."
     },
     {
       icon: icons.professional,
       label: "Professional Services",
-      h3: "The expertise is there. The business behind it hasn't caught up yet.",
+      h3: "The expertise is there, but the business behind it hasn't caught up yet.",
       p: "Law firms, accounting practices, clinics. We document the work so it can run without the principal in every conversation."
     },
   ];
@@ -526,11 +527,11 @@ export default function GroundworkHome() {
               on systems.
             </h1>
             <p className="hero-sub">
-              Founder-led businesses in trades, hospitality, property management, and wellness hire us when growth has outpaced how they operate. We come in, build the foundation from the ground up, and hand it back. Fixed scope - we're not taking over, we're preparing you to win.
+              Founder-led businesses in trades, hospitality, property management, and wellness hire us when growth has outpaced how they operate. We come in, build the foundation from the ground up, and hand it back. We offer fixed scope engagements - we're not taking over, we're preparing you to win.
             </p>
             <div className="hero-actions">
-              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary">Book a Discovery Call &rarr;</a>
-              <a href="#services" className="btn-secondary">See How It Works</a>
+              <a href="#/tools" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
+              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-secondary">Book a Discovery Call</a>
             </div>
           </div>
           <div className="hero-card">
@@ -649,10 +650,10 @@ export default function GroundworkHome() {
           </div>
           <div className="steps">
             {[
-              { num: "01", h3: "Discovery Call", p: "30 minutes, free. We ask about your business. You ask about our process. We tell you honestly if we are the right fit." },
-              { num: "02", h3: "Scoping Session", p: "A paid 90-minute session where we define the engagement: what we will do, what we will deliver, and what it costs." },
-              { num: "03", h3: "The Work", p: "We come in, do the work, and deliver the output. Most engagements run 4 to 12 weeks depending on scope." },
-              { num: "04", h3: "Handoff", p: "A working session where we walk your team through everything we built. You own it, you run it, and you have what you need to keep it going." }
+              { num: "01", h3: "Self-Assessment", p: "Start with our free 10-area self-assessment. Takes about 15 minutes and gives you an instant scorecard of where things stand." },
+              { num: "02", h3: "Discovery Call", p: "30 minutes, free. We talk through your results, ask about your business, and tell you honestly if we're the right fit." },
+              { num: "03", h3: "The Groundwork Audit", p: "A paid, hands-on diagnostic. Facilitated conversations, a full findings report, and a prioritized roadmap, plus a 30-60 day check-in to see what's sticking." },
+              { num: "04", h3: "The Work", p: "If there's more to build, we scope it separately. Most engagements run 4 to 12 weeks. You own everything when we're done." }
             ].map((step) => (
               <div key={step.num} className="step">
                 <div className="step-num">{step.num}</div>
@@ -667,10 +668,13 @@ export default function GroundworkHome() {
       <section id="audit" className="audit">
         <div className="audit-inner">
           <div>
-            <p className="eyebrow eyebrow-light">Start Here</p>
-            <h2 className="audit-h2">Most engagements start with the Groundwork Self-Audit.</h2>
+            <p className="eyebrow eyebrow-light">The Real Diagnostic</p>
+            <h2 className="audit-h2">The Groundwork Audit goes further than a scorecard.</h2>
             <p className="audit-p">
-              Before we recommend anything, we need to understand how your business actually runs. The Groundwork Self-Audit is a structured 10-area assessment that gives us an idea of what needs to be built, what is already working, and what is at risk. It takes about 30 minutes to complete and is free of charge.
+              Your free self-assessment gives you a starting picture. The Groundwork Audit is where we go deep: facilitated conversations with you and your team, a full findings report, and a prioritized roadmap built specifically for your business. It includes a check-in 30 to 60 days later, so we can see what's actually sticking, not just hand you a document and disappear.
+            </p>
+            <p className="audit-price-note">
+              Starting at [AUDIT PRICE]. Already worked with us? Returning clients can book a Groundwork Refresh at [REFRESH PRICE], a lighter-touch check on specific areas without starting from zero.
             </p>
             <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary">Book a Discovery Call &rarr;</a>
           </div>
@@ -692,19 +696,19 @@ export default function GroundworkHome() {
             <p className="eyebrow eyebrow-light">Get Started</p>
             <h2 className="cta-h2">Ready to build<br />the <em>foundation?</em></h2>
             <p className="cta-p">
-              Most engagements start with a free 30-minute discovery call. We will ask about your business, tell you what we see, and let you decide if it is worth going further.
+              Start with the free self-assessment to see where things stand. From there, a 30-minute discovery call helps us figure out if a full audit makes sense for you.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary">Book a Discovery Call &rarr;</a>
-              <a href="#services" className="btn-secondary">View Services</a>
+              <a href="#/tools" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
+              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-secondary">Book a Discovery Call</a>
             </div>
           </div>
           <div className="cta-card">
             <h3 className="cta-card-title">Here is what a discovery call actually is.</h3>
             {[
-              ["30 minutes.", "We ask about your business. You ask about ours."],
+              ["30 minutes.", "We'll talk through your self-assessment results and your business."],
               ["No pitch.", "We will tell you honestly if we are the right fit. And if we are not, we will tell you that too."],
-              ["If there is a fit,", "we will outline what an engagement looks like and what it costs."],
+              ["If there is a fit,", "the Groundwork Audit is a paid, standalone engagement starting at [AUDIT PRICE]."],
               ["Fixed scope only.", "We do not do retainers or open-ended engagements."]
             ].map(([bold, rest]) => (
               <div key={bold} className="cta-point">
@@ -749,8 +753,8 @@ export default function GroundworkHome() {
             </div>
             <div>
               <p className="footer-col-label">Ready to Start?</p>
-              <p className="footer-cta-text">Book a free 30-minute discovery call to see if we are the right fit.</p>
-              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary" style={{ fontSize: 13, padding: "10px 20px" }}>Book a Discovery Call</a>
+              <p className="footer-cta-text">Take the free self-assessment, or book a 30-minute discovery call to see if we are the right fit.</p>
+              <a href="#/tools" className="btn-primary" style={{ fontSize: 13, padding: "10px 20px" }}>Take the Self-Assessment</a>
             </div>
           </div>
           <div className="footer-bottom">
