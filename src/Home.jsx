@@ -471,7 +471,7 @@ export default function GroundworkHome() {
       icon: icons.hospitality,
       label: "Hospitality",
       h3: "Service quality swings with whoever is on shift.",
-      p: "Restaurants, hotels, catering. We document the standards so every shift runs the same way."
+      p: "Restaurants, hotels, catering. We document standards so every shift runs the same way."
     },
     {
       icon: icons.property,
