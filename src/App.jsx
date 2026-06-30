@@ -16,8 +16,10 @@ const LIME_CTA   = "#D4E89A";
 const TEXT_DARK  = "#1C1C1C";
 const TEXT_MID   = "#4A4A4A";
 
+// Note: SelfAssessment is intentionally NOT in this list.
+// It's a public-facing lead tool and lives at its own route (#/self-assessment),
+// separate from the unlisted internal tools below.
 const PRODUCTS = [
-  { id: "assessment",   label: "Operational Self-Assessment",                 component: SelfAssessment },
   { id: "ops-playbook", label: "Operations Playbook Builder",                 component: OpsPlaybook },
   { id: "role-clarity", label: "Role Clarity Toolkit",                        component: RoleClarity },
   { id: "sop-library",  label: "Standard Operating Procedure (SOP) Library", component: SOPLibrary },
@@ -26,7 +28,9 @@ const PRODUCTS = [
 ];
 
 function getView() {
-  return window.location.hash === "#/tools" ? "tools" : "home";
+  if (window.location.hash === "#/self-assessment") return "self-assessment";
+  if (window.location.hash === "#/tools") return "tools";
+  return "home";
 }
 
 function LogoMark() {
@@ -53,7 +57,28 @@ export default function App() {
     setActive(null);
   };
 
-  // ── Individual tool view ────────────────────────────────────────────────
+  // ── Public Self-Assessment view (standalone, no tools nav) ─────────────
+  if (view === "self-assessment") {
+    return (
+      <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "sans-serif" }}>
+        <div style={{ background: DARK_GREEN, padding: "0 40px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <LogoMark />
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 600, color: IVORY }}>Groundwork Consult</span>
+          </div>
+          <button onClick={goHome} style={{
+            background: "none", border: "none", color: "rgba(245,240,232,0.65)",
+            cursor: "pointer", fontSize: 13, padding: 0, fontFamily: "sans-serif"
+          }}>
+            &larr; Back to site
+          </button>
+        </div>
+        <SelfAssessment />
+      </div>
+    );
+  }
+
+  // ── Individual internal tool view ───────────────────────────────────────
   if (view === "tools" && active) {
     const Product = PRODUCTS.find(p => p.id === active)?.component;
     if (!Product) { setActive(null); return null; }
@@ -76,7 +101,7 @@ export default function App() {
     );
   }
 
-  // ── Tools launcher ──────────────────────────────────────────────────────
+  // ── Internal tools launcher (unlisted) ──────────────────────────────────
   if (view === "tools") {
     return (
       <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "sans-serif" }}>
