@@ -645,7 +645,7 @@ export default function GroundworkHome() {
               <h2 className="how-h2">Fixed scope. Clear deliverables. No surprises.</h2>
             </div>
             <p className="how-desc">
-              Every engagement has a defined start and a defined end. But what we build stays. You know what it costs before we begin, and when we are done, your team can run it without us.
+              Every engagement has a defined start and a defined end, but what we build stays. You know what it costs before we begin and when we are done, your team can run it without us.
             </p>
           </div>
           <div className="steps">
