@@ -608,7 +608,7 @@ export default function GroundworkHome() {
               {
                 num: "01",
                 h3: "Process Audits",
-                p: "Most founders are surprised by what we find. Not because things are broken, but because nobody has ever written it down and looked at it all at once. We interview your team, observe how work actually moves, and surface the gaps before they become expensive.",
+                p: "Most founders are often surprised by what we find - not because things are broken, but because nobody has ever written it down and looked at it all at once. We interview your team, observe how work actually moves, and surface the gaps before they become expensive.",
                 bullets: ["Current-state process mapping", "Gap and risk analysis", "Prioritized recommendations", "Delivered in plain language"]
               },
               {
@@ -651,7 +651,7 @@ export default function GroundworkHome() {
           <div className="steps">
             {[
               { num: "01", h3: "Self-Assessment", p: "Start with our free 10-area self-assessment. Takes about 15 minutes and gives you an instant scorecard of where things stand." },
-              { num: "02", h3: "Discovery Call", p: "30 minutes, free. We talk through your results, ask about your business, and tell you honestly if we're the right fit." },
+              { num: "02", h3: "Discovery Call", p: "30 minutes and free. We talk through your results, ask about your business, and tell you honestly if we're the right fit." },
               { num: "03", h3: "The Groundwork Audit", p: "A paid, hands-on diagnostic. Facilitated conversations, a full findings report, and a prioritized roadmap, plus a 30-60 day check-in to see what's sticking." },
               { num: "04", h3: "The Work", p: "If there's more to build, we scope it separately. Most engagements run 4 to 12 weeks. You own everything when we're done." }
             ].map((step) => (
@@ -674,7 +674,7 @@ export default function GroundworkHome() {
               Your free self-assessment gives you a starting picture. The Groundwork Audit is where we go deep: facilitated conversations with you and your team, a full findings report, and a prioritized roadmap built specifically for your business. It includes a check-in 30 to 60 days later, so we can see what's actually sticking, not just hand you a document and disappear.
             </p>
             <p className="audit-price-note">
-              Starting at [AUDIT PRICE]. Already worked with us? Returning clients can book a Groundwork Refresh at [REFRESH PRICE], a lighter-touch check on specific areas without starting from zero.
+              Investment ranges from $4,500 to $8,000, depending on scope and complexity. Already worked with us? Returning clients can book a Groundwork Refresh at a reduced rate, a lighter-touch check on specific areas without starting from zero. Payment plans available.
             </p>
             <a href="mailto:jennifer@groundworkconsult.ca" className="btn-primary">Book a Discovery Call &rarr;</a>
           </div>
