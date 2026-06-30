@@ -674,7 +674,7 @@ export default function GroundworkHome() {
               Your free self-assessment gives you a starting picture. The Groundwork Audit is where we go deep: facilitated conversations with you and your team, a full findings report, and a prioritized roadmap built specifically for your business. It includes a check-in 30 to 60 days later, so we can see what's actually sticking, not just hand you a document and disappear.
             </p>
             <p className="audit-price-note">
-               Investment cost of $8800 CAD, depending on scope and complexity. Already worked with us? Returning clients can book a Groundwork Refresh at a reduced rate, a lighter-touch check on specific areas without starting from zero. Payment plans available.
+               Investment cost of $8,800 CAD. Custom scopes available for multi-entity or highly complex operations. Already worked with us? Returning clients can book a Groundwork Refresh with preferred pricing, a lighter-touch check on specific areas without starting from zero. Flexible payment plans available.
             </p>
             <a href="#/book" className="btn-primary">Book a Discovery Call &rarr;</a>
           </div>
@@ -708,7 +708,7 @@ export default function GroundworkHome() {
             {[
               ["30 minutes.", "We'll talk through your self-assessment results and your business."],
               ["No pitch.", "We will tell you honestly if we are the right fit. If we're not, we will tell you that too."],
-              ["If there is a fit,", "the Groundwork Audit is a paid, standalone engagement of $8800 CAD. Additional engagements are scoped separately, with a clear start and end."],
+              ["If there is a fit,", "the Groundwork Audit is a paid, standalone engagement of $8,800 CAD. Additional engagements are scoped separately, with a clear start and end."],
               ["Fixed scope only.", "We do not do retainers or open-ended engagements."]
             ].map(([bold, rest]) => (
               <div key={bold} className="cta-point">
