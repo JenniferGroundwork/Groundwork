@@ -677,7 +677,7 @@ export default function GroundworkHome() {
   Investment cost varies based on scope and complexity. Already worked with us? Returning clients can book a Groundwork Refresh with preferred pricing, a lighter-touch check on specific areas without starting from zero. Flexible payment plans available.
 </p>
 <p className="audit-price-note">
-  The Audit delivers your operational blueprint. If you choose to have us handle hands-on execution (drafting full SOP libraries or configuring workflow automations), those are scoped and contracted as separate engagements after the audit is complete.
+  The Audit delivers your operational blueprint. If you choose to have us handle hands-on execution (e.g., drafting full SOP libraries, configuring workflow automations, etc.), those are scoped and contracted as separate engagements after the audit is complete.
 </p>
             <a href="#/book" className="btn-primary">Book a Discovery Call &rarr;</a>
           </div>
