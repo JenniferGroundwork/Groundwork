@@ -763,8 +763,8 @@ export default function GroundworkHome() {
           <div className="footer-bottom">
             <p className="footer-copy">&copy; 2026 Groundwork Consult. All rights reserved.</p>
             <div className="footer-legal">
-              <a href="#">Privacy</a>
-              <a href="#">Terms</a>
+              <button onClick={() => setModal("privacy")}>Privacy</button>
+              <button onClick={() => setModal("terms")}>Terms</button>
             </div>
           </div>
         </div>
