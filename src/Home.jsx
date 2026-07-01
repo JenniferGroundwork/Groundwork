@@ -526,7 +526,7 @@ export default function GroundworkHome() {
             <h1 className="hero-h1">
               Stop relying <br />
               on <em>memory.</em><br />
-              Start operating<br />
+              Start running<br />
               on systems.
             </h1>
             <p className="hero-sub">
