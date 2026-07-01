@@ -524,13 +524,13 @@ export default function GroundworkHome() {
           <div>
             <p className="hero-eyebrow">Operations Consulting</p>
             <h1 className="hero-h1">
-              Stop running<br />
+              Stop running just<br />
               on <em>memory.</em><br />
               Start running<br />
-              on systems.
+              on developed systems.
             </h1>
             <p className="hero-sub">
-              Founder-led businesses in trades, hospitality, property management, and wellness hire us when growth has outpaced how they operate. We come in, build the foundation from the ground up, and hand it back. Fixed scope - we're not taking over, we're preparing you to win.
+              Founder-led businesses in trades, hospitality, property management, and specialized services hire us when growth has outpaced how they operate. We come in, build the foundation from the ground up, and hand it back. Fixed scope - we're not taking over, we're preparing you to win.
             </p>
             <div className="hero-actions">
               <a href="#/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
@@ -648,13 +648,13 @@ export default function GroundworkHome() {
               <h2 className="how-h2">Fixed scope. Clear deliverables. No surprises.</h2>
             </div>
             <p className="how-desc">
-              Every engagement has a defined start and a defined end. But what we build stays. You know what it costs before we begin, and when we are done, your team can run it without us.
+              Every engagement has a defined start and a defined end, but what we build stays. You know what it costs before we begin, and when we are done, your team can run it without us.
             </p>
           </div>
           <div className="steps">
             {[
               { num: "01", h3: "Self-Assessment", p: "Start with our free 10-area self-assessment. Takes about 15 minutes and gives you an instant scorecard of where things stand." },
-              { num: "02", h3: "Discovery Call", p: "30 minutes, free. We talk through your results, ask about your business, and tell you honestly if we're the right fit." },
+              { num: "02", h3: "Discovery Call", p: "30 minutes and free. We talk through your results, ask about your business, and tell you honestly if we're the right fit." },
               { num: "03", h3: "The Groundwork Audit", p: "A paid, hands-on diagnostic. Facilitated conversations, a full findings report, and a prioritized roadmap, plus a 30-60 day check-in to see what's sticking." },
               { num: "04", h3: "The Work", p: "If there's more to build, we scope it separately. Most engagements run 4 to 12 weeks. You own everything when we're done." }
             ].map((step) => (
