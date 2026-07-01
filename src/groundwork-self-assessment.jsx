@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const MOCHA = "#6B4F3A";
-const AMBER = "#7A6A3C";
+const AMBER = "#C8860A";
 const CAMEL = "#C19A6B";
 const IVORY = "#F5F0E8";
 const DARK_MOCHA = "#3D2B1F";
@@ -295,9 +295,9 @@ export default function SelfAssessment() {
               The Groundwork Audit takes this self-assessment further, including facilitated conversations, a full findings report, and a prioritized roadmap built specifically for your business.
             </p>
             <a href="mailto:jennifer@groundworkconsult.ca" style={{ display: "inline-block", background: AMBER, color: "white", borderRadius: 8, padding: "14px 36px", fontSize: 15, textDecoration: "none", fontWeight: 600, letterSpacing: "0.03em" }}>
-              Book a Conversation
-            </a>
-            <div style={{ marginTop: 16, fontSize: 12, color: CAMEL }}>jennifer@groundworkconsult.ca · groundworkconsult.ca</div>
+  Book a Conversation
+</a>
+<div style={{ marginTop: 16, fontSize: 12, color: CAMEL }}>jennifer@groundworkconsult.ca · groundworkconsult.ca</div>
           </div>
         </div>
       </div>

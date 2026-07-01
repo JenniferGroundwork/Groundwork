@@ -401,6 +401,9 @@ const styles = `
     .industries { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; }
+    .footer-brand { text-align: center; }
+    .footer-brand a { justify-content: center; }
+    .footer-brand small { text-align: center; }
   }
 `;
 
@@ -608,7 +611,7 @@ export default function GroundworkHome() {
               {
                 num: "01",
                 h3: "Process Audits",
-                p: "Most founders are surprised by what we find. Not because things are broken, but because nobody has ever written it down and looked at it all at once. We interview your team, observe how work actually moves, and surface the gaps before they become expensive.",
+                p: "This is the foundation, and most founders are surprised by what we find here. It's not that things are broken, it's that nobody has ever written it down and looked at it all at once. We interview your team, observe how work actually moves, and surface the gaps before they become expensive.",
                 bullets: ["Current-state process mapping", "Gap and risk analysis", "Prioritized recommendations", "Delivered in plain language"]
               },
               {
