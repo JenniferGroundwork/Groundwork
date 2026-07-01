@@ -15,7 +15,7 @@ const MODULES = [
   { id: "explainer", title: "What AI Actually Is", icon: "01", color: MOCHA, desc: "No tech language. No confusing steps. Just what it is, what it's good at, and what it isn't." },
   { id: "prompts", title: "Prompt Library", icon: "02", color: AMBER, desc: "Ready-to-use prompts for the tasks you actually do every day." },
   { id: "workflows", title: "Workflow Templates", icon: "03", color: TEAL, desc: "Step-by-step AI-assisted workflows for 6 common business tasks." },
-  { id: "decision", title: "Should I Use AI For This?", icon: "04", color: OLIVE, desc: "A quick reference guide for when AI helps (and when it doesn't.)" },
+  { id: "decision", title: "Should I Use AI For This?", icon: "04", color: OLIVE, desc: "A quick reference guide for when AI helps (and when it doesn't)." },
 ];
 
 const PROMPT_CATEGORIES = [
