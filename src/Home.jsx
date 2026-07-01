@@ -72,9 +72,8 @@ const styles = `
     font-size: 13px !important;
     transition: opacity 0.2s !important;
   }
-  .nav-cta:hover { opacity: 0.85; }
-
-  .hero {
+  .nav-cta:hover { opacity: 0.85; } 
+ .hero {
     min-height: 100vh;
     background: ${DARK_GREEN};
     display: flex;
@@ -375,8 +374,50 @@ const styles = `
   }
   .footer-copy { font-size: 12px; color: rgba(245,240,232,0.3); }
   .footer-legal { display: flex; gap: 20px; }
-  .footer-legal a { font-size: 12px; color: rgba(245,240,232,0.3); text-decoration: none; }
-  .footer-legal a:hover { color: rgba(245,240,232,0.6); }
+  .footer-legal button {
+    font-size: 12px; color: rgba(245,240,232,0.3);
+    background: none; border: none; cursor: pointer; padding: 0;
+    font-family: inherit;
+  }
+  .footer-legal button:hover { color: rgba(245,240,232,0.6); }
+
+  /* Modal styles */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.55);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .modal {
+    background: ${IVORY}; border-radius: 16px;
+    max-width: 600px; width: 100%;
+    max-height: 80vh; overflow-y: auto;
+    padding: 48px 40px 40px;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute; top: 16px; right: 20px;
+    background: none; border: none; cursor: pointer;
+    font-size: 22px; color: ${TEXT_MID}; line-height: 1;
+    padding: 4px 8px;
+  }
+  .modal-close:hover { color: ${TEXT_DARK}; }
+  .modal h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700;
+    color: ${DARK_GREEN}; margin-bottom: 8px;
+  }
+  .modal-updated {
+    font-size: 12px; color: ${TEXT_MID}; margin-bottom: 28px;
+  }
+  .modal h3 {
+    font-size: 13px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: ${MOCHA}; margin: 24px 0 8px;
+  }
+  .modal p {
+    font-size: 14px; line-height: 1.7; color: ${TEXT_MID}; margin-bottom: 4px;
+  }
+  .modal a { color: ${MOCHA}; }
 
   @media (max-width: 900px) {
     .nav { padding: 0 20px; }
@@ -404,6 +445,7 @@ const styles = `
     .footer-brand { text-align: center; }
     .footer-brand a { justify-content: center; }
     .footer-brand small { text-align: center; }
+    .modal { padding: 40px 24px 32px; }
   }
 `;
 
@@ -455,8 +497,82 @@ function LogoMark({ size = 34, bg = IVORY, fg = MOCHA }) {
   );
 }
 
+function Modal({ title, onClose, children }) {
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose} aria-label="Close">&times;</button>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function PrivacyModal({ onClose }) {
+  return (
+    <Modal onClose={onClose}>
+      <h2>Privacy Policy</h2>
+      <p className="modal-updated">Last updated: January 2026</p>
+
+      <h3>What we collect</h3>
+      <p>When you use the self-assessment or book a discovery call, we collect the information you provide directly - your name, email address, and your responses to the assessment or intake questions.</p>
+
+      <h3>How we use it</h3>
+      <p>We use your information to send you your assessment results, follow up about a potential engagement, and communicate with you about our services. We don't sell your data, and we don't share it with third parties except the tools we use to operate (EmailJS for email delivery, Koalendar for scheduling, Zoom for calls).</p>
+
+      <h3>Data storage</h3>
+      <p>Your information is stored and processed in accordance with the practices of the third-party tools listed above. We retain client engagement records for our own business records as required.</p>
+
+      <h3>Your rights</h3>
+      <p>You can ask us to delete your information at any time by emailing <a href="mailto:jennifer@groundworkconsult.ca">jennifer@groundworkconsult.ca</a>. We'll respond within a reasonable timeframe.</p>
+
+      <h3>Contact</h3>
+      <p>Questions? Reach us at <a href="mailto:jennifer@groundworkconsult.ca">jennifer@groundworkconsult.ca</a>.</p>
+    </Modal>
+  );
+}
+
+function TermsModal({ onClose }) {
+  return (
+    <Modal onClose={onClose}>
+      <h2>Terms of Use</h2>
+      <p className="modal-updated">Last updated: January 2026</p>
+
+      <h3>Who we are</h3>
+      <p>Groundwork Consult is an operations consulting business based in Ontario, Canada, serving clients across Canada and the United States.</p>
+
+      <h3>Using this site</h3>
+      <p>This website is for informational purposes. The content here - including the self-assessment - is provided as a general resource and does not constitute professional business, legal, or financial advice.</p>
+
+      <h3>Engagements</h3>
+      <p>Any paid work with Groundwork Consult is governed by a separate written agreement signed before work begins. Nothing on this site creates a consulting relationship or obligation on either side.</p>
+
+      <h3>Intellectual property</h3>
+      <p>The content on this site, including the self-assessment tool and all written copy, belongs to Groundwork Consult. Please don't reproduce or redistribute it without permission.</p>
+
+      <h3>Limitation of liability</h3>
+      <p>We do our best to keep information accurate and current, but we make no warranties about the completeness or suitability of anything on this site for your specific situation.</p>
+
+      <h3>Contact</h3>
+      <p>Questions? Reach us at <a href="mailto:jennifer@groundworkconsult.ca">jennifer@groundworkconsult.ca</a>.</p>
+    </Modal>
+  );
+}
+
 export default function GroundworkHome() {
   const [scrolled, setScrolled] = useState(false);
+  const [modal, setModal] = useState(null); // null | "privacy" | "terms"
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
@@ -505,6 +621,9 @@ export default function GroundworkHome() {
   return (
     <>
       <style>{styles}</style>
+
+      {modal === "privacy" && <PrivacyModal onClose={() => setModal(null)} />}
+      {modal === "terms" && <TermsModal onClose={() => setModal(null)} />}
 
       <nav className="nav" style={{ boxShadow: scrolled ? "0 1px 20px rgba(0,0,0,0.25)" : "none" }}>
         <a href="/" className="nav-logo">
