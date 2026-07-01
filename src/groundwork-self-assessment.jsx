@@ -141,25 +141,17 @@ function getStatus(score) {
 }
 
 async function sendResultsEmail({ toName, toEmail, overallScore, resultsSummary }) {
-  const payload = {
-    service_id: EMAILJS_SERVICE_ID,
-    template_id: EMAILJS_TEMPLATE_ID,
-    user_id: EMAILJS_PUBLIC_KEY,
-    template_params: {
+  await window.emailjs.send(
+    EMAILJS_SERVICE_ID,
+    EMAILJS_TEMPLATE_ID,
+    {
       to_name: toName,
       to_email: toEmail,
       overall_score: overallScore,
       results_summary: resultsSummary,
     },
-  };
-
-  const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-
-  if (!res.ok) throw new Error("Email send failed");
+    EMAILJS_PUBLIC_KEY
+  );
 }
 
 export default function SelfAssessment() {
