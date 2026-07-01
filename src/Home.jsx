@@ -673,12 +673,12 @@ export default function GroundworkHome() {
           <div>
             <p className="eyebrow eyebrow-light">The Real Diagnostic</p>
             <h2 className="audit-h2">The Groundwork Audit goes further than a scorecard.</h2>
-            <p className="audit-p">
-              Your free self-assessment gives you a starting picture. The Groundwork Audit is where we go deep: facilitated conversations with you and your team, a full findings report, and a prioritized roadmap built specifically for your business. It includes a check-in 30 to 60 days later, so we can see what's actually sticking, not just hand you a document and disappear.
-            </p>
             <p className="audit-price-note">
-               Investment cost of $8,800 CAD. Custom scopes available for multi-entity or highly complex operations. Already worked with us? Returning clients can book a Groundwork Refresh with preferred pricing, a lighter-touch check on specific areas without starting from zero. Flexible payment plans available.
-            </p>
+  Investment cost varies based on scope and complexity. Already worked with us? Returning clients can book a Groundwork Refresh with preferred pricing, a lighter-touch check on specific areas without starting from zero. Flexible payment plans available.
+</p>
+<p className="audit-price-note">
+  The Audit delivers your operational blueprint. If you choose to have us handle hands-on execution (drafting full SOP libraries or configuring workflow automations), those are scoped and contracted as separate engagements after the audit is complete.
+</p>
             <a href="#/book" className="btn-primary">Book a Discovery Call &rarr;</a>
           </div>
           <div className="audit-card">
