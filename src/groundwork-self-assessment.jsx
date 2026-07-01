@@ -359,10 +359,10 @@ export default function SelfAssessment() {
           {/* Email capture */}
           <div style={{ background: "white", borderRadius: 12, padding: "28px 32px", marginBottom: 24, border: `1px solid ${LIGHT_TAN}` }}>
             <h2 style={{ fontSize: 16, color: DARK_MOCHA, margin: "0 0 6px", fontFamily: "Georgia, serif", fontWeight: 700 }}>Send these results to yourself</h2>
-            <p style={{ fontSize: 13, color: CAMEL, margin: "0 0 20px" }}>Optional. We'll email you a copy of your full scorecard to refer back to.</p>
+            <p style={{ fontSize: 13, color: CAMEL, margin: "0 0 20px" }}>We'll email you a copy of your full scorecard to refer back to.</p>
 
             {emailStatus === "sent" ? (
-              <p style={{ fontSize: 14, color: OLIVE, fontWeight: 600 }}>Sent. Check your inbox.</p>
+              <p style={{ fontSize: 14, color: OLIVE, fontWeight: 600 }}>Sent! Check your inbox. Reach out to hello@groundworkconsult.ca if you don't see it within a few minutes.</p>
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 <input
