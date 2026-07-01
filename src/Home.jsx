@@ -576,7 +576,7 @@ export default function GroundworkHome() {
           <div className="who-header">
             <div>
               <p className="eyebrow">Who We Help</p>
-              <h2 className="who-h2">Owning a business should mean having options. When it only works because you're in it every day, you haven't built freedom yet - you've built yourself a job.</h2>
+              <h2 className="who-h2">Owning a business should mean having options. When it only works because you're in the room, you haven't built freedom yet - you've built yourself a job.</h2>
             </div>
             <div>
               <p className="who-desc">
