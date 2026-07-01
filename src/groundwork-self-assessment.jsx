@@ -140,18 +140,16 @@ function getStatus(score) {
   return { label: "Strong", color: OLIVE, bg: "#EFF4E8" };
 }
 
-async function sendResultsEmail({ toName, toEmail, overallScore, overallScore, scorecard,
-        priorities }) {
+async function sendResultsEmail({ toName, toEmail, overallScore, scorecard, priorities }) {
   await window.emailjs.send(
     EMAILJS_SERVICE_ID,
     EMAILJS_TEMPLATE_ID,
     {
-  to_name: toName,
-  to_email: toEmail,
-  overall_score: overallScore,
-  scorecard: scorecard,
-  priorities: priorities,
-}
+      to_name: toName,
+      to_email: toEmail,
+      overall_score: overallScore,
+      scorecard: scorecard,
+      priorities: priorities,
     },
     EMAILJS_PUBLIC_KEY
   );
