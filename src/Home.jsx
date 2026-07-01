@@ -524,9 +524,9 @@ export default function GroundworkHome() {
           <div>
             <p className="hero-eyebrow">Operations Consulting</p>
             <h1 className="hero-h1">
-              Stop operating <br />
+              Stop relying <br />
               on <em>memory.</em><br />
-              Start running<br />
+              Start operating<br />
               on systems.
             </h1>
             <p className="hero-sub">
