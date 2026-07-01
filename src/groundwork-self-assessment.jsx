@@ -140,15 +140,18 @@ function getStatus(score) {
   return { label: "Strong", color: OLIVE, bg: "#EFF4E8" };
 }
 
-async function sendResultsEmail({ toName, toEmail, overallScore, resultsSummary }) {
+async function sendResultsEmail({ toName, toEmail, overallScore, overallScore, scorecard,
+        priorities }) {
   await window.emailjs.send(
     EMAILJS_SERVICE_ID,
     EMAILJS_TEMPLATE_ID,
     {
-      to_name: toName,
-      to_email: toEmail,
-      overall_score: overallScore,
-      results_summary: resultsSummary,
+  to_name: toName,
+  to_email: toEmail,
+  overall_score: overallScore,
+  scorecard: scorecard,
+  priorities: priorities,
+}
     },
     EMAILJS_PUBLIC_KEY
   );
@@ -191,29 +194,25 @@ export default function SelfAssessment() {
     return sa - sb;
   });
 
-  function buildResultsSummary(overallScore) {
-    const lines = areas.map((area) => {
-      const score = getAreaScore(area.id) || 0;
-      const status = getStatus(score);
-      return `${area.title}: ${score.toFixed(1)} / 4.0 — ${status.label}`;
-    });
+  function buildScorecard() {
+  return areas.map((area) => {
+    const score = getAreaScore(area.id) || 0;
+    const status = getStatus(score);
+    return `${area.title}: ${score.toFixed(1)} / 4.0   ${status.label}`;
+  }).join("\n");
+}
 
-    const weakest = sortedAreas.slice(0, 3);
-    const priorities = weakest.map((a, i) => `${i + 1}. ${a.title}`).join("\n");
-
-    return [
-      `Overall Score: ${overallScore} / 4.0\n`,
-      "--- Scorecard by Area ---",
-      ...lines,
-      "\n--- Top 3 Priorities ---",
-      priorities,
-    ].join("\n");
-  }
+function buildPriorities() {
+  return sortedAreas.slice(0, 3)
+    .map((a, i) => `${i + 1}.  ${a.title}`)
+    .join("\n");
+}
 
   async function handleSendEmail() {
     if (!emailName.trim() || !emailAddress.trim()) return;
     const overallScore = (areas.reduce((acc, a) => acc + (getAreaScore(a.id) || 0), 0) / areas.length).toFixed(1);
-    const summary = buildResultsSummary(overallScore);
+    const scorecard = buildScorecard();
+const priorities = buildPriorities();
 
     setEmailStatus("sending");
     try {
@@ -221,7 +220,8 @@ export default function SelfAssessment() {
         toName: emailName.trim(),
         toEmail: emailAddress.trim(),
         overallScore,
-        resultsSummary: summary,
+        scorecard,
+        priorities,
       });
       setEmailStatus("sent");
     } catch {
@@ -321,7 +321,7 @@ export default function SelfAssessment() {
               const score = getAreaScore(area.id) || 0;
               const status = getStatus(score);
               return (
-                <div key={area.id} style={{ display: "flex", gap: 16, marginBottom: 16, padding: "16px", background: status.bg, borderRadius: 8, borderLeft: `4px solid ${status.color}` }}>
+                <div key={area.id} style={{ display: "flex", gap: 16, marginBottom: 16, padding: "16px", background: status.bg, borderRadius: 8, borderLeft: `4px solid ${status.color}`, textAlign: "left" }}>
                   <div style={{ fontSize: 22, fontWeight: 700, color: status.color, fontFamily: "Georgia, serif", minWidth: 28 }}>{i + 1}</div>
                   <div>
                     <div style={{ fontSize: 15, fontWeight: 700, color: DARK_MOCHA, marginBottom: 4 }}>{area.title}</div>
