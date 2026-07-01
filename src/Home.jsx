@@ -524,10 +524,10 @@ export default function GroundworkHome() {
           <div>
             <p className="hero-eyebrow">Operations Consulting</p>
             <h1 className="hero-h1">
-              Stop running just<br />
+              Stop operating <br />
               on <em>memory.</em><br />
               Start running<br />
-              on developed systems.
+              on systems.
             </h1>
             <p className="hero-sub">
               Founder-led businesses in trades, hospitality, property management, and specialized services hire us when growth has outpaced how they operate. We come in, build the foundation from the ground up, and hand it back. Fixed scope - we're not taking over, we're preparing you to win.
