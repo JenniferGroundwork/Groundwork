@@ -259,7 +259,7 @@ export default function SelfAssessment() {
             </div>
           </div>
           <p style={{ fontSize: 13, color: CAMEL, marginBottom: 28, fontFamily: "sans-serif", fontStyle: "italic" }}>
-            This self-assessment requires you to be honest and reflective of where you and your business stand. The more accurate you are, the more useful your results will be.
+            This self-assessment asks you to be honest and reflective of where you and your business stand. The more accurate you are, the more useful your results will be.
           </p>
           <button onClick={() => setStarted(true)} style={{ background: MOCHA, color: IVORY, border: "none", borderRadius: 8, padding: "16px 48px", fontSize: 16, cursor: "pointer", letterSpacing: "0.05em", fontFamily: "sans-serif", fontWeight: 600 }}>
             Begin Assessment →
@@ -281,7 +281,7 @@ export default function SelfAssessment() {
             <div style={{ fontSize: 11, letterSpacing: "0.2em", color: CAMEL, textTransform: "uppercase", marginBottom: 8, fontFamily: "sans-serif" }}>Groundwork Consult</div>
             <h1 style={{ fontSize: 32, color: DARK_MOCHA, margin: "0 0 12px", fontFamily: "Georgia, serif", fontWeight: 700 }}>Your Assessment Results</h1>
             <div style={{ width: 48, height: 3, background: AMBER, margin: "0 auto 16px" }} />
-            <p style={{ color: MOCHA, fontSize: 15, maxWidth: 480, margin: "0 auto" }}>Here's an honest picture of where your business stands operationally right now.</p>
+            <p style={{ color: MOCHA, fontSize: 15, maxWidth: 480, margin: "0 auto" }}>Based on your responses, here's an honest picture of where your business stands operationally right now.</p>
           </div>
 
           {/* Overall score */}
