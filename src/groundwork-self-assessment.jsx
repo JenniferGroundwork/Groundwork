@@ -9,6 +9,10 @@ const TEAL = "#5B7B7A";
 const OLIVE = "#6B7A3C";
 const LIGHT_TAN = "#EDE8E0";
 
+const EMAILJS_SERVICE_ID = "service_cyqajke";
+const EMAILJS_TEMPLATE_ID = "template_aad5sz9";
+const EMAILJS_PUBLIC_KEY = "ddmCOCTdL-y8LI22-";
+
 const areas = [
   {
     id: 1,
@@ -136,11 +140,37 @@ function getStatus(score) {
   return { label: "Strong", color: OLIVE, bg: "#EFF4E8" };
 }
 
+async function sendResultsEmail({ toName, toEmail, overallScore, resultsSummary }) {
+  const payload = {
+    service_id: EMAILJS_SERVICE_ID,
+    template_id: EMAILJS_TEMPLATE_ID,
+    user_id: EMAILJS_PUBLIC_KEY,
+    template_params: {
+      to_name: toName,
+      to_email: toEmail,
+      overall_score: overallScore,
+      results_summary: resultsSummary,
+    },
+  };
+
+  const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) throw new Error("Email send failed");
+}
+
 export default function SelfAssessment() {
   const [currentArea, setCurrentArea] = useState(0);
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [started, setStarted] = useState(false);
+
+  const [emailName, setEmailName] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [emailStatus, setEmailStatus] = useState(null); // null | "sending" | "sent" | "error"
 
   const totalAnswered = Object.keys(answers).length;
   const totalQuestions = areas.reduce((acc, a) => acc + a.questions.length, 0);
@@ -169,6 +199,44 @@ export default function SelfAssessment() {
     return sa - sb;
   });
 
+  function buildResultsSummary(overallScore) {
+    const lines = areas.map((area) => {
+      const score = getAreaScore(area.id) || 0;
+      const status = getStatus(score);
+      return `${area.title}: ${score.toFixed(1)} / 4.0 — ${status.label}`;
+    });
+
+    const weakest = sortedAreas.slice(0, 3);
+    const priorities = weakest.map((a, i) => `${i + 1}. ${a.title}`).join("\n");
+
+    return [
+      `Overall Score: ${overallScore} / 4.0\n`,
+      "--- Scorecard by Area ---",
+      ...lines,
+      "\n--- Top 3 Priorities ---",
+      priorities,
+    ].join("\n");
+  }
+
+  async function handleSendEmail() {
+    if (!emailName.trim() || !emailAddress.trim()) return;
+    const overallScore = (areas.reduce((acc, a) => acc + (getAreaScore(a.id) || 0), 0) / areas.length).toFixed(1);
+    const summary = buildResultsSummary(overallScore);
+
+    setEmailStatus("sending");
+    try {
+      await sendResultsEmail({
+        toName: emailName.trim(),
+        toEmail: emailAddress.trim(),
+        overallScore,
+        resultsSummary: summary,
+      });
+      setEmailStatus("sent");
+    } catch {
+      setEmailStatus("error");
+    }
+  }
+
   if (!started) {
     return (
       <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "'Georgia', serif", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
@@ -177,8 +245,8 @@ export default function SelfAssessment() {
           <h1 style={{ fontSize: 38, color: DARK_MOCHA, margin: "0 0 12px", lineHeight: 1.2, fontWeight: 700 }}>The Operational<br />Self-Assessment</h1>
           <div style={{ width: 48, height: 3, background: AMBER, margin: "0 auto 24px" }} />
           <p style={{ fontSize: 16, color: MOCHA, lineHeight: 1.7, marginBottom: 32, fontFamily: "sans-serif" }}>
-            You know that something isn't working, but you're not sure what? 
-            <br></br>This assessment helps you see exactly where the issues are, and what to fix first.
+            You know that something isn't working, but you're not sure what?
+            <br />This assessment helps you see exactly where the issues are, and what to fix first.
           </p>
           <div style={{ background: "white", borderRadius: 12, padding: "28px 32px", marginBottom: 32, textAlign: "left", border: `1px solid ${LIGHT_TAN}` }}>
             <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
@@ -219,8 +287,8 @@ export default function SelfAssessment() {
           {/* Overall score */}
           <div style={{ background: DARK_MOCHA, borderRadius: 12, padding: "28px 32px", marginBottom: 24, display: "flex", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
             <div style={{ textAlign: "center", minWidth: 100 }}>
-              <div style={{ fontSize: 52, fontWeight: 700, color: AMBER, fontFamily: "Georgia, serif", lineHeight: 1 }}>{overallScore.toFixed(1)}</div>
-              <div style={{ fontSize: 11, color: CAMEL, letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 4 }}>out of 4.0</div>
+              <div style={{ fontSize: 36, fontWeight: 700, color: IVORY, fontFamily: "Georgia, serif", lineHeight: 1 }}>{overallScore.toFixed(1)}</div>
+              <div style={{ fontSize: 11, color: AMBER, letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 4 }}>out of 4.0</div>
             </div>
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 18, color: IVORY, fontFamily: "Georgia, serif", marginBottom: 6 }}>Overall Operational Score</div>
@@ -288,17 +356,59 @@ export default function SelfAssessment() {
             })}
           </div>
 
+          {/* Email capture */}
+          <div style={{ background: "white", borderRadius: 12, padding: "28px 32px", marginBottom: 24, border: `1px solid ${LIGHT_TAN}` }}>
+            <h2 style={{ fontSize: 16, color: DARK_MOCHA, margin: "0 0 6px", fontFamily: "Georgia, serif", fontWeight: 700 }}>Send these results to yourself</h2>
+            <p style={{ fontSize: 13, color: CAMEL, margin: "0 0 20px" }}>Optional. We'll email you a copy of your full scorecard to refer back to.</p>
+
+            {emailStatus === "sent" ? (
+              <p style={{ fontSize: 14, color: OLIVE, fontWeight: 600 }}>Sent. Check your inbox.</p>
+            ) : (
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  value={emailName}
+                  onChange={(e) => setEmailName(e.target.value)}
+                  style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${LIGHT_TAN}`, fontSize: 14, fontFamily: "sans-serif", color: DARK_MOCHA, outline: "none", background: IVORY }}
+                />
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  value={emailAddress}
+                  onChange={(e) => setEmailAddress(e.target.value)}
+                  style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${LIGHT_TAN}`, fontSize: 14, fontFamily: "sans-serif", color: DARK_MOCHA, outline: "none", background: IVORY }}
+                />
+                <button
+                  onClick={handleSendEmail}
+                  disabled={!emailName.trim() || !emailAddress.trim() || emailStatus === "sending"}
+                  style={{
+                    padding: "12px 24px", borderRadius: 8, border: "none", fontSize: 14, fontWeight: 600, fontFamily: "sans-serif", cursor: emailName.trim() && emailAddress.trim() ? "pointer" : "default",
+                    background: emailName.trim() && emailAddress.trim() ? MOCHA : LIGHT_TAN,
+                    color: emailName.trim() && emailAddress.trim() ? IVORY : CAMEL,
+                  }}
+                >
+                  {emailStatus === "sending" ? "Sending..." : "Email my results"}
+                </button>
+                {emailStatus === "error" && (
+                  <p style={{ fontSize: 13, color: "#C0392B", margin: 0 }}>Something went wrong. Try again or reach out to jennifer@groundworkconsult.ca.</p>
+                )}
+              </div>
+            )}
+          </div>
+
           {/* CTA */}
           <div style={{ background: MOCHA, borderRadius: 12, padding: "32px", textAlign: "center" }}>
             <h2 style={{ fontSize: 22, color: IVORY, margin: "0 0 12px", fontFamily: "Georgia, serif" }}>Want help fixing what's broken?</h2>
             <p style={{ color: CAMEL, fontSize: 14, margin: "0 0 24px", lineHeight: 1.7 }}>
               The Groundwork Audit takes this self-assessment further, including facilitated conversations, a full findings report, and a prioritized roadmap built specifically for your business.
             </p>
-            <a href="mailto:jennifer@groundworkconsult.ca" style={{ display: "inline-block", background: AMBER, color: "white", borderRadius: 8, padding: "14px 36px", fontSize: 15, textDecoration: "none", fontWeight: 600, letterSpacing: "0.03em" }}>
-  Book a Conversation
-</a>
-<div style={{ marginTop: 16, fontSize: 12, color: CAMEL }}>jennifer@groundworkconsult.ca · groundworkconsult.ca</div>
+            <a href="#/book" style={{ display: "inline-block", background: AMBER, color: "white", borderRadius: 8, padding: "14px 36px", fontSize: 15, textDecoration: "none", fontWeight: 600, letterSpacing: "0.03em" }}>
+              Book a Discovery Call
+            </a>
+            <div style={{ marginTop: 16, fontSize: 12, color: CAMEL }}>jennifer@groundworkconsult.ca · groundworkconsult.ca</div>
           </div>
+
         </div>
       </div>
     );
@@ -362,8 +472,8 @@ export default function SelfAssessment() {
             const key = `${area.id}-${i}`;
             const selected = answers[key];
             return (
-              <div key={i} style={{ background: "white", borderRadius: 10, padding: "20px 24px", border: `1px solid ${selected ? LIGHT_TAN : LIGHT_TAN}`, transition: "all 0.2s" }}>
-                <p style={{ fontSize: 14, color: DARK_MOCHA, margin: "0 0 14px", lineHeight: 1.6, fontWeight: selected ? 400 : 400 }}>{q}</p>
+              <div key={i} style={{ background: "white", borderRadius: 10, padding: "20px 24px", border: `1px solid ${LIGHT_TAN}`, transition: "all 0.2s" }}>
+                <p style={{ fontSize: 14, color: DARK_MOCHA, margin: "0 0 14px", lineHeight: 1.6 }}>{q}</p>
                 <div style={{ display: "flex", gap: 8 }}>
                   {ratings.map((r) => (
                     <button key={r.value} onClick={() => setAnswer(area.id, i, r.value)} style={{

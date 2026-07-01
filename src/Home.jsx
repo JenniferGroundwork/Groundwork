@@ -712,7 +712,7 @@ export default function GroundworkHome() {
               ["30 minutes.", "We'll talk through your self-assessment results and your business."],
               ["No pitch.", "We will tell you honestly if we are the right fit. If we're not, we will tell you that too."],
               ["If there is a fit,", "the Groundwork Audit is a paid, standalone engagement. Additional engagements are scoped separately, with a clear start and end."],
-              ["Fixed scope only.", "We do not do retainers or open-ended engagements."]
+              ["Fixed scope only.", "At this time, we're not offering retainer services or open-ended engagements."]
             ].map(([bold, rest]) => (
               <div key={bold} className="cta-point">
                 <div className="cta-point-dot" />
