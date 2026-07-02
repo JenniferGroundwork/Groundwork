@@ -774,7 +774,7 @@ export default function GroundworkHome() {
             {[
               { num: "01", h3: "Self-Assessment", p: "Start with our free 10-area self-assessment. Takes about 15 minutes and gives you an instant scorecard of where things stand." },
               { num: "02", h3: "Discovery Call", p: "30 minutes and free. We talk through your results, ask about your business, and tell you honestly if we're the right fit." },
-              { num: "03", h3: "The Groundwork Audit", p: "A paid, hands-on diagnostic. Facilitated conversations, a full findings report, and a prioritized roadmap, plus a 30-60 day check-in to see what's sticking." },
+              { num: "03", h3: "The Groundwork Audit", p: "A paid, hands-on diagnostic. Facilitated conversations, a full findings report, and a prioritized roadmap, plus a 30-90 day check-in to see what's sticking." },
               { num: "04", h3: "The Work", p: "If there's more to build, we scope it separately. Most engagements run 4 to 12 weeks. You own everything when we're done." }
             ].map((step) => (
               <div key={step.num} className="step">
