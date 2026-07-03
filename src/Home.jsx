@@ -634,7 +634,7 @@ export default function GroundworkHome() {
           <li><a href="#services">Services</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="#/book" className="nav-cta">Book a Call</a></li>
+          <li><a href="/book" className="nav-cta">Book a Call</a></li>
         </ul>
       </nav>
 
@@ -652,8 +652,8 @@ export default function GroundworkHome() {
               Founder-led businesses in trades, hospitality, property management, and specialized services hire us when growth has outpaced how they operate. We come in, build the foundation from the ground up, and hand it back. Fixed scope - we're not taking over, we're preparing you to win.
             </p>
             <div className="hero-actions">
-              <a href="#/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
-              <a href="#/book" className="btn-secondary">Book a Discovery Call</a>
+              <a href="/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
+              <a href="/book" className="btn-secondary">Book a Discovery Call</a>
             </div>
           </div>
           <div className="hero-card">
@@ -798,7 +798,7 @@ export default function GroundworkHome() {
 <p className="audit-price-note">
   The Audit delivers your operational blueprint. If you choose to have us handle hands-on execution (e.g., drafting full SOP libraries, configuring workflow automations, etc.), those are scoped and contracted as separate engagements after the audit is complete.
 </p>
-            <a href="#/book" className="btn-primary">Book a Discovery Call &rarr;</a>
+            <a href="/book" className="btn-primary">Book a Discovery Call &rarr;</a>
           </div>
           <div className="audit-card">
             <p className="audit-card-title">What the Audit covers</p>
@@ -821,8 +821,8 @@ export default function GroundworkHome() {
               Start with the free self-assessment to see where things stand. From there, a 30-minute discovery call helps us figure out if a full audit makes sense for you.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <a href="#/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
-              <a href="#/book" className="btn-secondary">Book a Discovery Call</a>
+              <a href="/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
+              <a href="/book" className="btn-secondary">Book a Discovery Call</a>
             </div>
           </div>
           <div className="cta-card">
@@ -876,7 +876,7 @@ export default function GroundworkHome() {
             <div>
               <p className="footer-col-label">Ready to Start?</p>
               <p className="footer-cta-text">Take the free self-assessment, or book a 30-minute discovery call to see if we are the right fit.</p>
-              <a href="#/self-assessment" className="btn-primary" style={{ fontSize: 13, padding: "10px 20px" }}>Take the Self-Assessment</a>
+              <a href="/self-assessment" className="btn-primary" style={{ fontSize: 13, padding: "10px 20px" }}>Take the Self-Assessment</a>
             </div>
           </div>
           <div className="footer-bottom">
