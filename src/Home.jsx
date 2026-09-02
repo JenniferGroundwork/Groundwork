@@ -826,11 +826,12 @@ export default function GroundworkHome() {
             <p className="eyebrow eyebrow-light">Get Started</p>
             <h2 className="cta-h2">Ready to build<br />the <em>foundation?</em></h2>
             <p className="cta-p">
-              Start with the free self-assessment to see where things stand. From there, a 30-minute discovery call helps us figure out if a Systems Walkthrough makes sense for you.
+              Start with the free self-assessment to see where things stand. From there, a 30-minute discovery call helps us figure out if a Systems Walkthrough makes sense for you. Prefer to reach out by email first? That works too.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
               <a href="/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
               <a href="/book" className="btn-secondary">Book a Discovery Call</a>
+              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-secondary">Email Instead</a>
             </div>
           </div>
           <div className="cta-card">
@@ -850,9 +851,6 @@ export default function GroundworkHome() {
             <hr className="cta-divider" />
             <p className="cta-contact" style={{ marginBottom: 6, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: "#999" }}>Based in Canada</p>
             <p className="cta-contact">Serving clients across Canada and the US. Remote-first. On-site when it matters.</p>
-            <p className="cta-contact" style={{ marginTop: 8 }}>
-              <a href="mailto:jennifer@groundworkconsult.ca">jennifer@groundworkconsult.ca &rarr;</a>
-            </p>
           </div>
         </div>
       </section>
