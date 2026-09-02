@@ -831,7 +831,7 @@ export default function GroundworkHome() {
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
               <a href="/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
               <a href="/book" className="btn-secondary">Book a Discovery Call</a>
-              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-secondary">Email Instead</a>
+              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-secondary">Send an Email</a>
             </div>
           </div>
           <div className="cta-card">
