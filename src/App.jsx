@@ -26,7 +26,7 @@ const PRODUCTS = [
 ];
 
 function formatPrice(n) {
-  return `$${n}`;
+  return `$${n} CAD`;
 }
 
 function LogoMark() {
