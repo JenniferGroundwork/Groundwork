@@ -1,110 +1,131 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    <!-- Primary SEO -->
+    <title>Groundwork Consult | Operations Consulting for Small Businesses</title>
+    <meta name="description" content="Fixed-scope process audits, SOP development, and workflow automation for founder-led businesses in trades, hospitality, property management, and wellness." />
+    <meta name="author" content="Groundwork Consult" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="canonical" href="https://groundworkconsult.ca/" />
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://groundworkconsult.ca/" />
+    <meta property="og:site_name" content="Groundwork Consult" />
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:title" content="Groundwork Consult | Operations Consulting for Small Businesses" />
+    <meta property="og:description" content="Your business runs on institutional knowledge. That works until it doesn't. Book a free discovery call." />
+    <meta property="og:image" content="https://groundworkconsult.ca/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+    <!-- Twitter/X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Groundwork Consult | Operations Consulting for Small Businesses" />
+    <meta name="twitter:description" content="Your business runs on institutional knowledge. That works until it doesn't. Book a free discovery call." />
+    <meta name="twitter:image" content="https://groundworkconsult.ca/og-image.jpg" />
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-body {
-  margin: 0;
-}
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": "https://groundworkconsult.ca/#organization",
+      "name": "Groundwork Consult",
+      "url": "https://groundworkconsult.ca",
+      "email": "jennifer@groundworkconsult.ca",
+      "description": "Groundwork Consult helps founder-led small businesses in trades, hospitality, property management, and wellness stop running on institutional knowledge and start running on systems that work without them in the room. We offer fixed-scope process audits, SOP development, and workflow automation.",
+      "slogan": "Stop running on institutional knowledge. Start running on systems.",
+      "areaServed": [
+        { "@type": "Country", "name": "Canada" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "AdministrativeArea", "name": "Ontario" }
+      ],
+      "knowsAbout": [
+        "Operations consulting",
+        "Standard operating procedures",
+        "Business process documentation",
+        "Workflow optimization",
+        "Founder-led business systems",
+        "Operational audits",
+        "Trades business operations",
+        "Hospitality operations",
+        "Property management systems",
+        "Wellness business operations",
+        "Not-for-profit operations",
+        "Professional services operations"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Groundwork Consult Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "The Groundwork Audit",
+              "description": "A paid, fixed-scope operational diagnostic for founder-led businesses. Includes facilitated conversations with your team, a full findings report with red/yellow/green scorecard across 10 business areas, a prioritized roadmap, and 30- and 90-day check-ins. Additional implementation work is scoped separately after the audit is complete.",
+              "provider": { "@id": "https://groundworkconsult.ca/#organization" }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Groundwork Refresh",
+              "description": "A returning-client follow-up engagement with preferred pricing. A lighter-touch reassessment of specific operational areas without starting from scratch.",
+              "provider": { "@id": "https://groundworkconsult.ca/#organization" }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Free Operational Self-Assessment",
+              "description": "A free 10-area self-assessment tool for founders to get an instant scorecard of where their operations stand before booking a discovery call.",
+              "provider": { "@id": "https://groundworkconsult.ca/#organization" }
+            }
+          }
+        ]
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Jennifer",
+        "jobTitle": "Founder, Groundwork Consult",
+        "email": "jennifer@groundworkconsult.ca"
+      },
+      "sameAs": [
+        "https://www.instagram.com/GroundWork_Consult"
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
+    <!-- Fallback for crawlers that don't render JavaScript -->
+    <noscript>
+      <div>
+        <h1>Groundwork Consult</h1>
+        <p>Operations consulting for founder-led businesses. We help small businesses in trades, hospitality, property management, and wellness replace institutional knowledge with documented systems through fixed-scope process audits, SOP development, and workflow automation.</p>
+        <p>Based in Ontario. Serving clients across Canada and the US. Remote-first.</p>
+        <p>Contact: <a href="mailto:jennifer@groundworkconsult.ca">jennifer@groundworkconsult.ca</a></p>
+      </div>
+    </noscript>
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
-}
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
