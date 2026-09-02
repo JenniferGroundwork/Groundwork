@@ -254,19 +254,20 @@ const styles = `
     font-size: 16px; line-height: 1.65;
     color: rgba(245,240,232,0.7); max-width: 520px; margin: 0 auto;
   }
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .service-card {
     background: ${MID_GREEN}; border-radius: 16px; padding: 36px 32px;
     border: 1px solid rgba(245,240,232,0.06); position: relative; overflow: hidden;
   }
   .service-num {
-    font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 700;
-    color: rgba(245,240,232,0.06); position: absolute; top: 12px; right: 20px;
-    line-height: 1; pointer-events: none;
+    font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 700;
+    color: rgba(245,240,232,0.06); position: absolute; top: 20px; right: 24px;
+    line-height: 1; pointer-events: none; z-index: 0;
   }
   .service-h3 {
     font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700;
     color: ${IVORY}; margin-bottom: 14px; line-height: 1.2;
+    position: relative; z-index: 1; margin-top: 40px;
   }
   .service-p { font-size: 14px; line-height: 1.65; color: rgba(245,240,232,0.7); margin-bottom: 24px; }
   .service-list { list-style: none; display: flex; flex-direction: column; gap: 8px; text-align: left; }
@@ -277,6 +278,18 @@ const styles = `
   .service-list li::before {
     content: ''; width: 5px; height: 5px; border-radius: 50%;
     background: ${CAMEL}; margin-top: 7px; flex-shrink: 0;
+  }
+  .service-next {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(245,240,232,0.1);
+    font-size: 12px;
+    line-height: 1.55;
+    color: rgba(245,240,232,0.5);
+  }
+  .service-next strong {
+    color: ${LIME_CTA};
+    font-weight: 600;
   }
 
   .how { background: ${LIGHT_TAN}; }
@@ -455,36 +468,16 @@ const icons = {
       <path d="M3 17L8 12M8 12L6 10L10 6L12 8M8 12L10 14L14 10L12 8M12 8L14.5 5.5C15.3 4.7 16.5 4.5 17 5C17.5 5.5 17.3 6.7 16.5 7.5L14 10" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   ),
-  hospitality: (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 3C10 3 6 6 6 10H14C14 6 10 3 10 3Z" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M5 10H15" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round"/>
-      <path d="M7 13H13" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round"/>
-      <path d="M8 16H12" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round"/>
-    </svg>
-  ),
-  property: (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 17V8L10 3L17 8V17" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M7 17V12H13V17" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M3 17H17" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round"/>
-    </svg>
-  ),
   wellness: (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M10 17C10 17 3 13 3 8C3 5.8 4.8 4 7 4C8.2 4 9.3 4.6 10 5.5C10.7 4.6 11.8 4 13 4C15.2 4 17 5.8 17 8C17 13 10 17 10 17Z" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   ),
-  nfp: (
+  serviceBased: (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 3L12 7H17L13 10L14.5 15L10 12L5.5 15L7 10L3 7H8L10 3Z" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  professional: (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 17V15C6 13.9 6.9 13 8 13H12C13.1 13 14 13.9 14 15V17" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <circle cx="10" cy="8" r="3" stroke="#6B4F3A" strokeWidth="1.5"/>
-      <path d="M3 17H17" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round"/>
+      <rect x="4" y="7" width="12" height="10" rx="1" stroke="#6B4F3A" strokeWidth="1.5" strokeLinejoin="round"/>
+      <path d="M7 7V5.5C7 4.7 7.7 4 8.5 4H11.5C12.3 4 13 4.7 13 5.5V7" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M4 11H16" stroke="#6B4F3A" strokeWidth="1.5" strokeLinecap="round"/>
     </svg>
   ),
 };
@@ -583,38 +576,20 @@ export default function GroundworkHome() {
     {
       icon: icons.trades,
       label: "Trades",
-      h3: "Jobs get done, but only because the right person showed up.",
-      p: "Electrical, plumbing, HVAC, construction. We build the playbooks your crew can actually follow."
-    },
-    {
-      icon: icons.hospitality,
-      label: "Hospitality",
-      h3: "Service quality swings with whoever is on shift.",
-      p: "Restaurants, hotels, catering. We document standards so every shift runs the same way."
-    },
-    {
-      icon: icons.property,
-      label: "Property Management",
-      h3: "Tenant issues and renewals flow through one inbox and one brain.",
-      p: "We build the workflows and SOPs that let your team handle issues without escalating everything."
+      h3: "Jobs get done, but only because the right person shows up.",
+      p: "Electrical, plumbing, HVAC, roofing, construction. We build the playbooks your crew can actually follow, even on the days you're not on site."
     },
     {
       icon: icons.wellness,
-      label: "Wellness",
-      h3: "The practice runs on the practitioner. Clients follow the person, not the business.",
-      p: "Clinics, studios, spas. We help you build a business that outlasts any single provider."
+      label: "Wellness & Health Services",
+      h3: "The practice runs on the practitioner. Growth means either burning out or turning clients away.",
+      p: "Therapists, doulas, lactation consultants, clinics, studios. We help you build a business that outlasts any single provider's calendar."
     },
     {
-      icon: icons.nfp,
-      label: "Not-for-Profit",
-      h3: "The mission is clear, but the operations are held together with volunteer hours and institutional memory.",
-      p: "We build the systems that survive staff turnovers and keep the mission moving forward."
-    },
-    {
-      icon: icons.professional,
-      label: "Professional Services",
-      h3: "The expertise is there, but the business behind it hasn't caught up yet.",
-      p: "Law firms, accounting practices, clinics. We document the work so it can run without the principal in every conversation."
+      icon: icons.serviceBased,
+      label: "Service-Based & Client-Facing Businesses",
+      h3: "You're good at the work you do. We're good at the parts that you haven't had time to build.",
+      p: "Property management, hospitality, professional services, and other founder-led operations where the schedule, the client, or the handoff runs through one person's head."
     },
   ];
 
@@ -649,7 +624,7 @@ export default function GroundworkHome() {
               on systems.
             </h1>
             <p className="hero-sub">
-              Founder-led businesses in trades, hospitality, property management, and specialized services hire us when growth has outpaced how they operate. We come in, build the foundation from the ground up, and hand it back. Fixed scope - we're not taking over, we're preparing you to win.
+              Founder-led businesses hire us when growth has outpaced how they operate, in trades, wellness and health services, and other client-facing operations where the schedule runs through one person's head. We come in, build the foundation from the ground up, and hand it back. Fixed scope - we're not taking over, we're preparing you to win.
             </p>
             <div className="hero-actions">
               <a href="/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
@@ -690,7 +665,29 @@ export default function GroundworkHome() {
         </div>
       </section>
 
-      <section id="who-we-help" className="section who">
+      <section id="track-record" className="section who" style={{ paddingBottom: 60 }}>
+        <div className="section-inner">
+          <div className="who-header" style={{ marginBottom: 0 }}>
+            <div>
+              <p className="eyebrow">Who's Behind This</p>
+              <h2 className="who-h2">I've built and run real operations, not just studied them.</h2>
+            </div>
+            <div>
+              <p className="who-desc">
+                Nearly a decade in management and Assistant Dean roles at the University of Toronto, most recently as Assistant Dean, Administration &amp; Operations at St. Michael's College, federated with U of T. I managed the operating budget, built the systems myself, database work and automated workflows included, and led a 22-person team, a headcount most of my clients would recognize.
+              </p>
+              <p className="who-desc" style={{ marginTop: 16 }}>
+                I've often been told in my past roles that I'm diplomatic - direct without being harsh. Now, with my own clients, that's how I continue to operate. I care that you and your business are doing well, and I show that by building things that actually work. The systems are the support.
+              </p>
+              <p className="who-desc" style={{ marginTop: 16 }}>
+                I can find issues fast, but I recognize that the fastest read isn't always the right one. I'll tell you what I see and want you to push back if it's off. The goal is what works for you, not being right.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="who-we-help" className="section who" style={{ paddingTop: 20 }}>
         <div className="section-inner">
           <div className="who-header">
             <div>
@@ -719,40 +716,51 @@ export default function GroundworkHome() {
       <section id="services" className="section services">
         <div className="section-inner">
           <div className="services-header">
-            <p className="eyebrow eyebrow-light">What We Do</p>
-            <h2 className="services-h2">Three services. <em>One outcome.</em></h2>
+            <p className="eyebrow eyebrow-light">The Builds</p>
+            <h2 className="services-h2">Pick what's broken. <em>We build the fix.</em></h2>
             <p className="services-desc">
-              We identify what is broken, document how things should actually work, and build the automations that save your team real time. Fixed scope, built to last.
+              Every build is scoped and priced on its own. No bundles with pieces you don't need, no add-ons you didn't ask for. You choose what your business needs right now, and that's what we build.
             </p>
           </div>
           <div className="services-grid">
             {[
               {
                 num: "01",
-                h3: "Process Audits",
-                p: "This is the foundation, and most founders are surprised by what we find here. It's not that things are broken, it's that nobody has ever written it down and looked at it all at once. We interview your team, observe how work actually moves, and surface the gaps before they become expensive.",
-                bullets: ["Current-state process mapping", "Gap and risk analysis", "Prioritized recommendations", "Delivered in plain language"]
+                h3: "SOP & Handoff Build",
+                p: "The processes that only work because you're the one doing them, now written down so someone else can run them the same way. We document the core processes you tell us matter most.",
+                bullets: ["SOPs for the processes you define", "Written for the person doing the job", "Clear enough to hand off tomorrow", "Team training and updates may be scoped separately"],
+                next: "Once the process is written down, the next question is usually who owns it. That's the Role Clarity Build."
               },
               {
                 num: "02",
-                h3: "SOP Development",
-                p: "Most SOPs fail because they are written by someone who does not do the job, for someone who will not read them. We write with your team, not at them. Clear, specific, and built to be updated as things change.",
-                bullets: ["Role-specific documentation", "Step-by-step with decision points", "Onboarding-ready formats", "Includes a maintenance plan"]
+                h3: "Job Description & Role Clarity Build",
+                p: "When two people think they own the same task, or nobody does, that's a role problem, not a people problem. We write clear job descriptions for the roles you need defined.",
+                bullets: ["Written JDs for defined roles", "Clear ownership, no overlap", "Built from how the role actually works", "Hiring and onboarding may be scoped separately"],
+                next: "Once roles are clear, the next gap that often shows up is the client-facing side. That's the Client Journey Build."
               },
               {
                 num: "03",
-                h3: "Workflow Automation",
-                p: "We are not here to sell you software. We find the things your team does manually every day that could run on their own, and build the automations using tools you already have or can easily adopt.",
-                bullets: ["No-code and low-code tools", "Scheduling and notifications", "Handoff and approval flows", "Integrated with what you use"]
+                h3: "Client Journey & Onboarding Build",
+                p: "From first contact to first invoice, we map what actually happens and build the onboarding around it, using the tools you already have.",
+                bullets: ["Full client journey mapped", "Onboarding built in your existing tools", "Consistent experience, every client", "New software purchases not included"],
+                next: "Once the journey is mapped, the repetitive parts of it are usually worth automating. That's the Backend & Automation Setup."
+              },
+              {
+                num: "04",
+                h3: "Backend & Automation Setup",
+                p: "The tools you're already paying for, now talking to each other. We connect and automate what you have so your team stops doing by hand what software should be doing for them.",
+                bullets: ["Connects and automates existing tools", "Built around your current stack", "Fewer manual handoffs, fewer dropped balls", "Full migrations and new integrations may be scoped separately"],
+                next: "Automations only hold if the process behind them is documented. If that's not in place, we'll flag it and see what could help your team."
               }
             ].map((svc) => (
-              <div key={svc.num} className="service-card">
+              <div key={svc.h3} className="service-card">
                 <div className="service-num">{svc.num}</div>
                 <h3 className="service-h3">{svc.h3}</h3>
                 <p className="service-p">{svc.p}</p>
                 <ul className="service-list">
                   {svc.bullets.map(b => <li key={b}>{b}</li>)}
                 </ul>
+                <p className="service-next">{svc.next}</p>
               </div>
             ))}
           </div>
@@ -772,10 +780,10 @@ export default function GroundworkHome() {
           </div>
           <div className="steps">
             {[
-              { num: "01", h3: "Self-Assessment", p: "Start with our free 10-area self-assessment. Takes about 15 minutes and gives you an instant scorecard of where things stand." },
+              { num: "01", h3: "Self-Assessment", p: "Start with our free self-assessment. Takes about 15 minutes and gives you an instant scorecard of where things stand." },
               { num: "02", h3: "Discovery Call", p: "30 minutes and free. We talk through your results, ask about your business, and tell you honestly if we're the right fit." },
-              { num: "03", h3: "The Groundwork Audit", p: "A paid, hands-on diagnostic. Facilitated conversations, a full findings report, and a prioritized roadmap, plus a 30-90 day check-in to see what's sticking." },
-              { num: "04", h3: "The Work", p: "If there's more to build, we scope it separately. Most engagements run 4 to 12 weeks. You own everything when we're done." }
+              { num: "03", h3: "Systems Walkthrough", p: "One to a few sessions, depending on your operation. We walk through what's happening, tell you what we see that needs attention, and give you a short written list of what we'd build and why." },
+              { num: "04", h3: "The Build", p: "If there's a fix worth making, you pick the build that matches. Scoped and priced on its own, with a clear start and a clear end. You own it when we're done." }
             ].map((step) => (
               <div key={step.num} className="step">
                 <div className="step-num">{step.num}</div>
@@ -790,19 +798,19 @@ export default function GroundworkHome() {
       <section id="audit" className="audit">
         <div className="audit-inner">
           <div>
-            <p className="eyebrow eyebrow-light">The Real Diagnostic</p>
-            <h2 className="audit-h2">The Groundwork Audit goes further than a scorecard.</h2>
+            <p className="eyebrow eyebrow-light">The Systems Walkthrough</p>
+            <h2 className="audit-h2">You already know something's not working. We'll help you name exactly what, and what to do about it.</h2>
             <p className="audit-price-note">
-  Investment cost varies based on scope and complexity. Already worked with us? Returning clients can book a Groundwork Refresh with preferred pricing, a lighter-touch check on specific areas without starting from zero. Flexible payment plans available.
+  This isn't a full audit or a stack of documentation you'll never open. It's one to a few sessions, depending on the size and complexity of your operation, where we go through what's happening together. We won't hand you a recommendation until we're actually clear on what's going on, not before. You'll leave with a clear, honest read on what's working, what's not, and a short written list of what we'd build if you asked us to.
 </p>
 <p className="audit-price-note">
-  The Audit delivers your operational blueprint. If you choose to have us handle hands-on execution (e.g., drafting full SOP libraries, configuring workflow automations, etc.), those are scoped and contracted as separate engagements after the audit is complete.
+  If something on that list is worth fixing, you pick the build. Each one is scoped, priced, and contracted separately, so you're only ever paying for what you actually need.
 </p>
             <a href="/book" className="btn-primary">Book a Discovery Call &rarr;</a>
           </div>
           <div className="audit-card">
-            <p className="audit-card-title">What the Audit covers</p>
-            {["Systems & Tools", "Data & Documentation", "Roles & Ownership", "Leadership Visibility", "Communication & Alignment", "Financial Visibility", "Client Experience", "Capacity & Workload", "Growth Readiness", "Owner Dependency & Exit Risk"].map(area => (
+            <p className="audit-card-title">What we look at</p>
+            {["Systems & Tools", "Data & Documentation", "Roles & Ownership", "Communication & Handoffs", "Client & Customer Experience", "Capacity & Workload", "Owner Dependency"].map(area => (
               <div key={area} className="audit-detail">
                 <div className="audit-detail-dot" />
                 <p>{area}</p>
@@ -818,7 +826,7 @@ export default function GroundworkHome() {
             <p className="eyebrow eyebrow-light">Get Started</p>
             <h2 className="cta-h2">Ready to build<br />the <em>foundation?</em></h2>
             <p className="cta-p">
-              Start with the free self-assessment to see where things stand. From there, a 30-minute discovery call helps us figure out if a full audit makes sense for you.
+              Start with the free self-assessment to see where things stand. From there, a short discovery call helps us figure out if a Systems Walkthrough makes sense for you.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
               <a href="/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
@@ -828,10 +836,11 @@ export default function GroundworkHome() {
           <div className="cta-card">
             <h3 className="cta-card-title">Here is what a discovery call actually is.</h3>
             {[
-              ["30 minutes.", "We'll talk through your self-assessment results and your business."],
-              ["No pitch.", "We will tell you honestly if we are the right fit. If we're not, we will tell you that too."],
-              ["If there is a fit,", "the Groundwork Audit is a paid, standalone engagement. Additional engagements are scoped separately, with a clear start and end."],
-              ["Fixed scope only.", "At this time, we're not offering retainer services or open-ended engagements."]
+              ["~30 minutes.", "We'll talk through your self-assessment results and your business."],
+              ["No pitch.", "We will tell you honestly if we think we're the right fit. If we're not, we'll tell you that too."],
+              ["If there is a fit,", "we book a Systems Walkthrough. You'll get a clear, honest read on what's working and a short list of what we'd build."],
+              ["Every build is fixed scope.", "Priced and contracted on its own, with a defined start and end."],
+              ["A check-in is available after,", "if you want one. Short, fixed term, no obligation to renew."]
             ].map(([bold, rest]) => (
               <div key={bold} className="cta-point">
                 <div className="cta-point-dot" />
@@ -860,11 +869,12 @@ export default function GroundworkHome() {
               <small>Based in Canada &middot; groundworkconsult.ca</small>
             </div>
             <div>
-              <p className="footer-col-label">Services</p>
+              <p className="footer-col-label">The Builds</p>
               <ul className="footer-links">
-                <li><a href="#services">Process Audits</a></li>
-                <li><a href="#services">SOP Development</a></li>
-                <li><a href="#services">Workflow Automation</a></li>
+                <li><a href="#services">SOP & Handoff</a></li>
+                <li><a href="#services">Role Clarity</a></li>
+                <li><a href="#services">Client Journey</a></li>
+                <li><a href="#services">Backend & Automation</a></li>
               </ul>
             </div>
             <div>
@@ -875,7 +885,7 @@ export default function GroundworkHome() {
             </div>
             <div>
               <p className="footer-col-label">Ready to Start?</p>
-              <p className="footer-cta-text">Take the free self-assessment, or book a 30-minute discovery call to see if we are the right fit.</p>
+              <p className="footer-cta-text">Take the free self-assessment, or book a ~30-minute discovery call to see if we are the right fit.</p>
               <a href="/self-assessment" className="btn-primary" style={{ fontSize: 13, padding: "10px 20px" }}>Take the Self-Assessment</a>
             </div>
           </div>
