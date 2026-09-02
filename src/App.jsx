@@ -18,12 +18,16 @@ const TEXT_DARK  = "#1C1C1C";
 const TEXT_MID   = "#4A4A4A";
 
 const PRODUCTS = [
-  { id: "ops-playbook", label: "Operations Playbook Builder",                component: OpsPlaybook },
-  { id: "role-clarity", label: "Role Clarity Toolkit",                       component: RoleClarity },
-  { id: "sop-library",  label: "Standard Operating Procedure (SOP) Library", component: SOPLibrary },
-  { id: "sop-bundle",   label: "SOP Template Bundle",                        component: SOPBundle },
-  { id: "ai-kit",       label: "AI Workflow Starter Kit",                    component: AIStarterKit },
+  { id: "ops-playbook", label: "Operations Playbook Builder",                component: OpsPlaybook,  price: 47,  category: "Worksheet" },
+  { id: "role-clarity", label: "Role Clarity Toolkit",                       component: RoleClarity,  price: 97,  category: "Worksheet" },
+  { id: "sop-library",  label: "Standard Operating Procedure (SOP) Library", component: SOPLibrary,   price: 397, category: "Template Library" },
+  { id: "sop-bundle",   label: "SOP Template Bundle",                        component: SOPBundle,    price: 197, category: "Template Library" },
+  { id: "ai-kit",       label: "AI Workflow Starter Kit",                    component: AIStarterKit, price: 147, category: "Ready-to-Use Guide" },
 ];
+
+function formatPrice(n) {
+  return `$${n}`;
+}
 
 function LogoMark() {
   return (
@@ -33,7 +37,7 @@ function LogoMark() {
   );
 }
 
-function NavBar({ backLabel, backTo }) {
+function NavBar({ backLabel, backTo, priceNote }) {
   const navigate = useNavigate();
   return (
     <div style={{ background: DARK_GREEN, padding: "0 40px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -41,14 +45,19 @@ function NavBar({ backLabel, backTo }) {
         <LogoMark />
         <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 600, color: IVORY }}>Groundwork Consult</span>
       </div>
-      {backLabel && (
-        <button onClick={() => navigate(backTo || "/")} style={{
-          background: "none", border: "none", color: "rgba(245,240,232,0.65)",
-          cursor: "pointer", fontSize: 13, padding: 0, fontFamily: "sans-serif"
-        }}>
-          &larr; {backLabel}
-        </button>
-      )}
+      <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+        {priceNote && (
+          <span style={{ fontSize: 12, color: LIME_CTA, fontFamily: "sans-serif" }}>{priceNote}</span>
+        )}
+        {backLabel && (
+          <button onClick={() => navigate(backTo || "/")} style={{
+            background: "none", border: "none", color: "rgba(245,240,232,0.65)",
+            cursor: "pointer", fontSize: 13, padding: 0, fontFamily: "sans-serif"
+          }}>
+            &larr; {backLabel}
+          </button>
+        )}
+      </div>
     </div>
   );
 }
@@ -84,7 +93,7 @@ function ToolsIndex() {
           Tools &amp; Resources
         </h1>
         <p style={{ fontSize: 16, color: TEXT_MID, lineHeight: 1.6, maxWidth: 480, margin: "0 auto 48px", textAlign: "center" }}>
-          Working documents for active client engagements.
+          Built to be paid products. Free for now while Groundwork Consult gets off the ground.
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {PRODUCTS.map((p, i) => (
@@ -110,7 +119,12 @@ function ToolsIndex() {
                 <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 13, fontWeight: 700, color: MOCHA, opacity: 0.4, minWidth: 24 }}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span style={{ fontSize: 15, fontWeight: 600, color: TEXT_DARK }}>{p.label}</span>
+                <div>
+                  <span style={{ fontSize: 15, fontWeight: 600, color: TEXT_DARK, display: "block" }}>{p.label}</span>
+                  <span style={{ fontSize: 12, color: CAMEL }}>
+                    {p.category} &middot; <span style={{ textDecoration: "line-through", opacity: 0.6 }}>{formatPrice(p.price)}</span> Free for now
+                  </span>
+                </div>
               </div>
               <span style={{ color: CAMEL, fontSize: 16 }}>&rarr;</span>
             </button>
@@ -134,7 +148,7 @@ function ToolRoute() {
   const Product = product.component;
   return (
     <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "sans-serif" }}>
-      <NavBar backLabel="Back to Tools" backTo="/tools" />
+      <NavBar backLabel="Back to Tools" backTo="/tools" priceNote={`Normally ${formatPrice(product.price)}. Free for now.`} />
       <Product />
     </div>
   );
