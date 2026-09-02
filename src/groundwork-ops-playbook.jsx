@@ -69,7 +69,7 @@ const SECTIONS = [
       { id: "ownerDependent", label: "Which processes can only run when you're personally involved?", type: "textarea", placeholder: "Where are you the bottleneck? What stops when you're not there?" },
       { id: "undocumented", label: "What important processes exist only in someone's head right now?", type: "textarea", placeholder: "What institutional knowledge hasn't been written down yet?" },
     ],
-    nudge: "If you found this section hard to fill out, that's the point. The processes that are hard to document are the ones that will cost you the most when something goes wrong. They're the processes that fall to one or two core people because it takes them too long to explain or handoff, and would rather just do the work themselves. This is exactly where a Groundwork Audit adds the most value."
+    nudge: "If you found this section hard to fill out, that's the point. The processes that are hard to document are the ones that will cost you the most when something goes wrong. They're the processes that fall to one or two core people because it takes them too long to explain or handoff, and would rather just do the work themselves. This is exactly what a SOP & Handoff Build fixes."
   },
   {
     id: "tools",
@@ -529,10 +529,10 @@ function PlaybookView({ data, onBack }) {
         <div style={{ background: MOCHA, borderRadius: 12, padding: "28px", textAlign: "center", marginTop: 16 }}>
           <h3 style={{ fontSize: 18, color: IVORY, margin: "0 0 10px", fontFamily: "Georgia, serif" }}>Want help with what this revealed?</h3>
           <p style={{ fontSize: 13, color: CAMEL, margin: "0 0 20px", lineHeight: 1.7 }}>
-            The Groundwork Audit takes you deeper. We offer a facilitated conversation, a scored findings report, and a prioritized roadmap for what to fix first.
+            A Systems Walkthrough takes this further. We'll go through what you've found here together and give you a short, honest list of what we'd build and why.
           </p>
-          <a href="mailto:jennifer@groundworkconsult.ca" style={{ display: "inline-block", background: AMBER, color: "white", borderRadius: 8, padding: "12px 28px", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>
-            Book a Conversation
+          <a href="/book" style={{ display: "inline-block", background: AMBER, color: "white", borderRadius: 8, padding: "12px 28px", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>
+            Book a Discovery Call
           </a>
         </div>
       </div>

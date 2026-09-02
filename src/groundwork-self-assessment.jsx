@@ -391,9 +391,9 @@ const priorities = buildPriorities();
           <div style={{ background: MOCHA, borderRadius: 12, padding: "32px", textAlign: "center" }}>
             <h2 style={{ fontSize: 22, color: IVORY, margin: "0 0 12px", fontFamily: "Georgia, serif" }}>Want help fixing what's broken?</h2>
             <p style={{ color: CAMEL, fontSize: 14, margin: "0 0 24px", lineHeight: 1.7 }}>
-              The Groundwork Audit takes this self-assessment further, including facilitated conversations, a full findings report, and a prioritized roadmap built specifically for your business.
+              A Systems Walkthrough takes this further. We go through what's actually happening in your business and give you a short, honest list of what we'd build and why.
             </p>
-            <a href="#/book" style={{ display: "inline-block", background: AMBER, color: "white", borderRadius: 8, padding: "14px 36px", fontSize: 15, textDecoration: "none", fontWeight: 600, letterSpacing: "0.03em" }}>
+            <a href="/book" style={{ display: "inline-block", background: AMBER, color: "white", borderRadius: 8, padding: "14px 36px", fontSize: 15, textDecoration: "none", fontWeight: 600, letterSpacing: "0.03em" }}>
               Book a Discovery Call
             </a>
             <div style={{ marginTop: 16, fontSize: 12, color: CAMEL }}>jennifer@groundworkconsult.ca · groundworkconsult.ca</div>
