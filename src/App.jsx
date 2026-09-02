@@ -154,6 +154,29 @@ function ToolRoute() {
   );
 }
 
+function NotFoundRoute() {
+  const navigate = useNavigate();
+  return (
+    <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "sans-serif" }}>
+      <NavBar backLabel="Back to site" backTo="/" />
+      <div style={{ maxWidth: 480, margin: "0 auto", padding: "120px 24px", textAlign: "center" }}>
+        <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 32, fontWeight: 700, color: DARK_GREEN, margin: "0 0 12px" }}>
+          Page not found
+        </h1>
+        <p style={{ fontSize: 15, color: TEXT_MID, lineHeight: 1.6, marginBottom: 28 }}>
+          That page doesn't exist. It may have moved, or the link might be outdated.
+        </p>
+        <button onClick={() => navigate("/")} style={{
+          background: MOCHA, color: IVORY, border: "none", borderRadius: 8,
+          padding: "12px 28px", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "sans-serif"
+        }}>
+          Back to Home
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <Routes>
@@ -162,6 +185,7 @@ export default function App() {
       <Route path="/self-assessment"  element={<SelfAssessmentRoute />} />
       <Route path="/tools"            element={<ToolsIndex />} />
       <Route path="/tools/:toolId"    element={<ToolRoute />} />
+      <Route path="*"                 element={<NotFoundRoute />} />
     </Routes>
   );
 }
