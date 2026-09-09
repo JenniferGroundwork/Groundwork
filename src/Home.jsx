@@ -670,17 +670,16 @@ export default function GroundworkHome() {
           <div className="who-header" style={{ marginBottom: 0 }}>
             <div>
               <p className="eyebrow">Who's Behind This</p>
-              <h2 className="who-h2">I've built and run real operations, not just studied them.</h2>
-            </div>
+<h2 className="who-h2">I've run operations and built the systems that make things work. Now, I build them for my clients.</h2>            </div>
             <div>
               <p className="who-desc">
-                Nearly a decade in management and Assistant Dean roles at the University of Toronto, most recently as Assistant Dean, Administration &amp; Operations at St. Michael's College, federated with U of T. I managed the operating budget, built the systems myself, database work and automated workflows included, and led a 22-person team, headcount most of my clients would recognize.
+                Nearly a decade in leadership and Assistant Dean roles at the University of Toronto, most recently as Assistant Dean, Administration & Operations at St. Michael's College, federated with U of T. I managed the operating budget, built the systems myself, database work and automated workflows included, and led ~ 20-person team, a headcount most of my clients would recognize.
               </p>
               <p className="who-desc" style={{ marginTop: 16 }}>
-                I've been told often in my past roles that I'm diplomatic but never soft. Direct without being harsh. That's still how I operate. I care about you and your business doing well, and I show that by building things that actually work. The systems are the support.
+                I've often been told in my past roles that I'm diplomatic - direct without being harsh. Now, with my own clients, that's how I continue to operate. I care that you and your business are doing well, and I show that by building things that actually work. The systems are the support.
               </p>
               <p className="who-desc" style={{ marginTop: 16 }}>
-                I usually spot what's broken fast. But the fastest read isn't always the right one, so I'll tell you what I see and want you to push back if it's off. The goal is what works for you, not being right.
+                I can find issues fast, but I recognize that the fastest read isn't always the right one. I'll tell you what I see and want you to push back if it's off. The goal is what works for you, not being right.
               </p>
             </div>
           </div>
