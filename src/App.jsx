@@ -93,7 +93,7 @@ function ToolsIndex() {
           Tools &amp; Resources
         </h1>
         <p style={{ fontSize: 16, color: TEXT_MID, lineHeight: 1.6, maxWidth: 480, margin: "0 auto 48px", textAlign: "center" }}>
-          Built to be paid products. Free for now while Groundwork Consult gets off the ground.
+          Normally priced products, currently being offered for free while Groundwork Consult builds out its client base.
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {PRODUCTS.map((p, i) => (
