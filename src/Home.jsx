@@ -728,7 +728,7 @@ export default function GroundworkHome() {
                 h3: "SOP & Handoff Build",
                 p: "The processes that only work because you're the one doing them, written down so someone else can run them the same way. We document the core processes you tell us matter most.",
                 bullets: ["SOPs for the processes you define", "Written for the person doing the job", "Clear enough to hand off tomorrow", "Team training and updates not included"],
-                next: "Once the process is written down, the next question is usually who owns it. That's the Role Clarity Build."
+                next: "Once the process is written down, the next question is usually who owns it. That's the Job Description & Role Clarity Build."
               },
               {
                 num: "02",
@@ -749,7 +749,7 @@ export default function GroundworkHome() {
                 h3: "Backend & Automation Setup",
                 p: "The tools you're already paying for, actually talking to each other. We connect and automate what you have so your team stops doing by hand what software should be doing for them.",
                 bullets: ["Connects and automates existing tools", "Built around your current stack", "Fewer manual handoffs, fewer dropped balls", "Full migrations and new integrations not included"],
-                next: "Automations only hold if the process behind them is documented. Most clients pair this with an SOP & Handoff Build."
+                next: "next: "Automations only hold if the process behind them is documented. If that's not in place, we'll flag it and see what could help your team.""
               }
             ].map((svc) => (
               <div key={svc.h3} className="service-card">
