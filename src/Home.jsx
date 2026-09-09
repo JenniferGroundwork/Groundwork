@@ -674,7 +674,7 @@ export default function GroundworkHome() {
             </div>
             <div>
               <p className="who-desc">
-                Nearly a decade in management and Assistant Dean roles at the University of Toronto, most recently as Assistant Dean, Administration &amp; Operations at St. Michael's College, federated with U of T. One of those roles was created for me. I managed the operating budget, built the systems myself, database work and automated workflows included, and led a 22-person team, headcount most of my clients would recognize.
+                Nearly a decade in management and Assistant Dean roles at the University of Toronto, most recently as Assistant Dean, Administration &amp; Operations at St. Michael's College, federated with U of T. I managed the operating budget, built the systems myself, database work and automated workflows included, and led a 22-person team, headcount most of my clients would recognize.
               </p>
               <p className="who-desc" style={{ marginTop: 16 }}>
                 I've been told often in my past roles that I'm diplomatic but never soft. Direct without being harsh. That's still how I operate. I care about you and your business doing well, and I show that by building things that actually work. The systems are the support.
