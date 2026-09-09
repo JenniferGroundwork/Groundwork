@@ -695,7 +695,7 @@ export default function GroundworkHome() {
             </div>
             <div>
               <p className="who-desc">
-                The team is capable, and the revenue is there. But - nothing is written down, everything runs through you, and hiring more people isn't fixing the problem.
+                Maybe some of it's written down. Maybe a few people on your team can already make calls without checking with you first. That's real progress, and it still doesn't mean the business runs without you. Sometimes the SOPs exist but nobody actually follows them. Sometimes hiring feels like the obvious next move, until the new person just becomes one more thing you're managing. The real question isn't whether you've done some of the work. It's whether the business would keep running smoothly if you took two weeks off without checking in.
               </p>
             </div>
           </div>
@@ -716,7 +716,7 @@ export default function GroundworkHome() {
         <div className="section-inner">
           <div className="services-header">
             <p className="eyebrow eyebrow-light">The Builds</p>
-            <h2 className="services-h2">Pick what's broken. <em>We build the fix.</em></h2>
+            <h2 className="services-h2">Four ways to fix <em>what's not working.</em></h2>
             <p className="services-desc">
               Every build is scoped and priced on its own. No bundles, no add-ons you didn't ask for. You choose what your business needs right now, and that's what we build.
             </p>
