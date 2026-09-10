@@ -651,7 +651,7 @@ export default function GroundworkHome() {
               on systems.
             </h1>
             <p className="hero-sub">
-              We work with founder-led businesses when the way they operate isn't keeping up with what they're trying to build. That shows up most often in trades, wellness and health services, and other client-facing operations - anywhere that the schedule, administration and operations run through one person's head. We come in, build the foundation from the ground up, and hand it back. Fixed scope - we're not taking over, we're preparing you to win.
+              We work with founder-led businesses when the way they operate isn't keeping up with what they're trying to build. That shows up most often in trades, wellness and health services, and other client-facing operations - anywhere that the schedule, administration and operations run through one person's head. We come in, build the foundation from the ground up, and hand it back. Fixed scope: We're not taking over, we're preparing you to keep moving forward.
             </p>
             <div className="hero-actions">
               <a href="/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
