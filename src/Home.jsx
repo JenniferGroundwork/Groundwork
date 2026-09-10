@@ -749,7 +749,7 @@ export default function GroundworkHome() {
                 h3: "Backend & Automation Setup",
                 p: "The tools you're already paying for, actually talking to each other. We connect and automate what you have so your team stops doing by hand what software should be doing for them.",
                 bullets: ["Connects and automates existing tools", "Built around your current stack", "Fewer manual handoffs, fewer dropped balls", "Full migrations and new integrations not included"],
-                next: "next: "Automations only hold if the process behind them is documented. If that's not in place, we'll flag it and see what could help your team.""
+                next: "Automations only hold if the process behind them is documented. If that's not in place, we'll flag it and see what could help your team."
               }
             ].map((svc) => (
               <div key={svc.h3} className="service-card">
