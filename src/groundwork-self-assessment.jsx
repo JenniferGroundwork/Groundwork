@@ -109,7 +109,7 @@ const areas = [
     questions: [
       "If revenue doubled next year, our systems and team could handle it.",
       "There are no obvious bottlenecks that could become crises under pressure.",
-      "Decisions don't stall because only I'm the only one who can make them.",
+      "Decisions don't stall because I'm the only one who can make them.",
       "I know what's holding the business back from growing.",
     ],
   },
@@ -125,6 +125,81 @@ const areas = [
     ],
   },
 ];
+
+// Solo-specific overrides for areas 3 and 5. Used when the respondent
+// indicates they run the business alone (no contractors or team).
+// Same diagnostic intent as the team versions, reframed for a
+// business where there's no one else to have gaps or overlaps with.
+const soloAreaOverrides = {
+  3: {
+    title: "Ownership & Follow-Through",
+    description: "Whether the things only you know how to do are still safe if something happens to you.",
+    questions: [
+      "If you got sick for a week, the things only you know how to do would still get done, or could wait without anything breaking.",
+      "When you take on a contractor or helper, it's genuinely clear what's theirs to handle versus what stays with you.",
+      "You're not the only person who could explain how your business actually runs, even if you're the only one running it.",
+      "Nothing critical is 'figure it out when it comes up' - the important calls have an answer before you need it.",
+    ],
+  },
+  5: {
+    title: "Clarity for Anyone Who Touches Your Business",
+    description: "Whether the people around your business, clients, contractors, future-you, could pick up what they need without a long explanation.",
+    questions: [
+      "A contractor, assistant, or collaborator could step in and understand what to do without a long explanation from you.",
+      "Clients get the same clear experience from you every time, not something that depends on how busy or scattered you are that week.",
+      "If you wanted to hand off a task tomorrow, there's something you could actually hand them, not just a verbal explanation.",
+      "You're not the only place information about your business lives. Someone else, or some system, would know what you know.",
+    ],
+  },
+};
+
+// Single-question overrides for the "solo" gate answer (just me, or me plus
+// a contractor or two). Unlike soloAreaOverrides (which swaps a whole
+// area), these areas keep their original title, description, and most
+// questions - only specific questions that assumed multiple team members
+// get replaced. Keyed by area id, then by the index of the question being
+// replaced.
+const soloQuestionOverrides = {
+  2: {
+    1: "If the person who knows this best was suddenly unavailable, we could still find what we need to keep running.",
+  },
+  7: {
+    0: "A client gets the same experience every time, no matter how busy or stretched things get behind the scenes.",
+  },
+  8: {
+    0: "Work goes to the right person on purpose, not just out of habit or convenience.",
+    1: "There's a way to flag when you (or whoever's helping) are overloaded, before it becomes a problem.",
+  },
+};
+
+// Returns the area set to use for this respondent. businessSize is a
+// two-way fork: "solo" (just me, or me plus a contractor or two) gets
+// soloAreaOverrides swapped in for areas 3 and 5 - at that scale,
+// responsibility isn't genuinely distributed yet, so the team-framed
+// questions about who-owns-what and team-wide alignment don't match
+// reality closely enough to feel like they apply. Only "team" (a real
+// team working alongside you) gets the original team-based questions
+// for those two areas. "solo" also gets soloQuestionOverrides applied -
+// individual questions in areas 2, 7, and 8 that assumed multiple team
+// members, swapped for wording that works whether it's just you or you
+// plus a contractor.
+function getActiveAreas(businessSize) {
+  const isTeam = businessSize === "team";
+  return areas.map((a) => {
+    let next = a;
+    if (!isTeam && soloAreaOverrides[a.id]) {
+      next = { ...next, ...soloAreaOverrides[a.id] };
+    }
+    if (!isTeam && soloQuestionOverrides[a.id]) {
+      const overrides = soloQuestionOverrides[a.id];
+      next = {
+        ...next,
+        questions: next.questions.map((q, i) => overrides[i] ?? q),
+      };
+    }
+    return next;
+  });
+}
 
 const ratings = [
   { value: 1, label: "Rarely true", color: "#C0392B" },
@@ -160,40 +235,43 @@ export default function SelfAssessment() {
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [started, setStarted] = useState(false);
+  const [businessSize, setBusinessSize] = useState(null); // null | "solo" | "team"
 
   const [emailName, setEmailName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [emailStatus, setEmailStatus] = useState(null); // null | "sending" | "sent" | "error"
 
+  const activeAreas = getActiveAreas(businessSize);
+
   const totalAnswered = Object.keys(answers).length;
-  const totalQuestions = areas.reduce((acc, a) => acc + a.questions.length, 0);
+  const totalQuestions = activeAreas.reduce((acc, a) => acc + a.questions.length, 0);
 
   function setAnswer(areaId, qIdx, value) {
     setAnswers((prev) => ({ ...prev, [`${areaId}-${qIdx}`]: value }));
   }
 
   function getAreaScore(areaId) {
-    const area = areas.find((a) => a.id === areaId);
+    const area = activeAreas.find((a) => a.id === areaId);
     const vals = area.questions.map((_, i) => answers[`${areaId}-${i}`]).filter(Boolean);
     if (!vals.length) return null;
     return vals.reduce((a, b) => a + b, 0) / vals.length;
   }
 
   function areaComplete(areaId) {
-    const area = areas.find((a) => a.id === areaId);
+    const area = activeAreas.find((a) => a.id === areaId);
     return area.questions.every((_, i) => answers[`${areaId}-${i}`]);
   }
 
-  const allComplete = areas.every((a) => areaComplete(a.id));
+  const allComplete = activeAreas.every((a) => areaComplete(a.id));
 
-  const sortedAreas = [...areas].sort((a, b) => {
+  const sortedAreas = [...activeAreas].sort((a, b) => {
     const sa = getAreaScore(a.id) || 4;
     const sb = getAreaScore(b.id) || 4;
     return sa - sb;
   });
 
   function buildScorecard() {
-  return areas.map((area) => {
+  return activeAreas.map((area) => {
     const score = getAreaScore(area.id) || 0;
     const status = getStatus(score);
     return `${area.title}: ${score.toFixed(1)} / 4.0   ${status.label}`;
@@ -208,7 +286,7 @@ function buildPriorities() {
 
   async function handleSendEmail() {
     if (!emailName.trim() || !emailAddress.trim()) return;
-    const overallScore = (areas.reduce((acc, a) => acc + (getAreaScore(a.id) || 0), 0) / areas.length).toFixed(1);
+    const overallScore = (activeAreas.reduce((acc, a) => acc + (getAreaScore(a.id) || 0), 0) / activeAreas.length).toFixed(1);
     const scorecard = buildScorecard();
 const priorities = buildPriorities();
 
@@ -251,7 +329,36 @@ const priorities = buildPriorities();
           <p style={{ fontSize: 13, color: CAMEL, marginBottom: 28, fontFamily: "sans-serif", fontStyle: "italic" }}>
             This self-assessment asks you to be honest and reflective of where you and your business stand. The more accurate you are, the more useful your results will be.
           </p>
-          <button onClick={() => setStarted(true)} style={{ background: MOCHA, color: IVORY, border: "none", borderRadius: 8, padding: "16px 48px", fontSize: 16, cursor: "pointer", letterSpacing: "0.05em", fontFamily: "sans-serif", fontWeight: 600 }}>
+          <div style={{ background: "white", borderRadius: 12, padding: "24px 28px", marginBottom: 28, textAlign: "left", border: `1px solid ${LIGHT_TAN}` }}>
+            <p style={{ fontSize: 14, color: DARK_MOCHA, fontWeight: 600, margin: "0 0 14px", fontFamily: "sans-serif" }}>Before we start, how does your business run day to day?</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {[
+                { value: "solo", label: "Just me, or me plus a contractor or two I lean on" },
+                { value: "team", label: "A team of people working alongside me" },
+              ].map((opt) => (
+                <button
+                  key={opt.value}
+                  onClick={() => setBusinessSize(opt.value)}
+                  style={{
+                    textAlign: "left", padding: "12px 16px", borderRadius: 8, cursor: "pointer", fontSize: 14, fontFamily: "sans-serif", fontWeight: 600,
+                    border: `2px solid ${businessSize === opt.value ? MOCHA : LIGHT_TAN}`,
+                    background: businessSize === opt.value ? MOCHA : "white",
+                    color: businessSize === opt.value ? IVORY : DARK_MOCHA,
+                  }}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+          <button
+            onClick={() => setStarted(true)}
+            disabled={!businessSize}
+            style={{
+              background: businessSize ? MOCHA : LIGHT_TAN, color: businessSize ? IVORY : CAMEL, border: "none", borderRadius: 8, padding: "16px 48px", fontSize: 16,
+              cursor: businessSize ? "pointer" : "default", letterSpacing: "0.05em", fontFamily: "sans-serif", fontWeight: 600,
+            }}
+          >
             Begin Assessment →
           </button>
         </div>
@@ -260,7 +367,7 @@ const priorities = buildPriorities();
   }
 
   if (showResults) {
-    const overallScore = areas.reduce((acc, a) => acc + (getAreaScore(a.id) || 0), 0) / areas.length;
+    const overallScore = activeAreas.reduce((acc, a) => acc + (getAreaScore(a.id) || 0), 0) / activeAreas.length;
     const weakest = sortedAreas.slice(0, 3);
     const strongest = sortedAreas.slice(-2).reverse();
 
@@ -293,7 +400,7 @@ const priorities = buildPriorities();
           {/* All areas scorecard */}
           <div style={{ background: "white", borderRadius: 12, padding: "24px 28px", marginBottom: 24, border: `1px solid ${LIGHT_TAN}` }}>
             <h2 style={{ fontSize: 16, color: DARK_MOCHA, margin: "0 0 20px", fontFamily: "Georgia, serif", fontWeight: 700 }}>Scorecard by Area</h2>
-            {areas.map((area) => {
+            {activeAreas.map((area) => {
               const score = getAreaScore(area.id) || 0;
               const status = getStatus(score);
               const pct = (score / 4) * 100;
@@ -393,9 +500,14 @@ const priorities = buildPriorities();
             <p style={{ color: CAMEL, fontSize: 14, margin: "0 0 24px", lineHeight: 1.7 }}>
               A Systems Walkthrough takes this further. We go through what's actually happening in your business and give you a short, honest list of what we'd build and why.
             </p>
-            <a href="/book" style={{ display: "inline-block", background: AMBER, color: "white", borderRadius: 8, padding: "14px 36px", fontSize: 15, textDecoration: "none", fontWeight: 600, letterSpacing: "0.03em" }}>
-              Book a Discovery Call
-            </a>
+            <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+              <a href="/book" style={{ display: "inline-block", background: AMBER, color: "white", borderRadius: 8, padding: "14px 36px", fontSize: 15, textDecoration: "none", fontWeight: 600, letterSpacing: "0.03em" }}>
+                Book a Discovery Call
+              </a>
+              <a href="mailto:jennifer@groundworkconsult.ca" style={{ display: "inline-block", background: "transparent", color: IVORY, border: `1.5px solid rgba(245,240,232,0.4)`, borderRadius: 8, padding: "14px 36px", fontSize: 15, textDecoration: "none", fontWeight: 600, letterSpacing: "0.03em" }}>
+                Send an Email
+              </a>
+            </div>
             <div style={{ marginTop: 16, fontSize: 12, color: CAMEL }}>jennifer@groundworkconsult.ca · groundworkconsult.ca</div>
           </div>
 
@@ -404,7 +516,7 @@ const priorities = buildPriorities();
     );
   }
 
-  const area = areas[currentArea];
+  const area = activeAreas[currentArea];
   const progress = (totalAnswered / totalQuestions) * 100;
 
   return (
@@ -423,7 +535,7 @@ const priorities = buildPriorities();
       <div style={{ maxWidth: 680, margin: "0 auto", padding: "32px 20px" }}>
         {/* Area nav */}
         <div style={{ display: "flex", gap: 6, marginBottom: 32, flexWrap: "wrap" }}>
-          {areas.map((a, i) => {
+          {activeAreas.map((a, i) => {
             const complete = areaComplete(a.id);
             const active = i === currentArea;
             return (
@@ -440,7 +552,7 @@ const priorities = buildPriorities();
 
         {/* Area header */}
         <div style={{ marginBottom: 28 }}>
-          <div style={{ fontSize: 11, letterSpacing: "0.15em", color: CAMEL, textTransform: "uppercase", marginBottom: 6 }}>Area {area.id} of 10</div>
+          <div style={{ fontSize: 11, letterSpacing: "0.15em", color: CAMEL, textTransform: "uppercase", marginBottom: 6 }}>Area {area.id} of {activeAreas.length}</div>
           <h2 style={{ fontSize: 28, color: DARK_MOCHA, margin: "0 0 8px", fontFamily: "Georgia, serif", fontWeight: 700 }}>{area.title}</h2>
           <div style={{ width: 36, height: 2, background: AMBER, marginBottom: 12 }} />
           <p style={{ fontSize: 14, color: MOCHA, margin: 0, lineHeight: 1.6 }}>{area.description}</p>
@@ -487,7 +599,7 @@ const priorities = buildPriorities();
             cursor: currentArea === 0 ? "default" : "pointer", fontSize: 14, fontWeight: 600,
           }}>← Previous</button>
 
-          {currentArea < areas.length - 1 ? (
+          {currentArea < activeAreas.length - 1 ? (
             <button onClick={() => setCurrentArea((p) => p + 1)} style={{
               padding: "12px 28px", borderRadius: 8, border: "none", background: MOCHA, color: IVORY, cursor: "pointer", fontSize: 14, fontWeight: 600,
             }}>Next Area →</button>
