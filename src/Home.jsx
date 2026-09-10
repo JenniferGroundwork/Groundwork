@@ -636,7 +636,7 @@ export default function GroundworkHome() {
           <li><a href="#services">Services</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="/book" className="nav-cta">Book a Call</a></li>
+          <li><a href="#contact" className="nav-cta">Get in Touch</a></li>
         </ul>
       </nav>
 
@@ -656,6 +656,7 @@ export default function GroundworkHome() {
             <div className="hero-actions">
               <a href="/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
               <a href="/book" className="btn-secondary">Book a Discovery Call</a>
+              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-secondary">Send an Email</a>
             </div>
           </div>
           <div className="hero-card">
@@ -750,7 +751,10 @@ export default function GroundworkHome() {
             <p className="foundations-cta-note">
               Not sure if this is you, or if you need one of the Builds instead? That's exactly what the Systems Walkthrough is for.
             </p>
-            <a href="/book" className="btn-primary">Book a Discovery Call &rarr;</a>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+              <a href="/book" className="btn-primary">Book a Discovery Call &rarr;</a>
+              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-secondary">Send an Email</a>
+            </div>
           </div>
           <div className="foundations-card">
             <p className="foundations-card-title">What the Foundations Build covers</p>
@@ -862,7 +866,10 @@ export default function GroundworkHome() {
 <p className="audit-price-note">
   If something on that list is worth fixing, you pick the build. Each one is scoped, priced, and contracted separately, so you're only ever paying for what you actually need.
 </p>
-            <a href="/book" className="btn-primary">Book a Discovery Call &rarr;</a>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+              <a href="/book" className="btn-primary">Book a Discovery Call &rarr;</a>
+              <a href="mailto:jennifer@groundworkconsult.ca" className="btn-secondary">Send an Email</a>
+            </div>
           </div>
           <div className="audit-card">
             <p className="audit-card-title">What we look at</p>
