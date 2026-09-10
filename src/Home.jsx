@@ -242,6 +242,31 @@ const styles = `
   }
   .industry-p { font-size: 13px; line-height: 1.6; color: ${TEXT_MID}; }
 
+  .foundations { background: ${LIGHT_TAN}; padding: 100px 80px; }
+  .foundations-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .foundations-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 2.8vw, 38px); font-weight: 700;
+    color: ${DARK_GREEN}; line-height: 1.2; margin-bottom: 20px;
+  }
+  .foundations-p { font-size: 16px; line-height: 1.65; color: ${TEXT_MID}; margin-bottom: 20px; }
+  .foundations-cta-note { font-size: 14px; line-height: 1.6; color: ${TEXT_MID}; margin-bottom: 28px; font-style: italic; }
+  .foundations-card {
+    background: white; border-radius: 16px; padding: 36px;
+    border: 1px solid rgba(107,79,58,0.08);
+  }
+  .foundations-card-title { font-size: 14px; font-weight: 600; color: ${DARK_GREEN}; margin-bottom: 20px; }
+  .foundations-detail { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .foundations-detail:last-child { margin-bottom: 0; }
+  .foundations-detail-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: ${OLIVE}; margin-top: 8px; flex-shrink: 0;
+  }
+  .foundations-detail p { font-size: 14px; line-height: 1.55; color: ${TEXT_MID}; }
+
   .services { background: ${DARK_GREEN}; }
   .services-header { text-align: center; margin-bottom: 64px; }
   .services-h2 {
@@ -444,6 +469,8 @@ const styles = `
     .services-grid { grid-template-columns: 1fr; }
     .how-header { grid-template-columns: 1fr; gap: 20px; }
     .steps { grid-template-columns: 1fr 1fr; }
+    .foundations { padding: 64px 24px; }
+    .foundations-inner { grid-template-columns: 1fr; gap: 40px; }
     .audit { padding: 64px 24px; }
     .audit-inner { grid-template-columns: 1fr; gap: 40px; }
     .cta-section { padding: 64px 24px; }
@@ -624,7 +651,7 @@ export default function GroundworkHome() {
               on systems.
             </h1>
             <p className="hero-sub">
-              Founder-led businesses hire us when growth has outpaced how they operate, in trades, wellness and health services, and other client-facing operations where the schedule runs through one person's head. We come in, build the foundation from the ground up, and hand it back. Fixed scope - we're not taking over, we're preparing you to win.
+              We work with founder-led businesses when the way they operate isn't keeping up with what they're trying to build. That shows up most often in trades, wellness and health services, and other client-facing operations - anywhere the schedule, administration and operations run through one person's head. We come in, build the foundation from the ground up, and hand it back. Fixed scope - we're not taking over, we're preparing you to win.
             </p>
             <div className="hero-actions">
               <a href="/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
@@ -673,13 +700,13 @@ export default function GroundworkHome() {
 <h2 className="who-h2">I've run operations and built the systems that make things work. Now, I build them for my clients.</h2>            </div>
             <div>
               <p className="who-desc">
-                Nearly a decade in leadership and Assistant Dean roles at the University of Toronto, most recently as Assistant Dean, Administration & Operations at St. Michael's College, federated with U of T. I managed the operating budget, built the systems myself, database work and automated workflows included, and led ~ 20-person team, a headcount most of my clients would recognize.
+                I spent nearly a decade in leadership roles at the University of Toronto, most recently as Assistant Dean, Administration & Operations at St. Michael's College, federated with U of T. I managed an operating budget, built systems and automated workflows from scratch, and ran the kind of team where if I didn't document how something worked, it stopped working the moment I stepped away. I look for that same thing now, no matter the size of the business in front of me.
               </p>
               <p className="who-desc" style={{ marginTop: 16 }}>
                 I've often been told in my past roles that I'm diplomatic - direct without being harsh. Now, with my own clients, that's how I continue to operate. I care that you and your business are doing well, and I show that by building things that actually work. The systems are the support.
               </p>
               <p className="who-desc" style={{ marginTop: 16 }}>
-                I can find issues fast, but I recognize that the fastest read isn't always the right one. I'll tell you what I see and want you to push back if it's off. The goal is what works for you, not being right.
+                I can find issues fast, but I recognize that the fastest read isn't always the right one. I'll tell you what I see and want you to push back if it's off. The goal is finding what works for you.
               </p>
             </div>
           </div>
@@ -695,7 +722,7 @@ export default function GroundworkHome() {
             </div>
             <div>
               <p className="who-desc">
-                Maybe some of it's written down. Maybe a few people on your team can already make calls without checking with you first. That's real progress, and it still doesn't mean the business runs without you. Sometimes the SOPs exist but nobody actually follows them. Sometimes hiring feels like the obvious next move, until the new person just becomes one more thing you're managing. The real question isn't whether you've done some of the work. It's whether the business would keep running smoothly if you took two weeks off without checking in.
+                Maybe some of your processes are written down. Maybe you've got a system that mostly works, or a contractor who can handle things without you walking them through it every time. That's real progress, and, at the same time, it still doesn't mean that the business can run without you. Sometimes the process exists but you're the only one who actually follows it. Sometimes the fix isn't more structure, it's getting what's in your head out of it, so it's not resting entirely on your memory. The real question isn't whether you've done some of the groundwork to set yourself up for success. It's whether your business keeps operating when you step away - or if your time off means returning to an overfilled inbox and a week of catch up.
               </p>
             </div>
           </div>
@@ -706,6 +733,36 @@ export default function GroundworkHome() {
                 <p className="industry-label">{ind.label}</p>
                 <h3 className="industry-h3">{ind.h3}</h3>
                 <p className="industry-p">{ind.p}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="foundations" className="foundations">
+        <div className="foundations-inner">
+          <div>
+            <p className="eyebrow eyebrow-light">Just You, or You Plus a Few</p>
+            <h2 className="foundations-h2">You didn't start your business to become its accountant, scheduler, and IT department. But out of necessity, you're wearing all the hats.</h2>
+            <p className="foundations-p">
+              Most people go into business because they're excellent at the work they do, not because they wanted to run the back end of a company. If it's just you, or you and a couple of contractors, the SOPs and role clarity that bigger teams need don't apply the same way. What you need is different: your pipeline mapped out, the stuff that only lives in your head written down somewhere else, and the admin work that's eating away your time actually handled. Same foundation, built for the size you're at right now.
+            </p>
+            <p className="foundations-cta-note">
+              Not sure if this is you, or if you need one of the Builds instead? That's exactly what the Systems Walkthrough is for.
+            </p>
+            <a href="/book" className="btn-primary">Book a Discovery Call &rarr;</a>
+          </div>
+          <div className="foundations-card">
+            <p className="foundations-card-title">What the Foundations Build covers</p>
+            {[
+              "Your client experience, start to finish, mapped and cleaned up",
+              "The pricing, process, and client-handling knowledge that only lives in your head, written down",
+              "Whatever's eating the most non-billable time, organized and built into a repeatable system",
+              "A foundation that's ready if you choose to bring on help or a team later"
+            ].map(item => (
+              <div key={item} className="foundations-detail">
+                <div className="foundations-detail-dot" />
+                <p>{item}</p>
               </div>
             ))}
           </div>
