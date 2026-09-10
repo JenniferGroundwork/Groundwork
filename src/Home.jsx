@@ -706,7 +706,7 @@ export default function GroundworkHome() {
                 I've often been told in my past roles that I'm diplomatic - direct without being harsh. Now, with my own clients, that's how I continue to operate. I care that you and your business are doing well, and I show that by building things that actually work. The systems are the support.
               </p>
               <p className="who-desc" style={{ marginTop: 16 }}>
-                I can find issues fast, but I recognize that the fastest read isn't always the right one. I'll tell you what I see and want you to push back if it's off. The goal is finding what works for you.
+                I find issues fast, but I recognize that the fastest read isn't always the right one. I'll tell you what I see and want you to push back if it's off. The goal is finding what works for you.
               </p>
             </div>
           </div>
@@ -745,7 +745,7 @@ export default function GroundworkHome() {
             <p className="eyebrow eyebrow-light">Just You, or You Plus a Few</p>
             <h2 className="foundations-h2">You didn't start your business to become its accountant, scheduler, and IT department. But out of necessity, you're wearing all the hats.</h2>
             <p className="foundations-p">
-              Most people go into business because they're excellent at the work they do, not because they wanted to run the back end of a company. If it's just you, or you and a couple of contractors, the SOPs and role clarity that bigger teams need don't apply the same way. What you need is different: your pipeline mapped out, the stuff that only lives in your head written down somewhere else, and the admin work that's eating away your time actually handled. Same foundation, built for the size you're at right now.
+              Most people go into business because they're excellent at the work they do, not because they wanted to run the back end of a company. If it's just you, or you and a couple of contractors, the SOPs and role clarity that bigger teams need don't apply the same way. Your needs will likely be different: your processes mapped out, the information that only lives in your head written down somewhere else, and the administrative work that's eating away your time actually handled. Same foundation, built for the size you're at right now.
             </p>
             <p className="foundations-cta-note">
               Not sure if this is you, or if you need one of the Builds instead? That's exactly what the Systems Walkthrough is for.
