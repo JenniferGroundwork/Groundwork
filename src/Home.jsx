@@ -930,8 +930,9 @@ export default function GroundworkHome() {
               <small>Based in Canada &middot; groundworkconsult.ca</small>
             </div>
             <div>
-              <p className="footer-col-label">The Builds</p>
+              <p className="footer-col-label">What We Build</p>
               <ul className="footer-links">
+                <li><a href="#foundations">Foundations Build</a></li>
                 <li><a href="#services">SOP & Handoff</a></li>
                 <li><a href="#services">Role Clarity</a></li>
                 <li><a href="#services">Client Journey</a></li>
