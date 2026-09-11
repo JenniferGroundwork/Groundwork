@@ -603,7 +603,7 @@ export default function GroundworkHome() {
     {
       icon: icons.trades,
       label: "Trades",
-      h3: "Jobs get done, but only because the right person showed up.",
+      h3: "Jobs get done, but only because the right person shows up.",
       p: "Electrical, plumbing, HVAC, roofing, construction. We build the playbooks your crew can actually follow, even on the days you're not on site."
     },
     {
@@ -615,7 +615,7 @@ export default function GroundworkHome() {
     {
       icon: icons.serviceBased,
       label: "Service-Based & Client-Facing Businesses",
-      h3: "The work is good. The business behind it hasn't caught up.",
+      h3: "The work is great, but the business behind it hasn't caught up yet.",
       p: "Property management, hospitality, professional services, and other founder-led operations where the schedule, the client, or the handoff runs through one person's head."
     },
   ];
@@ -651,7 +651,8 @@ export default function GroundworkHome() {
               on systems.
             </h1>
             <p className="hero-sub">
-              We work with founder-led businesses when the way they operate isn't keeping up with what they're trying to build. That shows up most often in trades, wellness and health services, and other client-facing operations - anywhere that the schedule, administration and operations run through one person's head. We come in, build the foundation from the ground up, and hand it back. Fixed scope: We're not taking over, we're preparing you to keep moving forward.
+              We work with founder-led businesses when the way they operate isn't keeping up with what they're trying to build. That shows up most often in trades, wellness and health services, and other client-facing operations - anywhere that the schedule, administration and operations run through one person's head. We come in, build the foundation from the ground up, and hand it back.<br />
+              Fixed scope: We're not taking over, we're preparing you to keep moving forward.
             </p>
             <div className="hero-actions">
               <a href="/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
@@ -671,8 +672,8 @@ export default function GroundworkHome() {
             <div className="hero-card-item">
               <div className="hero-card-dot" />
               <div className="hero-card-text">
-                <strong>Deliverables your team can actually use</strong>
-                <span>SOPs, process maps, and automations built for real people doing real work.</span>
+                <strong>Deliverables you can actually use</strong>
+                <span>SOPs, process maps, and automations built for how the work really gets done.</span>
               </div>
             </div>
             <div className="hero-card-item">
@@ -701,10 +702,10 @@ export default function GroundworkHome() {
 <h2 className="who-h2">I've run operations and built the systems that make things work. Now, I build them for my clients.</h2>            </div>
             <div>
               <p className="who-desc">
-                I spent nearly a decade in leadership roles at the University of Toronto, most recently as Assistant Dean, Administration & Operations at St. Michael's College, federated with U of T. I managed an operating budget, built systems and automated workflows from scratch, and ran the kind of team where if I didn't document how something worked, it stopped working the moment I stepped away. I look for that same thing now, no matter the size of the business in front of me.
+                I spent nearly a decade in leadership roles at the University of Toronto, most recently as Assistant Dean, Administration & Operations at St. Michael's College, federated with U of T. I managed an operating budget, built systems and automated workflows from scratch, and ran a team where a documentation gap didn't announce itself. It just sat there until something broke, sometimes days or weeks later, and nobody knew why. That's what I look for now, no matter the size of the business in front of me.
               </p>
               <p className="who-desc" style={{ marginTop: 16 }}>
-                I've often been told in my past roles that I'm diplomatic - direct without being harsh. Now, with my own clients, that's how I continue to operate. I care that you and your business are doing well, and I show that by building things that actually work. The systems are the support.
+                I've often been told in my past roles that I'm diplomatic - direct without being harsh. Now, with my own clients, that's how I continue to operate. I care that you and your business are doing well, and I show that by building things that actually work.
               </p>
               <p className="who-desc" style={{ marginTop: 16 }}>
                 I find issues fast, but I recognize that the fastest read isn't always the right one. I'll tell you what I see and want you to push back if it's off. The goal is finding what works for you.
@@ -723,7 +724,7 @@ export default function GroundworkHome() {
             </div>
             <div>
               <p className="who-desc">
-                Maybe some of your processes are written down. Maybe you've got a system that mostly works, or a contractor who can handle things without you walking them through it every time. That's real progress, and, at the same time, it still doesn't mean that the business can run without you. Sometimes the process exists but you're the only one who actually follows it. Sometimes the fix isn't more structure, it's getting what's in your head out of it, so it's not resting entirely on your memory. The real question isn't whether you've done some of the groundwork to set yourself up for success. It's whether your business keeps operating when you step away - or if your time off means returning to an overfilled inbox and a week of catch up.
+                Maybe some of your processes are written down. Maybe you've got a system that mostly works, or a contractor who can handle things without you walking them through it every time. That's real progress. At the same time, it still doesn't mean the business can run without you. Sometimes the process exists but you're the only one who actually follows it. Sometimes the fix isn't more structure, it's getting what's in your head out of it, so it's not resting entirely on your memory. The real question isn't whether you've done some of the groundwork to set yourself up for success. It's whether your business keeps operating when you step away, or if your time off means returning to an overfilled inbox and a week of catch-up.
               </p>
             </div>
           </div>
@@ -744,9 +745,9 @@ export default function GroundworkHome() {
         <div className="foundations-inner">
           <div>
             <p className="eyebrow eyebrow-light">Just You, or You Plus a Few</p>
-            <h2 className="foundations-h2">You didn't start your business to become its accountant, scheduler, and IT department. But out of necessity, you're wearing all the hats.</h2>
+            <h2 className="foundations-h2">You didn't start your business to become its accountant, office manager, and IT department. But out of necessity, you're wearing all the hats.</h2>
             <p className="foundations-p">
-              Most people go into business because they're excellent at the work they do, not because they wanted to run the back end of a company. If it's just you, or you and a couple of contractors, the SOPs and role clarity that bigger teams need don't apply the same way. Your needs will likely be different: your processes mapped out, the information that only lives in your head written down somewhere else, and the administrative work that's eating away your time actually handled. Same foundation, built for the size you're at right now.
+              Most people go into business because they're excellent at the work they do, not because they want to run the back end of a company. If it's just you, or you and a couple of contractors, the SOPs and role clarity that bigger teams need don't apply the same way. Your needs will likely be different: your processes mapped out, the gaps you can't see because you're too close to them found and fixed, and the administrative work that's eating away your time actually handled. Same foundation, built for the size you're at right now.
             </p>
             <p className="foundations-cta-note">
               Not sure if this is you, or if you need one of the Builds instead? That's exactly what the Systems Walkthrough is for.
@@ -760,7 +761,7 @@ export default function GroundworkHome() {
             <p className="foundations-card-title">What the Foundations Build covers</p>
             {[
               "Your client experience, start to finish, mapped and cleaned up",
-              "The pricing, process, and client-handling knowledge that only lives in your head, written down",
+              "The blind spots in your pricing, process, and client handling, the stuff you can't see because you're too close to it, found and fixed",
               "Whatever's eating the most non-billable time, organized and built into a repeatable system",
               "A foundation that's ready if you choose to bring on help or a team later"
             ].map(item => (
@@ -787,30 +788,31 @@ export default function GroundworkHome() {
               {
                 num: "01",
                 h3: "SOP & Handoff Build",
-                p: "The processes that only work because you're the one doing them, written down so someone else can run them the same way. We document the core processes you tell us matter most.",
-                bullets: ["SOPs for the processes you define", "Written for the person doing the job", "Clear enough to hand off tomorrow", "Team training and updates not included"],
-                next: "Once the process is written down, the next question is usually who owns it. That's the Job Description & Role Clarity Build."
+                p: "The processes that only work because you're the one doing them, and the gaps in them you can't see from the inside. We find what's missing, not just what's already there, and document the core processes you tell us matter most.",
+                bullets: ["SOPs for the processes you define", "Written for the person doing the job", "Clear enough to hand off tomorrow", "Team training and updates may be scoped separately"],
+                next: "Once the gaps are found and the process is documented, the next question is usually who owns it. That's the Job Description & Role Clarity Build."
               },
               {
                 num: "02",
                 h3: "Job Description & Role Clarity Build",
-                p: "When two people think they own the same task, or nobody does, that's a role problem, not a people problem. We write clear job descriptions for the roles you need defined.",
-                bullets: ["Written JDs for defined roles", "Clear ownership, no overlap", "Built from how the role actually works", "Hiring and onboarding not included"],
+                p: "When two people think they own the same task (or nobody thinks they own it), that's a role clarity problem, not a people problem. We write clear job descriptions for the roles you need defined.",
+                bullets: ["Written JDs for defined roles", "Clear ownership, no overlap", "Built from how the role actually works", "Hiring and onboarding may be scoped separately"],
                 next: "Once roles are clear, the next gap that usually shows up is the client-facing side. That's the Client Journey Build."
               },
               {
                 num: "03",
                 h3: "Client Journey & Onboarding Build",
                 p: "From first contact to first invoice, we map what actually happens and build the onboarding around it, using the tools you already have.",
-                bullets: ["Full client journey mapped", "Onboarding built in your existing tools", "Consistent experience, every client", "New software purchases not included"],
+                bullets: ["Full client journey mapped", "Onboarding built in your existing tools", "Consistent experience, every client", "New software purchases may be scoped separately"],
                 next: "Once the journey is mapped, the repetitive parts of it are usually worth automating. That's the Backend & Automation Setup."
               },
               {
                 num: "04",
                 h3: "Backend & Automation Setup",
                 p: "The tools you're already paying for, actually talking to each other. We connect and automate what you have so your team stops doing by hand what software should be doing for them.",
-                bullets: ["Connects and automates existing tools", "Built around your current stack", "Fewer manual handoffs, fewer dropped balls", "Full migrations and new integrations not included"],
-                next: "Automations only hold if the process behind them is documented. If that's not in place, we'll flag it and see what could help your team."
+                bullets: ["Connects and automates existing tools", "Built around your current stack", "Fewer manual handoffs, fewer dropped balls", "Full migrations and new integrations may be scoped separately"],
+                next: "Automations only hold if the process behind them is documented. If that's not in place, we'll flag it and see what could help your team.",
+                scopeNote: "If something's outside the scope of what we're building together, we'll tell you. If we know someone who's good for it, we'll point you their way."
               }
             ].map((svc) => (
               <div key={svc.h3} className="service-card">
@@ -821,6 +823,7 @@ export default function GroundworkHome() {
                   {svc.bullets.map(b => <li key={b}>{b}</li>)}
                 </ul>
                 <p className="service-next">{svc.next}</p>
+                {svc.scopeNote && <p className="service-next" style={{ marginTop: 10 }}>{svc.scopeNote}</p>}
               </div>
             ))}
           </div>
@@ -841,7 +844,7 @@ export default function GroundworkHome() {
           <div className="steps">
             {[
               { num: "01", h3: "Self-Assessment", p: "Start with our free self-assessment. Takes about 15 minutes and gives you an instant scorecard of where things stand." },
-              { num: "02", h3: "Discovery Call", p: "30 minutes and free. We talk through your results, ask about your business, and tell you honestly if we're the right fit." },
+              { num: "02", h3: "Discovery Call", p: "Short and free. We talk through your results, ask about your business, and tell you honestly if we're the right fit." },
               { num: "03", h3: "Systems Walkthrough", p: "One to a few sessions, depending on your operation. We walk through what's happening, tell you what's broken, and give you a short written list of what we'd build and why." },
               { num: "04", h3: "The Build", p: "If there's a fix worth making, you pick the build that matches. Scoped and priced on its own, with a clear start and a clear end. You own it when we're done." }
             ].map((step) => (
@@ -861,7 +864,7 @@ export default function GroundworkHome() {
             <p className="eyebrow eyebrow-light">The Systems Walkthrough</p>
             <h2 className="audit-h2">You already know something's not working. We'll help you name exactly what, and what to do about it.</h2>
             <p className="audit-price-note">
-  This isn't a full audit or a stack of documentation you'll never open. It's one to a few sessions, depending on the size and complexity of your operation, where we go through what's happening together. We won't hand you a recommendation until we're actually clear on what's going on, not before. You'll leave with a clear, honest read on what's working, what's not, and a short written list of what we'd build if you asked us to.
+  This isn't a full audit or a stack of documentation you'll never open. It's one to a few sessions, depending on the size and complexity of your operation, where we go through what's happening together. We won't hand you a recommendation until we're actually clear on what's going on. You'll leave with a clear, honest read on what's working, what's not, and a short written list of what we'd build if you asked us to.
 </p>
 <p className="audit-price-note">
   If something on that list is worth fixing, you pick the build. Each one is scoped, priced, and contracted separately, so you're only ever paying for what you actually need.
@@ -889,7 +892,7 @@ export default function GroundworkHome() {
             <p className="eyebrow eyebrow-light">Get Started</p>
             <h2 className="cta-h2">Ready to build<br />the <em>foundation?</em></h2>
             <p className="cta-p">
-              Start with the free self-assessment to see where things stand. From there, a 30-minute discovery call helps us figure out if a Systems Walkthrough makes sense for you. Prefer to reach out by email first? That works too.
+              Start with the free self-assessment to see where things stand. From there, a short discovery call helps us figure out if a Systems Walkthrough makes sense for you. Prefer to reach out by email first? That works too.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
               <a href="/self-assessment" className="btn-primary">Take the Free Self-Assessment &rarr;</a>
@@ -900,10 +903,10 @@ export default function GroundworkHome() {
           <div className="cta-card">
             <h3 className="cta-card-title">Here is what a discovery call actually is.</h3>
             {[
-              ["30 minutes.", "We'll talk through your self-assessment results and your business."],
+              ["A short call.", "We'll talk through your self-assessment results and your business."],
               ["No pitch.", "We will tell you honestly if we are the right fit. If we're not, we will tell you that too."],
               ["If there is a fit,", "we book a Systems Walkthrough. You'll get a clear, honest read on what's working and a short list of what we'd build."],
-              ["Every build is fixed scope.", "Priced and contracted on its own, with a defined start and end. No open-ended engagements."],
+              ["Every build is fixed scope.", "Priced and contracted on its own, with a defined start and end. If ongoing support makes sense after, we'll talk about what that looks like, but it's never the default."],
               ["A check-in is available after,", "if you want one. Short, fixed term, no obligation to renew."]
             ].map(([bold, rest]) => (
               <div key={bold} className="cta-point">
@@ -943,11 +946,12 @@ export default function GroundworkHome() {
               <p className="footer-col-label">Company</p>
               <ul className="footer-links">
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="/tools">Tools</a></li>
               </ul>
             </div>
             <div>
               <p className="footer-col-label">Ready to Start?</p>
-              <p className="footer-cta-text">Take the free self-assessment, or book a 30-minute discovery call to see if we are the right fit.</p>
+              <p className="footer-cta-text">Take the free self-assessment, or book a short discovery call to see if we are the right fit.</p>
               <a href="/self-assessment" className="btn-primary" style={{ fontSize: 13, padding: "10px 20px" }}>Take the Self-Assessment</a>
             </div>
           </div>
