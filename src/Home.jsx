@@ -242,7 +242,7 @@ const styles = `
   }
   .industry-p { font-size: 13px; line-height: 1.6; color: ${TEXT_MID}; }
 
-  .foundations { background: ${LIGHT_TAN}; padding: 100px 80px; }
+  .foundations { background: ${DARK_GREEN}; padding: 100px 80px; }
   .foundations-inner {
     max-width: 1200px; margin: 0 auto;
     display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
@@ -250,22 +250,22 @@ const styles = `
   .foundations-h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(26px, 2.8vw, 38px); font-weight: 700;
-    color: ${DARK_GREEN}; line-height: 1.2; margin-bottom: 20px;
+    color: ${IVORY}; line-height: 1.2; margin-bottom: 20px;
   }
-  .foundations-p { font-size: 16px; line-height: 1.65; color: ${TEXT_MID}; margin-bottom: 20px; }
-  .foundations-cta-note { font-size: 14px; line-height: 1.6; color: ${TEXT_MID}; margin-bottom: 28px; font-style: italic; }
+  .foundations-p { font-size: 16px; line-height: 1.65; color: rgba(245,240,232,0.75); margin-bottom: 20px; }
+  .foundations-cta-note { font-size: 14px; line-height: 1.6; color: rgba(245,240,232,0.65); margin-bottom: 28px; font-style: italic; }
   .foundations-card {
-    background: white; border-radius: 16px; padding: 36px;
-    border: 1px solid rgba(107,79,58,0.08);
+    background: rgba(245,240,232,0.1); border-radius: 16px; padding: 36px;
+    border: 1px solid rgba(245,240,232,0.15);
   }
-  .foundations-card-title { font-size: 14px; font-weight: 600; color: ${DARK_GREEN}; margin-bottom: 20px; }
+  .foundations-card-title { font-size: 14px; font-weight: 600; color: ${IVORY}; margin-bottom: 20px; }
   .foundations-detail { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
   .foundations-detail:last-child { margin-bottom: 0; }
   .foundations-detail-dot {
     width: 6px; height: 6px; border-radius: 50%;
-    background: ${OLIVE}; margin-top: 8px; flex-shrink: 0;
+    background: ${LIME_CTA}; margin-top: 8px; flex-shrink: 0;
   }
-  .foundations-detail p { font-size: 14px; line-height: 1.55; color: ${TEXT_MID}; }
+  .foundations-detail p { font-size: 14px; line-height: 1.55; color: rgba(245,240,232,0.8); }
 
   .services { background: ${DARK_GREEN}; }
   .services-header { text-align: center; margin-bottom: 64px; }
@@ -694,7 +694,7 @@ export default function GroundworkHome() {
         </div>
       </section>
 
-      <section id="track-record" className="section who" style={{ paddingBottom: 60 }}>
+      <section id="track-record" className="section who">
         <div className="section-inner">
           <div className="who-header" style={{ marginBottom: 0 }}>
             <div>
@@ -711,32 +711,6 @@ export default function GroundworkHome() {
                 I find issues fast, but I recognize that the fastest read isn't always the right one. I'll tell you what I see and want you to push back if it's off. The goal is finding what works for you.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="who-we-help" className="section who" style={{ paddingTop: 20 }}>
-        <div className="section-inner">
-          <div className="who-header">
-            <div>
-              <p className="eyebrow">Who We Help</p>
-              <h2 className="who-h2">Owning a business should mean having options. When it only works because you're in the room, you haven't built freedom yet - you've built yourself a job.</h2>
-            </div>
-            <div>
-              <p className="who-desc">
-                Maybe some of your processes are written down. Maybe you've got a system that mostly works, or a contractor who can handle things without you walking them through it every time. That's real progress. At the same time, it still doesn't mean the business can run without you. Sometimes the process exists but you're the only one who actually follows it. Sometimes the fix isn't more structure, it's getting what's in your head out of it, so it's not resting entirely on your memory. The real question isn't whether you've done some of the groundwork to set yourself up for success. It's whether your business keeps operating when you step away, or if your time off means returning to an overfilled inbox and a week of catch-up.
-              </p>
-            </div>
-          </div>
-          <div className="industries">
-            {industries.map((ind) => (
-              <div key={ind.label} className="industry-card">
-                <div className="industry-icon">{ind.icon}</div>
-                <p className="industry-label">{ind.label}</p>
-                <h3 className="industry-h3">{ind.h3}</h3>
-                <p className="industry-p">{ind.p}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -774,6 +748,32 @@ export default function GroundworkHome() {
         </div>
       </section>
 
+      <section id="who-we-help" className="section who">
+        <div className="section-inner">
+          <div className="who-header">
+            <div>
+              <p className="eyebrow">Who We Help</p>
+              <h2 className="who-h2">Owning a business should mean having options. When it only works because you're in the room, you haven't built freedom yet - you've built yourself a job.</h2>
+            </div>
+            <div>
+              <p className="who-desc">
+                Maybe some of your processes are written down. Maybe you've got a system that mostly works, or a contractor who can handle things without you walking them through it every time. That's real progress. At the same time, it still doesn't mean the business can run without you. Sometimes the process exists but you're the only one who actually follows it. Sometimes the fix isn't more structure, it's getting what's in your head out of it, so it's not resting entirely on your memory. The real question isn't whether you've done some of the groundwork to set yourself up for success. It's whether your business keeps operating when you step away, or if your time off means returning to an overfilled inbox and a week of catch-up.
+              </p>
+            </div>
+          </div>
+          <div className="industries">
+            {industries.map((ind) => (
+              <div key={ind.label} className="industry-card">
+                <div className="industry-icon">{ind.icon}</div>
+                <p className="industry-label">{ind.label}</p>
+                <h3 className="industry-h3">{ind.h3}</h3>
+                <p className="industry-p">{ind.p}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="services" className="section services">
         <div className="section-inner">
           <div className="services-header">
@@ -781,6 +781,9 @@ export default function GroundworkHome() {
             <h2 className="services-h2">Four ways to fix <em>what's not working.</em></h2>
             <p className="services-desc">
               Every build is scoped and priced on its own. No bundles, no add-ons you didn't ask for. You choose what your business needs right now, and that's what we build.
+            </p>
+            <p className="services-desc" style={{ marginTop: 16 }}>
+              Running solo, or with a contractor or two? Foundations Build (above) is likely the better starting point. These four are built for businesses with a team to hand things off to.
             </p>
           </div>
           <div className="services-grid">
