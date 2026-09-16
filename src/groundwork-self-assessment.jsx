@@ -32,7 +32,7 @@ const areas = [
     questions: [
       "Important information (logins, contracts, processes) is stored somewhere anyone can find it.",
       "If a key team member left tomorrow, we could find what we need to keep running.",
-      "Decisions and process changes are communicated clearly and kept on record.",
+      "Decisions and process changes are communicated clearly and/or documented.",
       "We don't rely on one person's memory or notebook to keep things on track.",
     ],
   },
@@ -162,6 +162,7 @@ const soloAreaOverrides = {
 const soloQuestionOverrides = {
   2: {
     1: "If the person who knows this best was suddenly unavailable, we could still find what we need to keep running.",
+    3: "If you had to hand off tomorrow, someone could pick up where you left off without needing your memory to fill the gaps.",
   },
   7: {
     0: "A client gets the same experience every time, no matter how busy or stretched things get behind the scenes.",
@@ -333,7 +334,7 @@ const priorities = buildPriorities();
             <p style={{ fontSize: 14, color: DARK_MOCHA, fontWeight: 600, margin: "0 0 14px", fontFamily: "sans-serif" }}>Before we start, how does your business run day to day?</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {[
-                { value: "solo", label: "Just me, or me plus a contractor or two I lean on" },
+                { value: "solo", label: "Just me, or me plus a contractor or two I bring in when needed" },
                 { value: "team", label: "A team of people working alongside me" },
               ].map((opt) => (
                 <button
