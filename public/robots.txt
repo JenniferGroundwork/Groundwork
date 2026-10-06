@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /tools/
 
-Sitemap: https://groundworkconsult.ca/sitemap.xml
+Sitemap: https://www.groundworkconsult.ca/sitemap.xml
