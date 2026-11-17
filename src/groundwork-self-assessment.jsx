@@ -3,6 +3,7 @@ import { useState } from "react";
 const MOCHA = "#6B4F3A";
 const AMBER = "#C8860A";
 const CAMEL = "#C19A6B";
+const CAMEL_TEXT = "#86673F"; // darker camel so small text on light backgrounds passes contrast
 const IVORY = "#F5F0E8";
 const DARK_MOCHA = "#3D2B1F";
 const TEAL = "#5B7B7A";
@@ -12,6 +13,7 @@ const LIGHT_TAN = "#EDE8E0";
 const EMAILJS_SERVICE_ID = "service_cyqajke";
 const EMAILJS_TEMPLATE_ID = "template_aad5sz9";
 const EMAILJS_PUBLIC_KEY = "ddmCOCTdL-y8LI22-";
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const areas = [
   {
@@ -241,6 +243,8 @@ export default function SelfAssessment() {
   const [emailName, setEmailName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [emailStatus, setEmailStatus] = useState(null); // null | "sending" | "sent" | "error"
+  const [emailError, setEmailError] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   const activeAreas = getActiveAreas(businessSize);
 
@@ -287,6 +291,16 @@ function buildPriorities() {
 
   async function handleSendEmail() {
     if (!emailName.trim() || !emailAddress.trim()) return;
+    if (honeypot) return; // bots fill hidden fields; people don't
+    if (!EMAIL_PATTERN.test(emailAddress.trim())) {
+      setEmailError("That email address doesn't look right. Check it and try again.");
+      return;
+    }
+    if (emailName.trim().length > 100) {
+      setEmailError("Please keep your name under 100 characters.");
+      return;
+    }
+    setEmailError("");
     const overallScore = (activeAreas.reduce((acc, a) => acc + (getAreaScore(a.id) || 0), 0) / activeAreas.length).toFixed(1);
     const scorecard = buildScorecard();
 const priorities = buildPriorities();
@@ -310,7 +324,7 @@ const priorities = buildPriorities();
     return (
       <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "'Georgia', serif", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
         <div style={{ maxWidth: 620, width: "100%", textAlign: "center" }}>
-          <div style={{ marginBottom: 8, fontSize: 11, letterSpacing: "0.2em", color: CAMEL, textTransform: "uppercase", fontFamily: "sans-serif" }}>Groundwork Consult</div>
+          <div style={{ marginBottom: 8, fontSize: 11, letterSpacing: "0.2em", color: CAMEL_TEXT, textTransform: "uppercase", fontFamily: "sans-serif" }}>Groundwork Consult</div>
           <h1 style={{ fontSize: 38, color: DARK_MOCHA, margin: "0 0 12px", lineHeight: 1.2, fontWeight: 700 }}>The Operational<br />Self-Assessment</h1>
           <div style={{ width: 48, height: 3, background: AMBER, margin: "0 auto 24px" }} />
           <p style={{ fontSize: 16, color: MOCHA, lineHeight: 1.7, marginBottom: 32, fontFamily: "sans-serif" }}>
@@ -322,12 +336,12 @@ const priorities = buildPriorities();
               {[["10 areas", "of your operation"], ["40 questions", "honest self-scoring"], ["~15 minutes", "to complete"], ["Clear output", "prioritized next steps"]].map(([val, desc]) => (
                 <div key={val} style={{ flex: "1 1 120px" }}>
                   <div style={{ fontSize: 17, fontWeight: 700, color: DARK_MOCHA, marginBottom: 2 }}>{val}</div>
-                  <div style={{ fontSize: 12, color: CAMEL, fontFamily: "sans-serif" }}>{desc}</div>
+                  <div style={{ fontSize: 12, color: CAMEL_TEXT, fontFamily: "sans-serif" }}>{desc}</div>
                 </div>
               ))}
             </div>
           </div>
-          <p style={{ fontSize: 13, color: CAMEL, marginBottom: 28, fontFamily: "sans-serif", fontStyle: "italic" }}>
+          <p style={{ fontSize: 13, color: CAMEL_TEXT, marginBottom: 28, fontFamily: "sans-serif", fontStyle: "italic" }}>
             This self-assessment asks you to be honest and reflective of where you and your business stand. The more accurate you are, the more useful your results will be.
           </p>
           <div style={{ background: "white", borderRadius: 12, padding: "24px 28px", marginBottom: 28, textAlign: "left", border: `1px solid ${LIGHT_TAN}` }}>
@@ -376,7 +390,7 @@ const priorities = buildPriorities();
       <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "sans-serif", padding: "40px 20px" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: CAMEL, textTransform: "uppercase", marginBottom: 8, fontFamily: "sans-serif" }}>Groundwork Consult</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: CAMEL_TEXT, textTransform: "uppercase", marginBottom: 8, fontFamily: "sans-serif" }}>Groundwork Consult</div>
             <h1 style={{ fontSize: 32, color: DARK_MOCHA, margin: "0 0 12px", fontFamily: "Georgia, serif", fontWeight: 700 }}>Your Assessment Results</h1>
             <div style={{ width: 48, height: 3, background: AMBER, margin: "0 auto 16px" }} />
             <p style={{ color: MOCHA, fontSize: 15, maxWidth: 480, margin: "0 auto" }}>Based on your responses, here's an honest picture of where your business stands operationally right now.</p>
@@ -422,7 +436,7 @@ const priorities = buildPriorities();
           {/* Top priorities */}
           <div style={{ background: "white", borderRadius: 12, padding: "24px 28px", marginBottom: 24, border: `1px solid ${LIGHT_TAN}` }}>
             <h2 style={{ fontSize: 16, color: DARK_MOCHA, margin: "0 0 6px", fontFamily: "Georgia, serif", fontWeight: 700 }}>Your Top 3 Priorities</h2>
-            <p style={{ fontSize: 13, color: CAMEL, margin: "0 0 20px" }}>Start here. These areas will have the most immediate impact.</p>
+            <p style={{ fontSize: 13, color: CAMEL_TEXT, margin: "0 0 20px" }}>Start here. These areas will have the most immediate impact.</p>
             {weakest.map((area, i) => {
               const score = getAreaScore(area.id) || 0;
               const status = getStatus(score);
@@ -442,7 +456,7 @@ const priorities = buildPriorities();
           {/* Strengths */}
           <div style={{ background: "white", borderRadius: 12, padding: "24px 28px", marginBottom: 32, border: `1px solid ${LIGHT_TAN}` }}>
             <h2 style={{ fontSize: 16, color: DARK_MOCHA, margin: "0 0 6px", fontFamily: "Georgia, serif", fontWeight: 700 }}>Where You're Strong</h2>
-            <p style={{ fontSize: 13, color: CAMEL, margin: "0 0 16px" }}>These areas are working. Protect them as you make changes elsewhere.</p>
+            <p style={{ fontSize: 13, color: CAMEL_TEXT, margin: "0 0 16px" }}>These areas are working. Protect them as you make changes elsewhere.</p>
             {strongest.map((area) => {
               const score = getAreaScore(area.id) || 0;
               return (
@@ -457,14 +471,18 @@ const priorities = buildPriorities();
           {/* Email capture */}
           <div style={{ background: "white", borderRadius: 12, padding: "28px 32px", marginBottom: 24, border: `1px solid ${LIGHT_TAN}` }}>
             <h2 style={{ fontSize: 16, color: DARK_MOCHA, margin: "0 0 6px", fontFamily: "Georgia, serif", fontWeight: 700 }}>Send these results to yourself</h2>
-            <p style={{ fontSize: 13, color: CAMEL, margin: "0 0 20px" }}>We'll email you a copy of your full scorecard if you'd like to discuss on a future call.</p>
+            <p style={{ fontSize: 13, color: CAMEL_TEXT, margin: "0 0 20px" }}>We'll email you a copy of your full scorecard if you'd like to discuss on a future call.</p>
 
             {emailStatus === "sent" ? (
-              <p style={{ fontSize: 14, color: OLIVE, fontWeight: 600 }}>Sent! Check your inbox. Reach out to hello@groundworkconsult.ca if you don't see it within a few minutes.</p>
+              <p style={{ fontSize: 14, color: OLIVE, fontWeight: 600 }}>Sent! Check your inbox. Reach out to jennifer@groundworkconsult.ca if you don't see it within a few minutes.</p>
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 <input
                   type="text"
+                  name="name"
+                  autoComplete="name"
+                  aria-label="Your name"
+                  maxLength={100}
                   placeholder="Your name"
                   value={emailName}
                   onChange={(e) => setEmailName(e.target.value)}
@@ -472,11 +490,30 @@ const priorities = buildPriorities();
                 />
                 <input
                   type="email"
+                  name="email"
+                  autoComplete="email"
+                  aria-label="Your email address"
+                  aria-invalid={emailError ? "true" : "false"}
+                  maxLength={254}
                   placeholder="Your email address"
                   value={emailAddress}
-                  onChange={(e) => setEmailAddress(e.target.value)}
+                  onChange={(e) => { setEmailAddress(e.target.value); if (emailError) setEmailError(""); }}
                   style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${LIGHT_TAN}`, fontSize: 14, fontFamily: "sans-serif", color: DARK_MOCHA, outline: "none", background: IVORY }}
                 />
+                {/* Honeypot: hidden from people, bots fill it in */}
+                <input
+                  type="text"
+                  name="company_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                />
+                {emailError && (
+                  <p role="alert" style={{ fontSize: 13, color: "#C0392B", margin: 0 }}>{emailError}</p>
+                )}
                 <button
                   onClick={handleSendEmail}
                   disabled={!emailName.trim() || !emailAddress.trim() || emailStatus === "sending"}
@@ -489,8 +526,11 @@ const priorities = buildPriorities();
                   {emailStatus === "sending" ? "Sending..." : "Email my results"}
                 </button>
                 {emailStatus === "error" && (
-                  <p style={{ fontSize: 13, color: "#C0392B", margin: 0 }}>Something went wrong. Try again or reach out to jennifer@groundworkconsult.ca.</p>
+                  <p role="alert" style={{ fontSize: 13, color: "#C0392B", margin: 0 }}>Something went wrong. Try again or reach out to jennifer@groundworkconsult.ca.</p>
                 )}
+                <p style={{ fontSize: 12, color: CAMEL_TEXT, margin: 0 }}>
+                  We'll only use your email to send your results and follow up if you ask us to. <a href="/privacy" style={{ color: MOCHA }}>Privacy policy</a>
+                </p>
               </div>
             )}
           </div>
@@ -543,7 +583,7 @@ const priorities = buildPriorities();
               <button key={a.id} onClick={() => setCurrentArea(i)} style={{
                 padding: "5px 12px", borderRadius: 20, fontSize: 11, cursor: "pointer", fontWeight: 600, letterSpacing: "0.03em", border: "none",
                 background: active ? MOCHA : complete ? "#EFF4E8" : LIGHT_TAN,
-                color: active ? IVORY : complete ? OLIVE : CAMEL,
+                color: active ? IVORY : complete ? OLIVE : CAMEL_TEXT,
               }}>
                 {complete ? "✓ " : ""}{a.id}. {a.title.split(" ")[0]}
               </button>
@@ -553,7 +593,7 @@ const priorities = buildPriorities();
 
         {/* Area header */}
         <div style={{ marginBottom: 28 }}>
-          <div style={{ fontSize: 11, letterSpacing: "0.15em", color: CAMEL, textTransform: "uppercase", marginBottom: 6 }}>Area {area.id} of {activeAreas.length}</div>
+          <div style={{ fontSize: 11, letterSpacing: "0.15em", color: CAMEL_TEXT, textTransform: "uppercase", marginBottom: 6 }}>Area {area.id} of {activeAreas.length}</div>
           <h2 style={{ fontSize: 28, color: DARK_MOCHA, margin: "0 0 8px", fontFamily: "Georgia, serif", fontWeight: 700 }}>{area.title}</h2>
           <div style={{ width: 36, height: 2, background: AMBER, marginBottom: 12 }} />
           <p style={{ fontSize: 14, color: MOCHA, margin: 0, lineHeight: 1.6 }}>{area.description}</p>
@@ -581,7 +621,7 @@ const priorities = buildPriorities();
                   {ratings.map((r) => (
                     <button key={r.value} onClick={() => setAnswer(area.id, i, r.value)} style={{
                       flex: 1, padding: "10px 4px", borderRadius: 8, border: `2px solid ${selected === r.value ? r.color : LIGHT_TAN}`,
-                      background: selected === r.value ? r.color : "white", color: selected === r.value ? "white" : CAMEL,
+                      background: selected === r.value ? r.color : "white", color: selected === r.value ? "white" : CAMEL_TEXT,
                       cursor: "pointer", fontSize: 13, fontWeight: 700, transition: "all 0.15s",
                     }}>
                       {r.value}

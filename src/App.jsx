@@ -1,12 +1,16 @@
-import { Routes, Route, useNavigate, useParams } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate, useParams } from "react-router-dom";
 import Home from "./Home";
 import SelfAssessment from "./groundwork-self-assessment";
 import BookingPage from "./BookingPage";
-import SOPBundle from "./groundwork-sop-bundle";
-import RoleClarity from "./groundwork-role-clarity-toolkit";
-import OpsPlaybook from "./groundwork-ops-playbook";
-import SOPLibrary from "./groundwork-sop-library";
-import AIStarterKit from "./groundwork-ai-starter-kit";
+import { lazy, Suspense } from "react";
+
+// Free tools load only when someone opens them, so the homepage stays fast.
+const SOPBundle    = lazy(() => import("./groundwork-sop-bundle"));
+const RoleClarity  = lazy(() => import("./groundwork-role-clarity-toolkit"));
+const OpsPlaybook  = lazy(() => import("./groundwork-ops-playbook"));
+const SOPLibrary   = lazy(() => import("./groundwork-sop-library"));
+const AIStarterKit = lazy(() => import("./groundwork-ai-starter-kit"));
+import { PrivacyPage, TermsPage } from "./LegalPages";
 
 const MOCHA      = "#6B4F3A";
 const CAMEL      = "#C19A6B";
@@ -40,7 +44,7 @@ function LogoMark() {
 function NavBar({ backLabel, backTo, priceNote }) {
   const navigate = useNavigate();
   return (
-    <div style={{ background: DARK_GREEN, padding: "0 40px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+    <div style={{ background: DARK_GREEN, padding: "0 clamp(16px, 4vw, 40px)", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <LogoMark />
         <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 600, color: IVORY }}>Groundwork Consult</span>
@@ -137,19 +141,26 @@ function ToolsIndex() {
 
 function ToolRoute() {
   const { toolId } = useParams();
-  const navigate = useNavigate();
   const product = PRODUCTS.find(p => p.id === toolId);
 
-  if (!product) {
-    navigate("/tools", { replace: true });
-    return null;
-  }
+  if (!product) return <Navigate to="/tools" replace />;
 
   const Product = product.component;
   return (
     <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "sans-serif" }}>
       <NavBar backLabel="Back to Tools" backTo="/tools" priceNote={`Normally ${formatPrice(product.price)}. Free for now.`} />
-      <Product />
+      <Suspense fallback={<p style={{ textAlign: "center", padding: "80px 24px", color: TEXT_MID }}>Loading...</p>}>
+        <Product />
+      </Suspense>
+    </div>
+  );
+}
+
+function LegalRoute({ children }) {
+  return (
+    <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "sans-serif" }}>
+      <NavBar backLabel="Back to site" backTo="/" />
+      {children}
     </div>
   );
 }
@@ -183,6 +194,8 @@ export default function App() {
       <Route path="/"                 element={<Home />} />
       <Route path="/book"             element={<BookingRoute />} />
       <Route path="/self-assessment"  element={<SelfAssessmentRoute />} />
+      <Route path="/privacy"          element={<LegalRoute><PrivacyPage /></LegalRoute>} />
+      <Route path="/terms"            element={<LegalRoute><TermsPage /></LegalRoute>} />
       <Route path="/tools"            element={<ToolsIndex />} />
       <Route path="/tools/:toolId"    element={<ToolRoute />} />
       <Route path="*"                 element={<NotFoundRoute />} />

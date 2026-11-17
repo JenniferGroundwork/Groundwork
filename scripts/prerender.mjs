@@ -27,6 +27,18 @@ const PAGES = [
     title: "Book a Discovery Call | Groundwork Consult",
     description: "Book a free 30-minute discovery call with Groundwork Consult to talk through where your operations are breaking down and whether a fixed-scope build is the right fit.",
   },
+  {
+    url: "/privacy",
+    out: "privacy/index.html",
+    title: "Privacy Policy | Groundwork Consult",
+    description: "How Groundwork Consult collects, uses, and protects the information you share through this website.",
+  },
+  {
+    url: "/terms",
+    out: "terms/index.html",
+    title: "Terms of Use | Groundwork Consult",
+    description: "The terms that apply to using the Groundwork Consult website and its free tools.",
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
