@@ -35,7 +35,7 @@ export default function BookingPage() {
     <div style={{ minHeight: "100vh", background: IVORY, fontFamily: "sans-serif" }}>
 
       {/* Header */}
-      <div style={{ background: DARK_GREEN, padding: "48px 80px 40px", textAlign: "center" }}>
+      <div style={{ background: DARK_GREEN, padding: "48px clamp(20px, 6vw, 80px) 40px", textAlign: "center" }}>
         <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: CAMEL, marginBottom: 12 }}>
           Groundwork Consult
         </p>
